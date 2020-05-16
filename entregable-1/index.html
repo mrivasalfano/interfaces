@@ -7,12 +7,21 @@
 </head>
 <body>
 	<div class="title">
-		<h1>Dibuje aquí o cargue una imagen</h1>
+		<h1>Dibuje aquí:</h1>
+		<button id="btnReset" type="button"><i class="fa fa-mouse-pointer" aria-hidden="true"></i></button>
 		<button id="btnLapiz" type="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 		<button id="btnGoma" type="button"><i class="fa fa-eraser" aria-hidden="true"></i></button>
 	</div>
+	<div class="inputContainer">
+		<h1>Cargue su imagen: </h1>
+		<input type="file" id="userImg">
+	</div>
 	<div class="canvas">
-		<canvas id="imgContainer" width="500" height="500"></canvas>
+		<canvas id="imgContainer" width="600" height="400"></canvas>
+		<button class="filtro" data-type="brillo" type="button">Brillo</button>
+		<button class="filtro" data-type="grises" type="button">Escala de grises</button>
+		<button class="filtro" data-type="negativo" type="button">Negativo</button>
+		<button class="filtro" data-type="binarizacion" type="button">Binarización</button>
 	</div>
 
 	<script src="js/main.js"></script>
