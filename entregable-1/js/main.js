@@ -14,6 +14,7 @@ const filtros = document.querySelectorAll('.filtro');
 const filtroContainer = document.querySelector('.filtros');
 const download = document.querySelector('#btnDownload');
 const descartar = document.querySelector('#btnDescartar');
+let anchoLineas = 3;
 //guardo el contexto default
 const canvasOriginal = context.getImageData(0, 0, canvasWidth, canvasHeight);
 
@@ -140,6 +141,17 @@ function grises(imgData) {
     context.putImageData(imgData, 0, 0);
 }
 
+canvas.addEventListener('wheel', e => {
+    if (lapizSelected || gomaSelected) {
+        if (e.deltaY > 0)
+            anchoLineas += 1;
+        else {
+            if (anchoLineas > 3)
+                anchoLineas -= 1;
+        }
+    }
+});
+
 //input de subir imagen
 userImg.addEventListener('change', (e) => {
 	if (e.target.value != null) {
@@ -230,6 +242,8 @@ function activarGoma() {
 //si tiene el lápiz o goma, pongo una variable en true
 //para saber que está haciendo dicha acción
 canvas.addEventListener('mousedown', (e) => {
+    context.lineWidth = anchoLineas;
+
 	if (lapizSelected) {
 		dibujo = true;
         context.globalCompositeOperation = 'source-over'; //lo hago acá para no repetirlo en el mousemove
