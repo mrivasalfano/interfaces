@@ -11,10 +11,11 @@ const btnReset = document.querySelector('#btnReset');
 let userImg = document.querySelector('#userImg');
 let originalImg;
 const filtros = document.querySelectorAll('.filtro');
-const filtroContainer = document.querySelector('.filtros');
+const filtrosContainer = document.querySelector('.filtros');
 const download = document.querySelector('#btnDownload');
 const descartar = document.querySelector('#btnDescartar');
 let anchoLineas = 3;
+let tieneFiltro = false;
 //guardo el contexto default
 const canvasOriginal = context.getImageData(0, 0, canvasWidth, canvasHeight);
 
@@ -31,8 +32,8 @@ descartar.addEventListener('click', e => {
     userImg.value = '';
     descartar.classList.remove('show');
     descartar.classList.add('hide');
-    download.classList.remove('show');
-    download.classList.add('hide');
+    habilitarDownload(false);
+    habilitarFiltros(false);
 });
 
 //variables de control
@@ -54,21 +55,35 @@ filtros.forEach(filtro => {
 function aplicarFiltro(type) {
     let imgData = context.getImageData(0, 0, canvasWidth, canvasHeight);
 
-	if (type == 'brillo')
-		brillo(imgData);
-	else if (type == 'negativo')
-		negativo(imgData);
-	else if (type == 'grises')
-		grises(imgData);
-	else if (type == 'binarizacion')
-        binarizacion(imgData);
-    else
-        reset();
+    //Si el filtro es brillo u original
+    //no hay problema
+    if (type == 'brillo')
+        brillo(imgData);
+    else {
+        //Si hay un filtro aplicado que no sea brillo
+        //reseteo la imagen para no aplicar filtro
+        //sobre filtro
+        if (tieneFiltro) {
+            reset();
+            imgData = context.getImageData(0, 0, canvasWidth, canvasHeight);
+        }
+        else
+            tieneFiltro = true;
+
+        if (type == 'negativo')
+            negativo(imgData);
+        else if (type == 'grises')
+            grises(imgData);
+        else if (type == 'binarizacion')
+            binarizacion(imgData);
+    }
     
-    //si se aplica un filtro muestro los
-    //botones descargar
-    download.classList.remove('hide');
-    download.classList.add('show');
+    if (type == 'original')
+        reset();
+    else 
+        //si se aplica un filtro muestro los
+        //botones descargar
+        habilitarDownload(true);
 }
 
 function brillo(imgData) {
@@ -130,6 +145,19 @@ function subirBrillo(valor) {
 
 function reset() {
     context.putImageData(originalImg, 0, 0);
+    habilitarDownload(false);
+    tieneFiltro = false;
+}
+
+function habilitarDownload(habilitar) {
+    if (habilitar) {
+        download.classList.remove('hide');
+        download.classList.add('show');
+    }
+    else {
+        download.classList.remove('show');
+        download.classList.add('hide');
+    }
 }
 
 function grises(imgData) {
@@ -156,16 +184,22 @@ canvas.addEventListener('wheel', e => {
 userImg.addEventListener('change', (e) => {
 	if (e.target.value != null) {
         mostrarImagen(e);
-        habilitarFiltros();
+        habilitarFiltros(true);
         //muestro el botón descartar
         descartar.classList.remove('hide');
         descartar.classList.add('show');
 	}
 });
 
-function habilitarFiltros() {
-    if (filtroContainer.classList.contains('hide'))
-        filtroContainer.classList.add('show');
+function habilitarFiltros(habilitar) {
+    if (habilitar) {
+        filtrosContainer.classList.remove('hide');
+        filtrosContainer.classList.add('show');
+    }
+    else {
+        filtrosContainer.classList.remove('show');
+        filtrosContainer.classList.add('hide');
+    }
 }
 
 //guardo la imagen del usuario
