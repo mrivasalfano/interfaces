@@ -7,29 +7,71 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div class="title">
-		<h1>Herramientas:</h1>
-		<button id="btnReset" type="button"><i class="fa fa-mouse-pointer" aria-hidden="true"></i></button>
-		<button id="btnLapiz" type="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-		<button id="btnGoma" type="button"><i class="fa fa-eraser" aria-hidden="true"></i></button>
-	</div>
-	<div class="inputContainer">
-		<h1>Cargue su imagen: </h1>
-        <input type="file" id="userImg">
-        <button type="button" class="hide" id="btnDownload">Descargar</button>
-        <button type="button" class="hide" id="btnDescartar">Descartar</button>
-	</div>
-	<div class="canvas">
-		<canvas id="imgContainer" width="600" height="400"></canvas>
-    </div>
-    <div class="filtros hide">
-        <button class="filtro" data-type="brillo" type="button">Brillo</button>
-		<button class="filtro" data-type="grises" type="button">Escala de grises</button>
-		<button class="filtro" data-type="negativo" type="button">Negativo</button>
-		<button class="filtro" data-type="binarizacion" type="button">Binarización</button>
-		<button class="filtro" data-type="blur" type="button">Blur</button>
-		<button class="filtro" data-type="saturacion" type="button">Saturación</button>
-		<button class="filtro" data-type="original" type="button">Original</button>
+    <div class="container-fluid">
+        <header class="row">
+            <div class="col-3 m-0 mt-1">
+                <p class="titulo">Herramientas: </p>
+            </div>
+            <div class="col-1 m-0 mt-3">
+                <button class="btn btn-primary" id="btnReset" type="button"><i class="fa fa-mouse-pointer" aria-hidden="true"></i></button>
+            </div>
+            <div class="col-1 m-0 mt-3">
+                <button class="btn btn-success" id="btnLapiz" type="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            </div>
+            <div class="col-1 m-0 mt-3">
+                <button class="btn btn-danger" id="btnGoma" type="button"><i class="fa fa-eraser" aria-hidden="true"></i></button>
+            </div>
+        </header>
+
+        <section class="row mt-2">
+            <div class="col-3">
+                <h3>Cargue una imagen: </h3>
+            </div>
+            <div class="col-5">
+                <input class="form-control" type="file" id="userImg">
+            </div>
+            <div class="col-2">
+                <button type="button" class="hide btn btn-success" id="btnDownload">Descargar</button>
+            </div>
+            <div class="col-2">
+                <button type="button" class="hide btn btn-danger" id="btnDescartar">Descartar</button>
+            </div>
+        </section>
+
+        <section class="row mt-3">
+            <div class="col-9">
+                <div class="canvas">
+                    <canvas id="imgContainer" width="1000" height="450"></canvas>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row">
+                    <div class="filtros hide">
+                        <div class="col-12">
+                            <button class="filtro btn btn-info mb-2" data-type="brillo" type="button">Brillo</button>
+                        </div>
+                        <div class="col-12">
+                            <button class="filtro btn btn-info mb-2" data-type="grises" type="button">Escala de grises</button>
+                        </div>
+                        <div class="col-12">
+                            <button class="filtro btn btn-info mb-2" data-type="negativo" type="button">Negativo</button>
+                        </div>
+                        <div class="col-12">
+                            <button class="filtro btn btn-info mb-2" data-type="binarizacion" type="button">Binarización</button>
+                        </div>
+                        <div class="col-12">
+                            <button class="filtro btn btn-info mb-2" data-type="blur" type="button">Blur</button>
+                        </div>
+                        <div class="col-12">
+                            <button class="filtro btn btn-info mb-2" data-type="saturacion" type="button">Saturación</button>
+                        </div>
+                        <div class="col-12">
+                            <button class="filtro btn btn-info mb-2" data-type="original" type="button">Original</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
