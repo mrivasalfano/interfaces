@@ -4,37 +4,20 @@
 const btnLapiz = document.querySelector('#btnLapiz');
 const btnGoma = document.querySelector('#btnGoma');
 const canvas = document.querySelector('#imgContainer');
-const canvasWidth = canvas.width;
-const canvasHeight = canvas.height;
+const download = document.querySelector('#btnDownload');
+const descartar = document.querySelector('#btnDescartar');
 const context = canvas.getContext('2d');
 const btnReset = document.querySelector('#btnReset');
 let userImg = document.querySelector('#userImg');
-let originalData;
 const filtros = document.querySelectorAll('.filtro');
 const filtrosContainer = document.querySelector('.filtros');
-const download = document.querySelector('#btnDownload');
-const descartar = document.querySelector('#btnDescartar');
-let anchoLineas = 3;
-let tieneFiltro = false;
-//guardo el contexto default
-const canvasOriginal = context.getImageData(0, 0, canvasWidth, canvasHeight);
 
-
-download.addEventListener('click', e => {
-    let link = document.createElement('a');
-    link.download = 'imagenEditada.png';
-    link.href = canvas.toDataURL()
-    link.click();
-});
-
-descartar.addEventListener('click', e => {
-    context.putImageData(canvasOriginal, 0, 0);
-    userImg.value = '';
-    descartar.classList.remove('show');
-    descartar.classList.add('hide');
-    habilitarDownload(false);
-    habilitarFiltros(false);
-});
+//constantes usadas por funciones
+const canvasWidth = canvas.width;
+const canvasHeight = canvas.height;
+let originalData; //imageData de la imagen cargada
+let anchoLineas = 3; //ancho de los lineTo. Se puede variar con la rueda del mouse
+const canvasOriginal = context.getImageData(0, 0, canvasWidth, canvasHeight); //contexto original sin imagen
 
 //variables de control
 let lapizSelected = false;
@@ -45,13 +28,33 @@ let xInicio;
 let yInicio;
 let borro = false;
 
+//botón para descargar imagen editada
+download.addEventListener('click', e => {
+    let link = document.createElement('a');
+    link.download = 'imagenEditada.png';
+    link.href = canvas.toDataURL()
+    link.click();
+});
+
+//botón para empezar de 0
+descartar.addEventListener('click', e => {
+    context.putImageData(canvasOriginal, 0, 0);
+    userImg.value = '';
+    descartar.classList.remove('show');
+    descartar.classList.add('hide');
+    habilitarDownload(false);
+    habilitarFiltros(false);
+});
+
+//cuando se toca un filtro llamo a aplicarFiltro con su tipo
 filtros.forEach(filtro => {
 	filtro.addEventListener('click', (e) => {
 		aplicarFiltro(filtro.getAttribute('data-type'));
 	});
 });
 
-
+//según el tipo llama a la función correspondiente al filtro
+//a su vez activa el botón descargar ya que se hizo un cambio
 function aplicarFiltro(type) {
     if (type == 'original')
         reset();
@@ -71,7 +74,6 @@ function aplicarFiltro(type) {
 
         habilitarDownload(true);
     }
-
 }
 
 function saturacion() {
@@ -94,53 +96,56 @@ function saturacion() {
 }
 
 function RGBtoHSL(r, g, b) {
-r /= 255, g /= 255, b /= 255;
+    r /= 255, g /= 255, b /= 255;
 
-var max = Math.max(r, g, b), min = Math.min(r, g, b);
-var h, s, l = (max + min) / 2;
+    let max = Math.max(r, g, b)
+    let min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
 
-if (max == min) {
-    h = s = 0; // achromatic
-} else {
-    var d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    if (max == min) {
+        h = s = 0;
+    } 
+    else {
+        let d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
 
-    switch (max) {
-    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-    case g: h = (b - r) / d + 2; break;
-    case b: h = (r - g) / d + 4; break;
+        switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+
+        h /= 6;
     }
 
-    h /= 6;
-}
-
-return [ h, s, l ];
+    return [ h, s, l ];
 }
   
 function HSLtoRGB(h, s, l) {
-var r, g, b;
+    let r, g, b;
 
-if (s == 0) {
-    r = g = b = l; // achromatic
-} else {
-    function hue2rgb(p, q, t) {
-    if (t < 0) t += 1;
-    if (t > 1) t -= 1;
-    if (t < 1/6) return p + (q - p) * 6 * t;
-    if (t < 1/2) return q;
-    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-    return p;
+    if (s == 0) {
+        r = g = b = l; // achromatic
+    } 
+    else {
+        function hue2rgb(p, q, t) {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1/6) return p + (q - p) * 6 * t;
+            if (t < 1/2) return q;
+            if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+            return p;
+        }
+
+        let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        let p = 2 * l - q;
+
+        r = hue2rgb(p, q, h + 1/3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1/3);
     }
 
-    var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-    var p = 2 * l - q;
-
-    r = hue2rgb(p, q, h + 1/3);
-    g = hue2rgb(p, q, h);
-    b = hue2rgb(p, q, h - 1/3);
-}
-
-return [ r * 255, g * 255, b * 255 ];
+    return [ r * 255, g * 255, b * 255 ];
 }
 
 function blur() {
@@ -246,12 +251,16 @@ function subirBrillo(valor) {
         return valor + brillo;
 }
 
+//vuelve a la imagen original
+//desactivo el botón descargar
+//porque la imagen no tuvo cambios
 function reset() {
     context.putImageData(originalData, 0, 0);
     habilitarDownload(false);
-    tieneFiltro = false;
 }
 
+//habilita o deshabilita el
+//boton descargar
 function habilitarDownload(habilitar) {
     if (habilitar) {
         download.classList.remove('hide');
@@ -276,6 +285,9 @@ function grises() {
     context.putImageData(imgData, 0, 0);
 }
 
+//si está seleccionado el lápiz o goma
+//con la rueda arriba se achica la linea y
+//con la rueda abajo lo contrario
 canvas.addEventListener('wheel', e => {
     if (lapizSelected || gomaSelected) {
         if (e.deltaY > 0)
@@ -298,6 +310,8 @@ userImg.addEventListener('change', (e) => {
 	}
 });
 
+//habilita o deshabilita los botones
+//para filtros
 function habilitarFiltros(habilitar) {
     if (habilitar) {
         filtrosContainer.classList.remove('hide');
@@ -393,7 +407,11 @@ canvas.addEventListener('mousedown', (e) => {
 		borro = true;
         context.globalCompositeOperation = 'destination-out'; //lo hago acá para no repetirlo en el mousemove
         context.strokeStyle = 'rgba(0,0,0,1)'; //lo hago acá para no repetirlo en el mousemove
-	}
+    }
+    
+    //muestro el botón descartar
+    descartar.classList.remove('hide');
+    descartar.classList.add('show');
 });
 
 //cuando el usuario suelta el click, pongo en
