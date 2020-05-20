@@ -338,7 +338,7 @@ function mostrarImagen(e) {
 
     img.onload = function() {
     	context.drawImage(img, 0, 0, canvasWidth, canvasHeight);
-    	originalData = context.getImageData(0, 0, img.width, img.height);
+    	originalData = context.getImageData(0, 0, canvasWidth, canvasHeight);
     	context.putImageData(originalData, 0, 0);
     }
 }
