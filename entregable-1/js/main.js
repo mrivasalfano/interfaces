@@ -9,7 +9,7 @@ const canvasHeight = canvas.height;
 const context = canvas.getContext('2d');
 const btnReset = document.querySelector('#btnReset');
 let userImg = document.querySelector('#userImg');
-let originalImg;
+let originalData;
 const filtros = document.querySelectorAll('.filtro');
 const filtrosContainer = document.querySelector('.filtros');
 const download = document.querySelector('#btnDownload');
@@ -53,81 +53,223 @@ filtros.forEach(filtro => {
 
 
 function aplicarFiltro(type) {
-    let imgData = context.getImageData(0, 0, canvasWidth, canvasHeight);
-
-    //Si el filtro es brillo u original
-    //no hay problema
-    if (type == 'brillo')
-        brillo(imgData);
-    else {
-        //Si hay un filtro aplicado que no sea brillo
-        //reseteo la imagen para no aplicar filtro
-        //sobre filtro
-        if (tieneFiltro) {
-            reset();
-            imgData = context.getImageData(0, 0, canvasWidth, canvasHeight);
-        }
-        else
-            tieneFiltro = true;
-
-        if (type == 'negativo')
-            negativo(imgData);
-        else if (type == 'grises')
-            grises(imgData);
-        else if (type == 'binarizacion')
-            binarizacion(imgData);
-    }
-    
     if (type == 'original')
         reset();
-    else 
-        //si se aplica un filtro muestro los
-        //botones descargar
-        habilitarDownload(true);
-}
-
-function brillo(imgData) {
-    let r = 0;
-    let g = 0;
-    let b = 0;
-
-    for (let i=0; i<imgData.data.length; i+=4) {
-        r = subirBrillo(imgData.data[i]);
-        g = subirBrillo(imgData.data[i+1]);
-        b = subirBrillo(imgData.data[i+2]);
-
-        setPixel(imgData, i, r, g, b, 255);
-    }
-    
-    context.putImageData(imgData, 0, 0);
-}
-
-function negativo(imgData) {
-    let r = 0;
-    let g = 0;
-    let b = 0;
-
-    for (let i=0; i<imgData.data.length; i+=4) {
-        r = 255 - imgData.data[i];
-        g = 255 - imgData.data[i+1];
-        b = 255 - imgData.data[i+2];
-
-        setPixel(imgData, i, r, g, b, 255);
-    }
-    
-    context.putImageData(imgData, 0, 0);
-}
-
-function binarizacion(imgData) {
-    for (let i=0; i<imgData.data.length; i+=4) {
-        let promedio = (imgData.data[i] + imgData.data[i+1] + imgData.data[i+2]) / 3;
-
-        if (promedio > 127)
-            promedio = 255;
+    else {
+        if (type == 'brillo')
+            brillo();
+        else if (type == 'negativo')
+            negativo();
+        else if (type == 'grises')
+            grises();
+        else if (type == 'binarizacion')
+            binarizacion();
+        else if (type == 'blur')
+            blur();
+        else if (type == 'sobel')
+            sobel();
         else
-            promedio = 0;
+            saturacion();
 
-        setPixel(imgData, i, promedio, promedio, promedio, 255);
+        habilitarDownload(true);
+    }
+
+}
+
+function saturacion() {
+    let imgData = new ImageData(canvasWidth, canvasHeight);
+
+    for (let x=0; x<canvasWidth; x++) {
+        for (let y=0; y<canvasHeight; y++) {
+            let r = getRed(originalData, x, y);
+            let g = getGreen(originalData, x, y);
+            let b = getBlue(originalData, x, y);
+            let hsl = RGBtoHSL(r, g, b);
+            hsl[1] = hsl[1] + 0.2;
+            let rgb = HSLtoRGB(hsl[0], hsl[1], hsl[2]);
+
+            setPixel(imgData, x, y, rgb[0], rgb[1], rgb[2], 255);
+        }
+    }
+
+    context.putImageData(imgData, 0, 0);
+}
+
+function RGBtoHSL(r, g, b) {
+r /= 255, g /= 255, b /= 255;
+
+var max = Math.max(r, g, b), min = Math.min(r, g, b);
+var h, s, l = (max + min) / 2;
+
+if (max == min) {
+    h = s = 0; // achromatic
+} else {
+    var d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+    switch (max) {
+    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+    case g: h = (b - r) / d + 2; break;
+    case b: h = (r - g) / d + 4; break;
+    }
+
+    h /= 6;
+}
+
+return [ h, s, l ];
+}
+  
+function HSLtoRGB(h, s, l) {
+var r, g, b;
+
+if (s == 0) {
+    r = g = b = l; // achromatic
+} else {
+    function hue2rgb(p, q, t) {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1/6) return p + (q - p) * 6 * t;
+    if (t < 1/2) return q;
+    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+    return p;
+    }
+
+    var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    var p = 2 * l - q;
+
+    r = hue2rgb(p, q, h + 1/3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1/3);
+}
+
+return [ r * 255, g * 255, b * 255 ];
+}
+
+function sobel() {
+    let imgData = new ImageData(canvasWidth, canvasHeight);
+
+    let sobel_x = [1,0,-1];
+
+    let sobel_y = [1,2,1];
+
+    let w = 0;
+
+    for (let j = 0, i = w + 4; i < originalData.length; i+=4, j++){
+        let sobelX = getSobelX(i, w, sobel_x);
+        let sobelY = getSobelY(i, w, sobel_y);
+        let val = Math.abs(sobelX) + Math.abs(sobelY);
+        imgData[j] = val;
+    }
+
+    context.putImageData(imgData, 0, 0);
+}
+
+
+function getSobelX(index, w, sobel){
+	return (sobel[0]*originalData[index - w - 4] + sobel[1]*originalData[index - 4] + sobel[2]*originalData[index + w - 4]
+			-sobel[0]*originalData[index - w + 4] - sobel[1]*originalData[index + 4] - sobel[2]*originalData[index + 4 + 4]);
+}
+
+function getSobelY(index, w, sobel){
+	return (sobel[0]*originalData[index - w - 4] + sobel[1]*originalData[index - w] + sobel[2]*originalData[index - w + 4]
+			-(sobel[0]*originalData[index + w - 4] + sobel[1]*originalData[index + w] + sobel[2]*originalData[index + w + 4]));
+}
+
+function blur() {
+    let imgData = new ImageData(canvasWidth, canvasHeight);
+
+    let matriz = [
+        [1/9,1/9,1/9],
+        [1/9,1/9,1/9],
+        [1/9,1/9,1/9]
+    ];
+
+
+    // let matriz = [
+    //     [0, -1,  0],
+    //     [-1,  5, -1],
+    //     [0, -1,  0] 
+    // ];
+
+    for (let x=1; x<canvasWidth-1; x++) {
+        for (let y=1; y<canvasHeight-1; y++) {
+            promedioMatriz(imgData, x, y, matriz);
+        }
+    }
+
+    context.putImageData(imgData, 0, 0);
+}
+
+function promedioMatriz(imgData, x, y, matriz) {
+    let r = Math.floor(getRed(originalData, x-1, y-1) * matriz[0][0] + getRed(originalData, x, y-1) * matriz[0][1] + getRed(originalData, x+1, y-1) * matriz[0][2]
+                     + getRed(originalData, x-1, y) * matriz[1][0] + getRed(originalData, x, y) * matriz[1][1] + getRed(originalData, x+1, y) * matriz[1][2]
+                     + getRed(originalData, x-1, y+1) * matriz[2][0] + getRed(originalData, x, y+1) * matriz[2][1] + getRed(originalData, x+1, y+1) * matriz[2][2]);
+    
+    let g = Math.floor(getGreen(originalData, x-1, y-1) * matriz[0][0] + getGreen(originalData, x, y-1) * matriz[0][1] + getGreen(originalData, x+1, y-1) * matriz[0][2]
+                     + getGreen(originalData, x-1, y) * matriz[1][0] + getGreen(originalData, x, y) * matriz[1][1] + getGreen(originalData, x+1, y) * matriz[1][2]
+                     + getGreen(originalData, x-1, y+1) * matriz[2][0] + getGreen(originalData, x, y+1) * matriz[2][1] + getGreen(originalData, x+1, y+1) * matriz[2][2]);
+
+    let b = Math.floor(getBlue(originalData, x-1, y-1) * matriz[0][0] + getBlue(originalData, x, y-1) * matriz[0][1] + getBlue(originalData, x+1, y-1) * matriz[0][2]
+                     + getBlue(originalData, x-1, y) * matriz[1][0] + getBlue(originalData, x, y) * matriz[1][1] + getBlue(originalData, x+1, y) * matriz[1][2]
+                     + getBlue(originalData, x-1, y+1) * matriz[2][0] + getBlue(originalData, x, y+1) * matriz[2][1] + getBlue(originalData, x+1, y+1) * matriz[2][2]);
+
+    setPixel(imgData, x, y, r, g, b, 255);
+}
+
+function brillo() {
+    let imgData = context.getImageData(0, 0, canvasWidth, canvasHeight);
+
+    let r = 0;
+    let g = 0;
+    let b = 0;
+
+    for (let x=0; x<canvasWidth; x++) {
+        for (let y=0; y<canvasHeight; y++) {
+            r = subirBrillo(getRed(imgData, x, y));
+            g = subirBrillo(getGreen(imgData, x, y));
+            b = subirBrillo(getBlue(imgData, x, y));
+
+            setPixel(imgData, x, y, r, g, b, 255);
+        }
+    }
+    
+    context.putImageData(imgData, 0, 0);
+}
+
+function negativo() {
+    let imgData = new ImageData(canvasWidth, canvasHeight);
+
+    let r = 0;
+    let g = 0;
+    let b = 0;
+
+    for (let x=0; x<canvasWidth; x++) {
+        for (let y=0; y<canvasHeight; y++) {
+            r = 255 - getRed(originalData, x, y);
+            g = 255 - getGreen(originalData, x, y);
+            b = 255 - getBlue(originalData, x, y);
+
+            setPixel(imgData, x, y, r, g, b, 255);
+        }
+    }
+    
+    context.putImageData(imgData, 0, 0);
+}
+
+function binarizacion() {
+    let imgData = new ImageData(canvasWidth, canvasHeight);
+
+    for (let x=0; x<canvasWidth; x++) {
+        for (let y=0; y<canvasHeight; y++) {
+            let promedio = (getRed(originalData, x, y) + getGreen(originalData, x, y) + getBlue(originalData, x, y)) / 3;
+
+            if (promedio > 127)
+                promedio = 255;
+            else
+                promedio = 0;
+
+            setPixel(imgData, x, y, promedio, promedio, promedio, 255);
+        }
     }
     
     context.putImageData(imgData, 0, 0);
@@ -144,7 +286,7 @@ function subirBrillo(valor) {
 }
 
 function reset() {
-    context.putImageData(originalImg, 0, 0);
+    context.putImageData(originalData, 0, 0);
     habilitarDownload(false);
     tieneFiltro = false;
 }
@@ -160,10 +302,14 @@ function habilitarDownload(habilitar) {
     }
 }
 
-function grises(imgData) {
-    for (let i=0; i<imgData.data.length; i+=4) {
-        let promedio = (imgData.data[i] + imgData.data[i+1] + imgData.data[i+2]) / 3;
-        setPixel(imgData, i, promedio, promedio, promedio, 255);
+function grises() {
+    let imgData = new ImageData(canvasWidth, canvasHeight);
+
+    for (let x=0; x<canvasWidth; x++) {
+        for (let y=0; y<canvasHeight; y++) {
+            let promedio = (getRed(originalData, x, y) + getGreen(originalData, x, y) + getBlue(originalData, x, y)) / 3;
+            setPixel(imgData, x, y, promedio, promedio, promedio, 255);
+        }
     }
     
     context.putImageData(imgData, 0, 0);
@@ -217,8 +363,8 @@ function mostrarImagen(e) {
 
     img.onload = function() {
     	context.drawImage(img, 0, 0, canvasWidth, canvasHeight);
-    	originalImg = context.getImageData(0, 0, img.width, img.height);
-    	context.putImageData(originalImg, 0, 0);
+    	originalData = context.getImageData(0, 0, img.width, img.height);
+    	context.putImageData(originalData, 0, 0);
     }
 }
 
@@ -327,9 +473,25 @@ function iniciarLinea(e) {
 	context.moveTo(xInicio, yInicio);
 }
 
-function setPixel(imgData, index, r, g, b, a) {
+function setPixel(imgData, x, y, r, g, b, a) {
+    let index = (x + y * imgData.width) * 4;
     imgData.data[index] = r;
     imgData.data[index + 1] = g;
     imgData.data[index + 2] = b;
     imgData.data[index + 3] = a;
+}
+
+function getRed(imgData, x, y) {
+    let index = (x + y * imgData.width) * 4;
+    return imgData.data[index];
+}
+
+function getGreen(imgData, x, y) {
+    let index = (x + y * imgData.width) * 4;
+    return imgData.data[index+1];
+}
+
+function getBlue(imgData, x, y) {
+    let index = (x + y * imgData.width) * 4;
+    return imgData.data[index+2];
 }
