@@ -66,8 +66,6 @@ function aplicarFiltro(type) {
             binarizacion();
         else if (type == 'blur')
             blur();
-        else if (type == 'sobel')
-            sobel();
         else
             saturacion();
 
@@ -143,36 +141,6 @@ if (s == 0) {
 }
 
 return [ r * 255, g * 255, b * 255 ];
-}
-
-function sobel() {
-    let imgData = new ImageData(canvasWidth, canvasHeight);
-
-    let sobel_x = [1,0,-1];
-
-    let sobel_y = [1,2,1];
-
-    let w = 0;
-
-    for (let j = 0, i = w + 4; i < originalData.length; i+=4, j++){
-        let sobelX = getSobelX(i, w, sobel_x);
-        let sobelY = getSobelY(i, w, sobel_y);
-        let val = Math.abs(sobelX) + Math.abs(sobelY);
-        imgData[j] = val;
-    }
-
-    context.putImageData(imgData, 0, 0);
-}
-
-
-function getSobelX(index, w, sobel){
-	return (sobel[0]*originalData[index - w - 4] + sobel[1]*originalData[index - 4] + sobel[2]*originalData[index + w - 4]
-			-sobel[0]*originalData[index - w + 4] - sobel[1]*originalData[index + 4] - sobel[2]*originalData[index + 4 + 4]);
-}
-
-function getSobelY(index, w, sobel){
-	return (sobel[0]*originalData[index - w - 4] + sobel[1]*originalData[index - w] + sobel[2]*originalData[index - w + 4]
-			-(sobel[0]*originalData[index + w - 4] + sobel[1]*originalData[index + w] + sobel[2]*originalData[index + w + 4]));
 }
 
 function blur() {
