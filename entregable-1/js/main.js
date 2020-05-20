@@ -152,13 +152,6 @@ function blur() {
         [1/9,1/9,1/9]
     ];
 
-
-    // let matriz = [
-    //     [0, -1,  0],
-    //     [-1,  5, -1],
-    //     [0, -1,  0] 
-    // ];
-
     for (let x=1; x<canvasWidth-1; x++) {
         for (let y=1; y<canvasHeight-1; y++) {
             promedioMatriz(imgData, x, y, matriz);
