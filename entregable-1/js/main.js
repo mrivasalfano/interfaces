@@ -11,6 +11,8 @@ const btnReset = document.querySelector('#btnReset');
 let userImg = document.querySelector('#userImg');
 const filtros = document.querySelectorAll('.filtro');
 const filtrosContainer = document.querySelector('.filtros');
+const colorPicker = document.querySelector('.jscolor');
+let color = '#000000';
 
 //constantes usadas por funciones
 const canvasWidth = canvas.width;
@@ -347,7 +349,11 @@ function mostrarImagen(e) {
 //los cuales cambian el ícono del cursor
 //y setean las variables de control
 btnLapiz.addEventListener('click', (e) => {
-	activarLapiz();
+    activarLapiz();
+});
+
+colorPicker.addEventListener('change', e => {
+    color = '#' + colorPicker.value;
 });
 
 btnGoma.addEventListener('click', (e) => {
@@ -400,7 +406,8 @@ canvas.addEventListener('mousedown', (e) => {
     context.lineWidth = anchoLineas;
 
 	if (lapizSelected) {
-		dibujo = true;
+        dibujo = true;
+        context.strokeStyle = color;
         context.globalCompositeOperation = 'source-over'; //lo hago acá para no repetirlo en el mousemove
 	}
 	else if (gomaSelected) {
