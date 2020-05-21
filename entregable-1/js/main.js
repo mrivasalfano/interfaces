@@ -412,28 +412,41 @@ canvas.addEventListener('mousedown', (e) => {
     //muestro el botón descartar
     descartar.classList.remove('hide');
     descartar.classList.add('show');
+
+    //listener cuando mueve el mouse
+    canvas.addEventListener('mousemove', (e) => {
+        mouseMove(e);
+    });
+
+    
+    canvas.addEventListener('mouseup', (e) => {
+        mouseUp();
+        //borro el listener de mousemove y mouseup
+        canvas.removeEventListener('mousemove', mouseMove);
+        canvas.removeEventListener('mouseup', mouseUp);
+    });
 });
 
 //cuando el usuario suelta el click, pongo en
 //false las variables de accion
-canvas.addEventListener('mouseup', (e) => {
-	dibujo = false;
+function mouseUp() {
+    dibujo = false;
     borro = false;
     tieneLinea = false;
     context.globalCompositeOperation = 'source-over'; // si borra y queda en 'destination-uot' no puedo subir imagen
-});
+}
 
 //cuando el usuario mueve el mouse por el canvas
 //si la variable dibujo o borro están en true
 //hago la acción correspondiente
-canvas.addEventListener('mousemove', (e) => {
+function mouseMove(e) {
     if (dibujo || borro) {
         if (!tieneLinea) 
             iniciarLinea(e);
         else if (xInicio != e.offsetX || yInicio != e.offsetY) 
             cerrarLinea(e);
     }
-});
+}
 
 //cierra la linea
 //entre el moveTo y lineTo
