@@ -450,19 +450,26 @@ canvas.addEventListener('mousedown', (e) => {
         context.lineWidth = tamañoLapiz;
         context.strokeStyle = color;
         context.globalCompositeOperation = 'source-over'; //lo hago acá para no repetirlo en el mousemove
+
+        //muestro el botón descartar
+        descartar.classList.remove('hide');
+        descartar.classList.add('show');
+
+        habilitarDownload(true);
 	}
 	else if (gomaSelected) {
         borro = true;
         context.lineWidth = tamañoGoma;
         context.globalCompositeOperation = 'destination-out'; //lo hago acá para no repetirlo en el mousemove
         context.strokeStyle = 'rgba(0,0,0,1)'; //lo hago acá para no repetirlo en el mousemove
+
+        //muestro el botón descartar
+        descartar.classList.remove('hide');
+        descartar.classList.add('show');
+
+        habilitarDownload(true);
     }
     
-    //muestro el botón descartar
-    descartar.classList.remove('hide');
-    descartar.classList.add('show');
-
-    habilitarDownload(true);
 
     //listener cuando mueve el mouse
     canvas.addEventListener('mousemove', (e) => {
@@ -475,6 +482,11 @@ canvas.addEventListener('mousedown', (e) => {
         //borro el listener de mousemove y mouseup
         canvas.removeEventListener('mousemove', mouseMove);
         canvas.removeEventListener('mouseup', mouseUp);
+    });
+
+    canvas.addEventListener('mouseleave', e => {
+        mouseUp();
+        canvas.removeEventListener('mouseleave', mouseUp);
     });
 });
 
