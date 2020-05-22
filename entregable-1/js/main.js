@@ -13,6 +13,13 @@ const filtros = document.querySelectorAll('.filtro');
 const filtrosContainer = document.querySelector('.filtros');
 const colorPicker = document.querySelector('.jscolor');
 let color = '#000000';
+let tamañoLapiz = 2;
+let tamañoGoma = 2;
+const rangoLapiz = document.querySelector('#rangoLapiz');
+const rangoGoma = document.querySelector('#rangoGoma');
+let opacidad = 255;
+rangoLapiz.value = tamañoLapiz;
+rangoGoma.value = tamañoGoma;
 
 //constantes usadas por funciones
 const canvasWidth = canvas.width;
@@ -71,6 +78,10 @@ function aplicarFiltro(type) {
             binarizacion();
         else if (type == 'blur')
             blur();
+        else if (type == 'sharpening')
+            sharpening();
+        else if (type == 'bordes')
+            bordes();
         else
             saturacion();
 
@@ -90,7 +101,7 @@ function saturacion() {
             hsl[1] = hsl[1] + 0.2;
             let rgb = HSLtoRGB(hsl[0], hsl[1], hsl[2]);
 
-            setPixel(imgData, x, y, rgb[0], rgb[1], rgb[2], 255);
+            setPixel(imgData, x, y, rgb[0], rgb[1], rgb[2], opacidad);
         }
     }
 
@@ -150,6 +161,42 @@ function HSLtoRGB(h, s, l) {
     return [ r * 255, g * 255, b * 255 ];
 }
 
+function bordes() {
+    let imgData = new ImageData(canvasWidth, canvasHeight);
+
+    let matriz = [
+        [-1,-1,-1],
+        [-1,8,-1],
+        [-1,-1,-1]
+    ];
+
+    for (let x=0; x<canvasWidth; x++) {
+        for (let y=0; y<canvasHeight; y++) {
+            promedioMatriz(imgData, x, y, matriz);
+        }
+    }
+
+    context.putImageData(imgData, 0, 0);
+}
+
+function sharpening() {
+    let imgData = new ImageData(canvasWidth, canvasHeight);
+
+    let matriz = [
+        [0,-1,0],
+        [-1,5,-1],
+        [0,-1,0]
+    ];
+
+    for (let x=0; x<canvasWidth; x++) {
+        for (let y=0; y<canvasHeight; y++) {
+            promedioMatriz(imgData, x, y, matriz);
+        }
+    }
+
+    context.putImageData(imgData, 0, 0);
+}
+
 function blur() {
     let imgData = new ImageData(canvasWidth, canvasHeight);
 
@@ -159,8 +206,8 @@ function blur() {
         [1/9,1/9,1/9]
     ];
 
-    for (let x=1; x<canvasWidth-1; x++) {
-        for (let y=1; y<canvasHeight-1; y++) {
+    for (let x=0; x<canvasWidth; x++) {
+        for (let y=0; y<canvasHeight; y++) {
             promedioMatriz(imgData, x, y, matriz);
         }
     }
@@ -181,7 +228,7 @@ function promedioMatriz(imgData, x, y, matriz) {
                      + getBlue(originalData, x-1, y) * matriz[1][0] + getBlue(originalData, x, y) * matriz[1][1] + getBlue(originalData, x+1, y) * matriz[1][2]
                      + getBlue(originalData, x-1, y+1) * matriz[2][0] + getBlue(originalData, x, y+1) * matriz[2][1] + getBlue(originalData, x+1, y+1) * matriz[2][2]);
 
-    setPixel(imgData, x, y, r, g, b, 255);
+    setPixel(imgData, x, y, r, g, b, opacidad);
 }
 
 function brillo() {
@@ -197,7 +244,7 @@ function brillo() {
             g = subirBrillo(getGreen(imgData, x, y));
             b = subirBrillo(getBlue(imgData, x, y));
 
-            setPixel(imgData, x, y, r, g, b, 255);
+            setPixel(imgData, x, y, r, g, b, opacidad);
         }
     }
     
@@ -217,7 +264,7 @@ function negativo() {
             g = 255 - getGreen(originalData, x, y);
             b = 255 - getBlue(originalData, x, y);
 
-            setPixel(imgData, x, y, r, g, b, 255);
+            setPixel(imgData, x, y, r, g, b, opacidad);
         }
     }
     
@@ -236,7 +283,7 @@ function binarizacion() {
             else
                 promedio = 0;
 
-            setPixel(imgData, x, y, promedio, promedio, promedio, 255);
+            setPixel(imgData, x, y, promedio, promedio, promedio, opacidad);
         }
     }
     
@@ -244,7 +291,7 @@ function binarizacion() {
 }
 
 function subirBrillo(valor) {
-    let brillo = 20;
+    let brillo = 10;
     valor += brillo;
 
     if (valor > 255)
@@ -280,25 +327,20 @@ function grises() {
     for (let x=0; x<canvasWidth; x++) {
         for (let y=0; y<canvasHeight; y++) {
             let promedio = (getRed(originalData, x, y) + getGreen(originalData, x, y) + getBlue(originalData, x, y)) / 3;
-            setPixel(imgData, x, y, promedio, promedio, promedio, 255);
+            setPixel(imgData, x, y, promedio, promedio, promedio, opacidad);
         }
     }
     
     context.putImageData(imgData, 0, 0);
 }
 
-//si está seleccionado el lápiz o goma
-//con la rueda arriba se achica la linea y
-//con la rueda abajo lo contrario
-canvas.addEventListener('wheel', e => {
-    if (lapizSelected || gomaSelected) {
-        if (e.deltaY > 0)
-            anchoLineas += 1;
-        else {
-            if (anchoLineas > 3)
-                anchoLineas -= 1;
-        }
-    }
+//Modifican el tamaño del lapiz u goma
+rangoLapiz.addEventListener('change', e => {
+    tamañoLapiz = rangoLapiz.value;
+});
+
+rangoGoma.addEventListener('change', e => {
+    tamañoGoma = rangoGoma.value;
 });
 
 //input de subir imagen
@@ -403,15 +445,15 @@ function activarGoma() {
 //si tiene el lápiz o goma, pongo una variable en true
 //para saber que está haciendo dicha acción
 canvas.addEventListener('mousedown', (e) => {
-    context.lineWidth = anchoLineas;
-
 	if (lapizSelected) {
         dibujo = true;
+        context.lineWidth = tamañoLapiz;
         context.strokeStyle = color;
         context.globalCompositeOperation = 'source-over'; //lo hago acá para no repetirlo en el mousemove
 	}
 	else if (gomaSelected) {
-		borro = true;
+        borro = true;
+        context.lineWidth = tamañoGoma;
         context.globalCompositeOperation = 'destination-out'; //lo hago acá para no repetirlo en el mousemove
         context.strokeStyle = 'rgba(0,0,0,1)'; //lo hago acá para no repetirlo en el mousemove
     }
@@ -419,6 +461,8 @@ canvas.addEventListener('mousedown', (e) => {
     //muestro el botón descartar
     descartar.classList.remove('hide');
     descartar.classList.add('show');
+
+    habilitarDownload(true);
 
     //listener cuando mueve el mouse
     canvas.addEventListener('mousemove', (e) => {

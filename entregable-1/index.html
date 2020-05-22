@@ -44,10 +44,17 @@
             </div>
         </section>
 
-        <section class="row mt-3">
+        <section class="row mt-4">
             <div class="col-3">
-                <span>Color: </span><input class="jscolor" value="000000">
-                <p>Tip: Con la rueda del mouse abajo, se aumenta el grosor del lápiz/goma. Con la rueda hacia arriba, viceversa.</p>
+                <span>Color <i class="fa fa-pencil mr-3" aria-hidden="true"></i></span><input class="jscolor" value="000000">
+                <div class="form-group mt-3">
+                    <label for="formControlRange">Tamaño <i class="fa fa-pencil" aria-hidden="true"></i></label>
+                    <input type="range" min="2" max="15" class="custom-range" id="rangoLapiz">
+                </div>
+                <div class="form-group">
+                    <label for="formControlRange">Tamaño <i class="fa fa-eraser" aria-hidden="true"></i></label>
+                    <input type="range" min="2" max="50" class="custom-range" id="rangoGoma">
+                </div>
             </div>
             <div class="col-6">
                 <div class="canvas">
@@ -70,10 +77,16 @@
                             <button class="filtro btn btn-info mb-2" data-type="binarizacion" type="button">Binarización</button>
                         </div>
                         <div class="col-12">
+                            <button class="filtro btn btn-info mb-2" data-type="saturacion" type="button">Saturación</button>
+                        </div>
+                        <div class="col-12">
                             <button class="filtro btn btn-info mb-2" data-type="blur" type="button">Blur</button>
                         </div>
                         <div class="col-12">
-                            <button class="filtro btn btn-info mb-2" data-type="saturacion" type="button">Saturación</button>
+                            <button class="filtro btn btn-info mb-2" data-type="sharpening" type="button">Sharpening</button>
+                        </div>
+                        <div class="col-12">
+                            <button class="filtro btn btn-info mb-2" data-type="bordes" type="button">Detección de bordes</button>
                         </div>
                         <div class="col-12">
                             <button class="filtro btn btn-info mb-2" data-type="original" type="button">Original</button>
