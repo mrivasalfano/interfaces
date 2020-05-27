@@ -105,7 +105,7 @@ class Game {
         }
         else {
             let i = 0;
-            let length = this.chipsP1.length-1;
+            let length = this.chipsP2.length-1;
             let found = false;
 
             while (!found && i < length) {
@@ -119,59 +119,80 @@ class Game {
         }
     }
 
+    mouseMove(e) {
+        if (this.turn == 1) {
+            if (this.draggingId != -1) {
+                this.chipsP1[this.draggingId].setPosition(e.layerX, e.layerY);
+                
+                this.reDraw();
+            }
+        }
+        else {
+            if (this.draggingId != -1) {
+                this.chipsP2[this.draggingId].setPosition(e.layerX, e.layerY);
+                
+                this.reDraw();
+            }
+        }
+    }
+
+    mouseUp(e) {
+        let i = 0;
+        let length = this.slots.length-1;
+        let inside = false;
+
+        while (!inside && i < length) {
+            if (this.slots[i].inside(e.layerX, e.layerY)) {
+                inside = true;
+
+                if (this.turn == 1) {
+                    this.chipsP1.splice(this.draggingId, 1);
+                    this.turn = 2;
+                }
+                else {
+                    this.chipsP2.splice(this.draggingId, 1);
+                    this.turn = 1;
+                }
+                
+                this.reDraw();
+            }
+            
+            i++;
+        }
+
+        this.draggingId = -1;
+        this.canvas.removeEventListener('mousemove', this.mouseMove);
+        this.canvas.removeEventListener('mouseup', this.mouseUp);
+    }
+
     detectUser() {
         this.canvas.addEventListener('mousedown', e => {
             this.checkHit(e);
-        });
 
-        this.canvas.addEventListener('mousemove', e => {
-            if (this.turn == 1) {
-                if (this.draggingId != -1) {
-                    this.chipsP1[this.draggingId].setPosition(e.layerX, e.layerY);
-                    
-                    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                    this.reDraw();
-                }
-            }
-            else {
-                if (this.draggingId != -1) {
-                    this.chipsP2[this.draggingId].setPosition(e.layerX, e.layerY);
-                    
-                    this.chipsP2.forEach(chip => {
-                        chip.drawWithBorder('blue');
-                    });
-                }
-            }
-        });
-        
-        this.canvas.addEventListener('mouseup', e => {
-            let i = 0;
-            let length = this.slots.length-1;
-            let inside = false;
+            this.canvas.addEventListener('mousemove', e => {
+                this.mouseMove(e);
+            });
 
-            while (!inside && i < length) {
-                if (this.slots[i].inside(e.layerX, e.layerY)) {
-                    inside = true;
+            this.canvas.addEventListener('mouseup', e => {
+                this.mouseUp(e);
+            });
 
-                    this.chipsP1.splice(this.draggingId, 1);
-
-                    this.reDraw();
-                }
-                
-                i++;
-            }
-            this.draggingId = -1;
         });
     }
 
     reDraw() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
         let background = new Rect(0, 0, this.canvas.width, this.canvas.height, this.canvas);
         background.draw('rgba(120, 120, 120, 255)');
 
         this.positionMatrix = this.board.draw();
-
+        
         for (let i = this.chipsP1.length-1; i > 0; i--) {
             this.chipsP1[i].drawWithBorder('red');
+        }
+        
+        for (let i = this.chipsP2.length-1; i > 0; i--) {
             this.chipsP2[i].drawWithBorder('blue');
         }
 
@@ -180,10 +201,5 @@ class Game {
         this.context.fillText('Jugador 1', 50, 100);
         this.context.fillText('Jugador 2', 1050, 100);
     }
-
-    // drawChips(img, x, y) {
-    //     for (let i = 0; i < 21; i++) {
-    //         this.context.drawImage(img, x, y+=15, 60, 60);
-    //     }
-    // }
+ 
 }
