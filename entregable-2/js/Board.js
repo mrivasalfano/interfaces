@@ -1,5 +1,5 @@
 class Board {
-    constructor(width, height, canvas) {
+    constructor(width, height, slots, canvas) {
         this.width = width;
         this.height = height;
         this.canvas = canvas;

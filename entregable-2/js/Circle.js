@@ -2,6 +2,7 @@ class Circle extends Figure {
     constructor(x, y, radius, canvas) {
         super(x, y, canvas);
         this.radius = radius;
+        this.free = true;
     }
 
     hit(x, y) {
@@ -28,5 +29,13 @@ class Circle extends Figure {
     setPosition(x, y) {
         this.x = x;
         this.y = y;
+    }
+
+    isFree() {
+        return this.free;
+    }
+
+    setTaken() {
+        this.free = false;
     }
 }

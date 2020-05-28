@@ -15,16 +15,16 @@ class Game {
 
     createSlots() {
         let arr = [];
-        let x = 370;
-        let width = 100;
+        let x = 390;
+        let width = 80;
 
         arr.push(new Rect(x, 0, width, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, width=80, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, width=80, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, width=80, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, width=80, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, width=80, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, 100, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
 
         return arr;
     }
@@ -40,10 +40,6 @@ class Game {
 
         //dibujo las fichas de los jugadores
         this.createPlayers();
-
-        this.slots.forEach(a => {
-            a.drawWithBorder('green');
-        });
     }
 
     createPlayers() {
@@ -105,64 +101,82 @@ class Game {
         }
     }
 
-    mouseMove(e) {
-        if (this.turn == 1) {
-            if (this.draggingId != -1) {
-                this.chipsP1[this.draggingId].setPosition(e.layerX, e.layerY);
-                
-                this.reDraw();
-            }
-        }
-        else {
-            if (this.draggingId != -1) {
-                this.chipsP2[this.draggingId].setPosition(e.layerX, e.layerY);
-                
-                this.reDraw();
-            }
-        }
-    }
-
-    mouseUp(e) {
-        let i = 0;
-        let length = this.slots.length-1;
-        let inside = false;
-
-        while (!inside && i < length) {
-            if (this.slots[i].hit(e.layerX, e.layerY)) {
-                inside = true;
-
-                if (this.turn == 1) {
-                    this.chipsP1.splice(this.draggingId, 1);
-                    this.turn = 2;
-                }
-                else {
-                    this.chipsP2.splice(this.draggingId, 1);
-                    this.turn = 1;
-                }
-                
-                this.reDraw();
-            }
-            
-            i++;
-        }
-
-        this.draggingId = -1;
-        this.canvas.removeEventListener('mousemove', this.mouseMove);
-        this.canvas.removeEventListener('mouseup', this.mouseUp);
-    }
-
     detectUser() {
         this.canvas.addEventListener('mousedown', e => {
-            this.checkHit(e);
+            this.checkHit(e);   
+        });
 
-            this.canvas.addEventListener('mousemove', e => {
-                this.mouseMove(e);
-            });
+        this.canvas.addEventListener('mousemove', e => {
+            if (this.turn == 1) {
+                if (this.draggingId != -1) {
+                    this.chipsP1[this.draggingId].setPosition(e.layerX, e.layerY);
+                    
+                    this.reDraw();
+                }
+            }
+            else {
+                if (this.draggingId != -1) {
+                    this.chipsP2[this.draggingId].setPosition(e.layerX, e.layerY);
+                    
+                    this.reDraw();
+                }
+            }
+        });
 
-            this.canvas.addEventListener('mouseup', e => {
-                this.mouseUp(e);
-            });
+        this.canvas.addEventListener('mouseup', e => {
+            let i = 0;
+            let length = this.slots.length-1;
+            let inside = false;
 
+            while (!inside && i <= length) {
+                if (this.slots[i].hit(e.layerX, e.layerY)) {
+                    inside = true;
+
+                    if (this.turn == 1) {
+                        this.chipsP1.splice(this.draggingId, 1);
+                    }
+                    else {
+                        this.chipsP2.splice(this.draggingId, 1);
+                    }
+                    
+                    this.reDraw();
+
+                }
+                
+                i++;
+            }
+
+            if (inside) {
+                let color;
+                let turnChange;
+
+                if (this.turn == 1) {
+                    color = 'red';
+                    turnChange = 2;
+                }
+                else {
+                    color = 'blue';
+                    turnChange = 1;
+                }
+
+
+                let x = this.positionMatrix.length-1;
+                let find = false;
+
+                while (!find && x >= 0) {
+                    if (this.positionMatrix[x][i-1].isFree()) {
+                        this.positionMatrix[x][i-1].draw(color);
+                        this.positionMatrix[x][i-1].setTaken();
+                        find = true;
+                    }
+
+                    i--;
+                }
+
+                this.turn = turnChange;
+            }
+
+            this.draggingId = -1;
         });
     }
 
@@ -187,5 +201,4 @@ class Game {
         this.context.fillText('Jugador 1', 50, 100);
         this.context.fillText('Jugador 2', 1050, 100);
     }
- 
 }

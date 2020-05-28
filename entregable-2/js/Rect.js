@@ -6,7 +6,7 @@ class Rect extends Figure {
     }
 
     hit(x, y) {
-        return (x > this.x1) && (x < this.x + this.width) && (y > this.y1) && (y < this.y2 + this.height);
+        return (x > this.x) && (x < this.x + this.width) && (y > this.y) && (y < this.y + this.height);
     }
 
     draw(style) {
