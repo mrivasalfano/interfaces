@@ -5,7 +5,6 @@ class Game {
         this.canvas = canvas;
         this.context = this.canvas.getContext('2d');
         this.board = new Board(7, 6, this.canvas);
-        this.positionMatrix;
         this.chipsP1 = [];
         this.chipsP2 = [];
         this.turn = 1;
@@ -36,7 +35,7 @@ class Game {
 
         //creo el tablero y guardo la matriz
         //con los círculos que son los espacios
-        this.positionMatrix = this.board.draw();
+        this.board.draw();
 
         //dibujo las fichas de los jugadores
         this.createPlayers();
@@ -46,20 +45,20 @@ class Game {
         let tmp = 200;
 
         for (let i = 0; i < 21; i++) {
-            let chip = new Circle(130, tmp+=15, 35, this.canvas);
+            let chip = new Circle(130, tmp+=15, 35, 'red', this.canvas);
             this.chipsP1.push(chip);  
         }
 
         tmp = 200;
 
         for (let i = 0; i < 21; i++) {
-            let chip = new Circle(1150, tmp+=15, 35, this.canvas);
+            let chip = new Circle(1150, tmp+=15, 35, 'blue', this.canvas);
             this.chipsP2.push(chip);  
         }
-
-        for (let i = this.chipsP1.length-1; i > 0; i--) {
-            this.chipsP1[i].drawWithBorder('red');
-            this.chipsP2[i].drawWithBorder('blue');
+        
+        for (let i = this.chipsP1.length-1; i >= 0; i--) {
+            this.chipsP1[i].drawWithBorder();
+            this.chipsP2[i].drawWithBorder();
         }
 
 
@@ -124,59 +123,46 @@ class Game {
         });
 
         this.canvas.addEventListener('mouseup', e => {
-            let i = 0;
-            let length = this.slots.length-1;
-            let inside = false;
-
-            while (!inside && i <= length) {
-                if (this.slots[i].hit(e.layerX, e.layerY)) {
-                    inside = true;
-
-                    if (this.turn == 1) {
-                        this.chipsP1.splice(this.draggingId, 1);
-                    }
-                    else {
-                        this.chipsP2.splice(this.draggingId, 1);
+            if (this.draggingId != -1) {
+                let column = 0;
+                let length = this.slots.length-1;
+                let inside = false;
+    
+                while (!inside && column <= length) {
+                    if (this.slots[column].hit(e.layerX, e.layerY)) {
+                        inside = true;
+                        
+                        if (this.turn == 1) {
+                            this.chipsP1.splice(this.draggingId, 1);
+                        }
+                        else {
+                            this.chipsP2.splice(this.draggingId, 1);
+                        }    
                     }
                     
-                    this.reDraw();
-
+                    column++;
                 }
                 
-                i++;
-            }
-
-            if (inside) {
-                let color;
-                let turnChange;
-
-                if (this.turn == 1) {
-                    color = 'red';
-                    turnChange = 2;
-                }
-                else {
-                    color = 'blue';
-                    turnChange = 1;
-                }
-
-
-                let x = this.positionMatrix.length-1;
-                let find = false;
-
-                while (!find && x >= 0) {
-                    if (this.positionMatrix[x][i-1].isFree()) {
-                        this.positionMatrix[x][i-1].draw(color);
-                        this.positionMatrix[x][i-1].setTaken();
-                        find = true;
+                if (inside) {
+                    let color;
+                    let turnChange;
+    
+                    if (this.turn == 1) {
+                        color = 'red';
+                        turnChange = 2;
                     }
-
-                    i--;
+                    else {
+                        color = 'blue';
+                        turnChange = 1;
+                    }
+                    
+                    this.board.setPosition(column-1, color);
+                    this.reDraw();
+                    this.turn = turnChange;
                 }
-
-                this.turn = turnChange;
+    
+                this.draggingId = -1;
             }
-
-            this.draggingId = -1;
         });
     }
 
@@ -186,13 +172,13 @@ class Game {
         let background = new Rect(0, 0, this.canvas.width, this.canvas.height, this.canvas);
         background.draw('rgba(120, 120, 120, 255)');
 
-        this.positionMatrix = this.board.draw();
+        this.board.draw();
         
-        for (let i = this.chipsP1.length-1; i > 0; i--) {
+        for (let i = this.chipsP1.length-1; i >= 0; i--) {
             this.chipsP1[i].drawWithBorder('red');
         }
         
-        for (let i = this.chipsP2.length-1; i > 0; i--) {
+        for (let i = this.chipsP2.length-1; i >= 0; i--) {
             this.chipsP2[i].drawWithBorder('blue');
         }
 
