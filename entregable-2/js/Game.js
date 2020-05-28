@@ -15,15 +15,16 @@ class Game {
 
     createSlots() {
         let arr = [];
-        let tmp = 370;
+        let x = 370;
+        let width = 100;
 
-        arr.push(new Slot(tmp, 0, tmp+=90, 85));
-        arr.push(new Slot(tmp, 0, tmp+=90, 85));
-        arr.push(new Slot(tmp, 0, tmp+=90, 85));
-        arr.push(new Slot(tmp, 0, tmp+=90, 85));
-        arr.push(new Slot(tmp, 0, tmp+=90, 85));
-        arr.push(new Slot(tmp, 0, tmp+=90, 85));
-        arr.push(new Slot(tmp, 0, tmp+=90, 85));
+        arr.push(new Rect(x, 0, width, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, width=80, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, width=80, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, width=80, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, width=80, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, width=80, 85, this.canvas));
+        arr.push(new Rect(x+=width, 0, 100, 85, this.canvas));
 
         return arr;
     }
@@ -40,27 +41,12 @@ class Game {
         //dibujo las fichas de los jugadores
         this.createPlayers();
 
-        // let background = new Image();
-        // background.src = './img/background.jpeg';
-
-        // background.onload = this.drawBackground(background);
-    }
-
-    drawBackground(img) {
-        // this.context.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
-        
+        this.slots.forEach(a => {
+            a.drawWithBorder('green');
+        });
     }
 
     createPlayers() {
-        // let chip1 = new Image();
-        // chip1.src = './img/chip1.png';
-
-        // chip1.onload = this.drawChips(chip1, 130, 200);
-
-        // let chip2 = new Image();
-        // chip2.src = './img/chip2.png';
-
-        // chip2.onload = this.drawChips(chip2, 1150, 200);
         let tmp = 200;
 
         for (let i = 0; i < 21; i++) {
@@ -142,7 +128,7 @@ class Game {
         let inside = false;
 
         while (!inside && i < length) {
-            if (this.slots[i].inside(e.layerX, e.layerY)) {
+            if (this.slots[i].hit(e.layerX, e.layerY)) {
                 inside = true;
 
                 if (this.turn == 1) {
