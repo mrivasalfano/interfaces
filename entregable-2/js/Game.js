@@ -15,14 +15,15 @@ class Game {
         let arr = [];
         let x = 390;
         let width = 80;
+        let height = 110;
 
-        arr.push(new Rect(x, 0, width, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
-        arr.push(new Rect(x+=width, 0, width, 85, this.canvas));
+        arr.push(new Rect(x, 0, width, height, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, height, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, height, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, height, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, height, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, height, this.canvas));
+        arr.push(new Rect(x+=width, 0, width, height, this.canvas));
 
         return arr;
     }
@@ -165,6 +166,14 @@ class Game {
                     }
                     
                     this.putAndCheckWin(column-1, color, turnChange);
+                }
+                else {
+                    if (this.turn == 1)
+                        this.chipsP1[this.draggingId].originalPosition();
+                    else 
+                        this.chipsP2[this.draggingId].originalPosition();
+
+                    this.reDraw();
                 }
     
                 this.draggingId = -1;

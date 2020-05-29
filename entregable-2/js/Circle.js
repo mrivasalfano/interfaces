@@ -4,10 +4,17 @@ class Circle extends Figure {
         this.radius = radius;
         this.style = style;
         this.free = true;
+        this.originalX = x;
+        this.originalY = y;
     }
 
     hit(x, y) {
         return (Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2)) < Math.pow(this.radius, 2);
+    }
+
+    originalPosition() {
+        this.x = this.originalX;
+        this.y = this.originalY;
     }
 
     draw() {
