@@ -10,6 +10,30 @@ class Game {
         this.slots = this.createSlots();
     }
 
+    drawTurnIndicator() {
+        let x;
+        let xTitle;
+        let y = 20;
+        let w = 290;
+        let h = 130;
+
+        if (this.turn == 1) {
+            x = 25;
+            xTitle = 125;
+        }
+        else {
+            x = 1030;
+            xTitle = 1130;
+        }
+
+        let rect = new Rect(x, y, w, h, this.canvas);
+        rect.drawWithBorder('rgba(230, 255, 0, 0.8)');
+
+        this.context.font = 'bold 18px Arial';
+        this.context.fillStyle = 'black';
+        this.context.fillText('Su turno', xTitle, 50);
+    }
+
     createSlots() {
         //crea los lugares donde van a entrar las fichas
         //son invisibles porque me sirven para detectar
@@ -41,16 +65,47 @@ class Game {
         //creo el tablero
         this.board = new Board(7, 6, this.canvas);
 
+        this.drawStaticItems();
+        
+        //dibujo las fichas de los jugadores
+        this.createPlayers();
+    }
+
+    drawStaticItems() {
         //fondo
         let background = new Rect(0, 0, this.canvas.width, this.canvas.height, this.canvas);
         background.draw('rgba(120, 120, 120, 255)');
+
+        //dibujo indicador de donde meter las fichas
+        //con un título
+        let tmp = 335;
+
+        for (let i = 0; i < 7; i++) {
+            this.drawArrow(tmp+=80);
+        }
+
+        this.context.font = 'bold 18px Arial';
+        this.context.fillStyle = 'black';
+        this.context.fillText('Inserte las fichas por la parte superior', 505, 30);
 
         //creo el tablero y guardo la matriz
         //con los círculos que son los espacios
         this.board.draw();
 
-        //dibujo las fichas de los jugadores
-        this.createPlayers();
+        //dibujo el indicador del turno
+        this.drawTurnIndicator();
+    }
+
+    drawArrow(x) {
+        this.context.fillStyle = "#222222";
+
+        this.context.beginPath();
+        this.context.moveTo(x, 50);
+        this.context.lineTo(x+30, 50);
+        this.context.lineTo(x+15, 70);
+        this.context.closePath();
+
+        this.context.fill();
     }
 
     createPlayers() {
@@ -62,7 +117,7 @@ class Game {
         let tmp = 200;
 
         for (let i = 0; i < 21; i++) {
-            let chip = new Circle(130, tmp+=15, 35, 'red', this.canvas);
+            let chip = new Circle(150, tmp+=15, 35, 'red', this.canvas);
             this.chipsP1.push(chip);  
         }
 
@@ -239,10 +294,7 @@ class Game {
     reDraw() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        let background = new Rect(0, 0, this.canvas.width, this.canvas.height, this.canvas);
-        background.draw('rgba(120, 120, 120, 255)');
-
-        this.board.draw();
+        this.drawStaticItems();
         
         for (let i = this.chipsP1.length-1; i >= 0; i--) {
             this.chipsP1[i].drawWithBorder('red');
