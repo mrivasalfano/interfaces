@@ -4,6 +4,7 @@ class Game {
         this.context = this.canvas.getContext('2d');
         this.chipsP1;
         this.chipsP2;
+        this.countChips;
         this.turn;
         this.draggingId = -1;
         this.slots = this.createSlots();
@@ -31,6 +32,9 @@ class Game {
     }
 
     start() {
+        //cantidad de fichas para usar
+        this.countChips = 42;
+        
         //turno del jugador 1 siempre
         this.turn = 1;
 
@@ -208,6 +212,13 @@ class Game {
 
         if (position != false) {
             this.deleteChip();
+            
+            if (this.countChips-- == 0) {
+                alert('Empate!');
+                this.start();
+            }
+            console.log(this.countChips);
+            
 
             let win = this.board.checkWin(position);
 
