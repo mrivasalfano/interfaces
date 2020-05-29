@@ -87,33 +87,41 @@ class Game {
         //le pregunto a cada ficha si fue seleccionada
         //si es así guardo su id para poder manipularla
         if (this.turn == 1) {
-            let i = 0;
-            let length = this.chipsP1.length-1;
-            let found = false;
-
-            while (!found && i < length) {
-                if (this.chipsP1[i].hit(e.layerX, e.layerY)) {
-                    found = true;
-                    this.draggingId = i;
-                }
-
-                i++;
-            }
+            this.checkHitPlayer(e, this.chipsP1);
         }
         else {
-            let i = 0;
-            let length = this.chipsP2.length-1;
-            let found = false;
-
-            while (!found && i < length) {
-                if (this.chipsP2[i].hit(e.layerX, e.layerY)) {
-                    found = true;
-                    this.draggingId = i;
-                }
-
-                i++;
-            }
+            this.checkHitPlayer(e, this.chipsP2);
         }
+    }
+
+    checkHitPlayer(e, chip) {
+        let i = 0;
+        let length = chip.length-1;
+        let found = false;
+
+        while (!found && i < length) {
+            if (chip[i].hit(e.layerX, e.layerY)) {
+                found = true;
+                this.draggingId = i;
+            }
+
+            i++;
+        }
+    }
+
+    moveChip(e, chips) {
+        chips[this.draggingId].setPosition(e.layerX, e.layerY);
+                    
+        this.reDraw();
+    }
+
+    deleteChip() {
+        if (this.turn == 1) {
+            this.chipsP1.splice(this.draggingId, 1);
+        }
+        else {
+            this.chipsP2.splice(this.draggingId, 1);
+        }    
     }
 
     detectUser() {
@@ -126,18 +134,12 @@ class Game {
             //si es el turno del jugador 1 o 2
             //si hay una ficha seleccionada le cambio la
             //posicion a la posicion del mouse y la redibujo
-            if (this.turn == 1) {
-                if (this.draggingId != -1) {
-                    this.chipsP1[this.draggingId].setPosition(e.layerX, e.layerY);
-                    
-                    this.reDraw();
+            if (this.draggingId != -1) {
+                if (this.turn == 1) {
+                    this.moveChip(e, this.chipsP1);
                 }
-            }
-            else {
-                if (this.draggingId != -1) {
-                    this.chipsP2[this.draggingId].setPosition(e.layerX, e.layerY);
-                    
-                    this.reDraw();
+                else {
+                    this.moveChip(e, this.chipsP2);
                 }
             }
         });
@@ -154,23 +156,18 @@ class Game {
                 while (!inside && column <= length) {
                     if (this.slots[column].hit(e.layerX, e.layerY)) {
                         inside = true;
-                        
-                        if (this.turn == 1) {
-                            this.chipsP1.splice(this.draggingId, 1);
-                        }
-                        else {
-                            this.chipsP2.splice(this.draggingId, 1);
-                        }    
                     }
                     
                     column++;
                 }
                 
-                //
+                //si está dentro de una columna
                 if (inside) {
                     let color;
                     let turnChange;
-    
+                    
+                    //según si es el pj 1 o 2 cambio
+                    //el color y turno
                     if (this.turn == 1) {
                         color = 'red';
                         turnChange = 2;
@@ -182,34 +179,52 @@ class Game {
                     
                     this.putAndCheckWin(column-1, color, turnChange);
                 }
+                //si no la vuelvo a su posición original
                 else {
-                    if (this.turn == 1)
-                        this.chipsP1[this.draggingId].originalPosition();
-                    else 
-                        this.chipsP2[this.draggingId].originalPosition();
-
-                    this.reDraw();
+                    this.originalPosition();
                 }
     
+                //indico que no se está agarrando ninguna ficha
                 this.draggingId = -1;
             }
         });
     }
 
-    putAndCheckWin(column, color, turnChange) {
-        let position = this.board.setPosition(column, color);
-        let win = this.board.checkWin(position);
+    originalPosition() {
+        if (this.turn == 1)
+            this.chipsP1[this.draggingId].originalPosition();
+        else 
+            this.chipsP2[this.draggingId].originalPosition();
 
-        if(win) {
-            alert('Gano el jugador ' + this.turn);
-            this.start();
-        }
-        else {
-            this.turn = turnChange;
-            this.reDraw();
-        }
+        this.reDraw();
     }
 
+    //le digo al tablero que "ponga" la ficha
+    //en el lugar y que me diga si el jugador
+    //gana con esa jugada. Si gana reinicio 
+    //el juego
+    putAndCheckWin(column, color, turnChange) {
+        let position = this.board.setPosition(column, color);
+
+        if (position != false) {
+            this.deleteChip();
+
+            let win = this.board.checkWin(position);
+
+            if(win) {
+                alert('Gano el jugador ' + this.turn);
+                this.start();
+            }
+            else {
+                this.turn = turnChange;
+                this.reDraw();
+            }
+        }
+        else
+            this.originalPosition();
+    }
+
+    //redibuja el tablero, fichas, jugadores, etc
     reDraw() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 

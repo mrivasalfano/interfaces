@@ -8,12 +8,14 @@ class Board {
         this.slots = this.createSlots();
     }
 
+    //crea y retorna el fondo para poder redibujarlo
     createBackground() {
         return new Rect(370, 85, 600, 510, this.canvas);
     }
 
+    //crea y retorna una matriz con los círculos
+    //que representan los espacios para las fichas
     createSlots() {
-
         let matrix = [];
         let startX = 430;
         let startY = 140;
@@ -45,6 +47,8 @@ class Board {
         }   
     }
 
+    //"ingreso" la ficha pintando uno de los lugares
+    //vacíos del tablero. Si no está vacío
     setPosition(column, color) {
         let x = this.slots.length-1;
         let find = false;
@@ -59,7 +63,10 @@ class Board {
             x--;
         }
 
-        return [x+1, column];
+        if (find)
+            return [x+1, column];
+        else
+            return false;
     }
 
     checkWin(position) {
