@@ -1,13 +1,12 @@
 class Game {
-    constructor(nameP1, nameP2, canvas) {
+    constructor(canvas) {
         // this.player1 = new Player(nameP1);
         // this.player2 = new Player(nameP2);
         this.canvas = canvas;
         this.context = this.canvas.getContext('2d');
-        this.board = new Board(7, 6, this.canvas);
-        this.chipsP1 = [];
-        this.chipsP2 = [];
-        this.turn = 1;
+        this.chipsP1;
+        this.chipsP2;
+        this.turn;
         this.draggingId = -1;
         this.slots = this.createSlots();
     }
@@ -29,6 +28,12 @@ class Game {
     }
 
     start() {
+        //turno del jugador 1 siempre
+        this.turn = 1;
+
+        //creo el tablero
+        this.board = new Board(7, 6, this.canvas);
+
         //fondo
         let background = new Rect(0, 0, this.canvas.width, this.canvas.height, this.canvas);
         background.draw('rgba(120, 120, 120, 255)');
@@ -42,6 +47,9 @@ class Game {
     }
 
     createPlayers() {
+        this.chipsP1 = [];
+        this.chipsP2 = [];
+
         let tmp = 200;
 
         for (let i = 0; i < 21; i++) {
@@ -102,7 +110,7 @@ class Game {
 
     detectUser() {
         this.canvas.addEventListener('mousedown', e => {
-            this.checkHit(e);   
+            this.checkHit(e);               
         });
 
         this.canvas.addEventListener('mousemove', e => {
@@ -156,14 +164,26 @@ class Game {
                         turnChange = 1;
                     }
                     
-                    this.board.setPosition(column-1, color);
-                    this.reDraw();
-                    this.turn = turnChange;
+                    this.putAndCheckWin(column-1, color, turnChange);
                 }
     
                 this.draggingId = -1;
             }
         });
+    }
+
+    putAndCheckWin(column, color, turnChange) {
+        let position = this.board.setPosition(column, color);
+        let win = this.board.checkWin(position);
+
+        if(win) {
+            alert('Gano el jugador ' + this.turn);
+            this.start();
+        }
+        else {
+            this.turn = turnChange;
+            this.reDraw();
+        }
     }
 
     reDraw() {

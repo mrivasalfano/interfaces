@@ -43,4 +43,8 @@ class Circle extends Figure {
     setTaken() {
         this.free = false;
     }
+
+    getColor() {
+        return this.style;
+    }
 }

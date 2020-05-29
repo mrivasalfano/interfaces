@@ -57,5 +57,155 @@ class Board {
 
             x--;
         }
+
+        return [x+1, column];
+    }
+
+    checkWin(position) {
+        let row = position[0];
+        let col = position[1];
+        let color = this.slots[row][col].getColor();
+        
+        return (this.matchCross(row, col, color) || this.matchVertical(row, col, color) || this.matchHorizontal(row, col, color));          
+    }
+
+    matchCross(row, col, color) {
+        let count = 0;
+        let tmp = 0;
+        let keepGoing = true;
+
+        //me fijo si matchea cruzado hacia la derecha es decir
+        // [][][][X]
+        // [][][X][]
+        // [][X][][]
+        // [X][][][]
+
+        while(keepGoing) {
+            tmp++;
+
+            if (this.match(row-tmp, col+tmp, color))
+                count++;
+            else
+                keepGoing = false;
+        }
+
+        if (count == 3)
+            return true;
+        else {
+            keepGoing = true;
+            tmp = 0;
+
+            while(keepGoing) {
+                tmp++;
+
+                if (this.match(row+tmp, col-tmp, color))
+                    count++;
+                else
+                    keepGoing = false;
+            }
+
+            if (count == 3)
+                return true;
+        }
+
+        //me fijo si matchea cruzado hacia la izquierda es decir
+        // [X][][][]
+        // [][X][][]
+        // [][][X][]
+        // [][][][X]
+        
+        count = 0;
+        tmp = 0;
+        keepGoing = true;
+
+        while(keepGoing) {
+            tmp++;
+
+            if (this.match(row-tmp, col-tmp, color))
+                count++;
+            else
+                keepGoing = false;
+        }
+
+        if (count == 3)
+            return true;
+        else {
+            keepGoing = true;
+            tmp = 0;
+
+            while(keepGoing) {
+                tmp++;
+
+                if (this.match(row+tmp, col+tmp, color))
+                    count++;
+                else
+                    keepGoing = false;
+            }
+
+            if (count == 3)
+                return true;
+            else
+                return false;
+        }
+    }
+
+    matchHorizontal(row, col, color) {
+        let count = 0;
+        let tmp = 0;
+        let keepGoing = true;
+
+        while(keepGoing) {
+            if (this.match(row, col+(tmp+=1), color))
+                count++;
+            else
+                keepGoing = false;
+        }
+
+        if (count == 3)
+            return true;
+        else {
+            keepGoing = true;
+            tmp = 0;
+
+            while(keepGoing) {
+                if (this.match(row, col-(tmp+=1), color))
+                    count++;
+                else
+                    keepGoing = false;
+            }
+
+            if (count == 3)
+                return true;
+            else
+                return false;
+        }
+    }
+
+    matchVertical(row, col, color) {
+        let count = 0;
+        let tmp = 0;
+        let keepGoing = true;
+
+        while(keepGoing) {
+            if (this.match(row+(tmp+=1), col, color))
+                count++;
+            else
+                keepGoing = false;
+        }
+
+        if (count == 3)
+            return true;
+        else
+            return false;
+    }
+
+    match(row, col, color) {
+        if (this.inside(row, col)) {
+            return (this.slots[row][col].getColor() == color);
+        }
+    }
+
+    inside(row, col) {
+        return (row >= 0 && row <= this.slots.length-1) && (col >= 0 && col <= this.slots[0].length-1);
     }
 }
