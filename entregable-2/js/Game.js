@@ -1,7 +1,5 @@
 class Game {
     constructor(canvas) {
-        // this.player1 = new Player(nameP1);
-        // this.player2 = new Player(nameP2);
         this.canvas = canvas;
         this.context = this.canvas.getContext('2d');
         this.chipsP1;
@@ -12,6 +10,10 @@ class Game {
     }
 
     createSlots() {
+        //crea los lugares donde van a entrar las fichas
+        //son invisibles porque me sirven para detectar
+        //si la ficha se solto en una columna
+
         let arr = [];
         let x = 390;
         let width = 80;
@@ -48,9 +50,11 @@ class Game {
     }
 
     createPlayers() {
+        //vacío / inicializo los arreglos de fichas de cada jugador
         this.chipsP1 = [];
         this.chipsP2 = [];
 
+        //creo y meto las fichas que son circulos 
         let tmp = 200;
 
         for (let i = 0; i < 21; i++) {
@@ -65,13 +69,13 @@ class Game {
             this.chipsP2.push(chip);  
         }
         
+        //dibujo las fichas
         for (let i = this.chipsP1.length-1; i >= 0; i--) {
             this.chipsP1[i].drawWithBorder();
             this.chipsP2[i].drawWithBorder();
         }
 
-
-
+        //titulos de jugador 1 y 2
         this.context.font = 'bold 50px Arial';
         this.context.fillStyle = 'black';
         this.context.fillText('Jugador 1', 50, 100);
@@ -79,6 +83,9 @@ class Game {
     }
 
     checkHit(e) {
+        //si el turno es del jugador 1 o 2
+        //le pregunto a cada ficha si fue seleccionada
+        //si es así guardo su id para poder manipularla
         if (this.turn == 1) {
             let i = 0;
             let length = this.chipsP1.length-1;
@@ -110,11 +117,15 @@ class Game {
     }
 
     detectUser() {
+        //detecta el click y movimiento del mouse del usuario
         this.canvas.addEventListener('mousedown', e => {
             this.checkHit(e);               
         });
 
         this.canvas.addEventListener('mousemove', e => {
+            //si es el turno del jugador 1 o 2
+            //si hay una ficha seleccionada le cambio la
+            //posicion a la posicion del mouse y la redibujo
             if (this.turn == 1) {
                 if (this.draggingId != -1) {
                     this.chipsP1[this.draggingId].setPosition(e.layerX, e.layerY);
@@ -132,7 +143,10 @@ class Game {
         });
 
         this.canvas.addEventListener('mouseup', e => {
+            //si hay una ficha seleccionada
             if (this.draggingId != -1) {
+                //me fijo si la ficha se soltó en un slot
+                //es decir en una de las columnas
                 let column = 0;
                 let length = this.slots.length-1;
                 let inside = false;
@@ -152,6 +166,7 @@ class Game {
                     column++;
                 }
                 
+                //
                 if (inside) {
                     let color;
                     let turnChange;

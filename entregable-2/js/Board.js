@@ -13,6 +13,7 @@ class Board {
     }
 
     createSlots() {
+
         let matrix = [];
         let startX = 430;
         let startY = 140;
