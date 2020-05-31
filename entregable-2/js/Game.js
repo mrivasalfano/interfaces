@@ -66,15 +66,21 @@ class Game {
 
         //creo el tablero
         let slotImg = new Image();
-        slotImg.src = './img/slot.png';
         slotImg.onload = function() {
-            this.board = new Board(7, 6, slotImg, this.canvas);
-    
-            this.drawStaticItems();
+            let bg = new Image();
+            bg.onload = function() {
+                this.board = new Board(7, 6, slotImg, bg, this.canvas);
+                
+                this.drawStaticItems();
+                
+                //dibujo las fichas de los jugadores
+                this.createPlayers();
+            }.bind(this);
 
-            //dibujo las fichas de los jugadores
-            this.createPlayers();
+            bg.src = './img/background.jpeg';
         }.bind(this);
+        
+        slotImg.src = './img/slot.png';
     }
 
     drawStaticItems() {
@@ -123,30 +129,33 @@ class Game {
         let tmp = 200;
 
         let img1 = new Image();
-        img1.src = './img/chip1.png';
+
         img1.onload = function() {
             this.chip1Img = img1;
             for (let i = 0; i < 21; i++) {
-                // let chip = new Chip(150, tmp+=15, 35, 'red', this.canvas);
                 let chip = new Chip(150, tmp+=15, img1, this.canvas);
                 this.chipsP1.push(chip);  
             }
+            
+            let img2 = new Image();
+
+            img2.onload = function() {
+                tmp = 200;
+                this.chip2Img = img2;
+                
+                for (let i = 0; i < 21; i++) {
+                    let chip = new Chip(1150, tmp+=15, img2, this.canvas);
+                    this.chipsP2.push(chip);
+                }
+                
+                //una vez creadas las fichas 1 y 2 las dibujo
+                this.drawChips();
+            }.bind(this);
+
+            img2.src = './img/chip2.png';
         }.bind(this);
 
-        let img2 = new Image();
-        img2.src = './img/chip2.png';
-        img2.onload = function() {
-            tmp = 200;
-            this.chip2Img = img2;
-            
-            for (let i = 0; i < 21; i++) {
-                // let chip = new Chip(150, tmp+=15, 35, 'red', this.canvas);
-                let chip = new Chip(1050, tmp+=15, img2, this.canvas);
-                this.chipsP2.push(chip);
-            }
-            //una vez creadas las fichas 1 y 2 las dibujo
-            this.drawChips();
-        }.bind(this);
+        img1.src = './img/chip1.png';
 
         //titulos de jugador 1 y 2
         this.context.font = 'bold 50px Arial';
@@ -157,8 +166,6 @@ class Game {
 
     drawChips() {
         for (let i = this.chipsP1.length-1; i >= 0; i--) {
-            // this.chipsP1[i].drawWithBorder();
-            // this.chipsP2[i].drawWithBorder();
             this.chipsP1[i].draw();
             this.chipsP2[i].draw();
         }
@@ -301,11 +308,12 @@ class Game {
             }
             else {
                 this.turn = turnChange;
-                this.reDraw();
             }
         }
         else
             this.originalPosition();
+
+        this.reDraw();
     }
 
     //redibuja el tablero, fichas, jugadores, etc

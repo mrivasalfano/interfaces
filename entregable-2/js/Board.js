@@ -1,25 +1,20 @@
 class Board {
-    constructor(width, height, img, canvas) {
+    constructor(width, height, img, background, canvas) {
         this.width = width;
         this.height = height;
         this.canvas = canvas;
         this.context = this.canvas.getContext('2d');
-        this.background = this.createBackground();
+        this.background = background;
         this.slotImg = img;
         this.slots = this.createSlots();
-    }
-
-    //crea y retorna el fondo para poder redibujarlo
-    createBackground() {
-        return new Rect(370, 85, 600, 510, this.canvas);
     }
 
     //crea y retorna una matriz con los círculos
     //que representan los espacios para las fichas
     createSlots() {
         let matrix = [];
-        let startX = 395;
-        let startY = 110;
+        let startX = 402;
+        let startY = 115;
 
         for (let y=0; y<480; y+=80) {
             let row = [];
@@ -36,8 +31,7 @@ class Board {
     }
 
     draw() {
-        //dibuja el fondo amarillo
-        this.background.draw('rgba(255, 196, 0, 255)');
+        this.context.drawImage(this.background, 370, 85, 615, 500);
 
         //dibujo los círculos/slots
         for (let i = 0; i < this.slots.length; i++) {
@@ -73,12 +67,12 @@ class Board {
     checkWin(position) {
         let row = position[0];
         let col = position[1];
-        let color = this.slots[row][col].getColor();
+        let img = this.slots[row][col].getImg();
         
-        return (this.matchCross(row, col, color) || this.matchVertical(row, col, color) || this.matchHorizontal(row, col, color));          
+        return (this.matchCross(row, col, img) || this.matchVertical(row, col, img) || this.matchHorizontal(row, col, img));          
     }
 
-    matchCross(row, col, color) {
+    matchCross(row, col, img) {
         let count = 0;
         let tmp = 0;
         let keepGoing = true;
@@ -92,7 +86,7 @@ class Board {
         while(keepGoing) {
             tmp++;
 
-            if (this.match(row-tmp, col+tmp, color))
+            if (this.match(row-tmp, col+tmp, img))
                 count++;
             else
                 keepGoing = false;
@@ -107,7 +101,7 @@ class Board {
             while(keepGoing) {
                 tmp++;
 
-                if (this.match(row+tmp, col-tmp, color))
+                if (this.match(row+tmp, col-tmp, img))
                     count++;
                 else
                     keepGoing = false;
@@ -130,7 +124,7 @@ class Board {
         while(keepGoing) {
             tmp++;
 
-            if (this.match(row-tmp, col-tmp, color))
+            if (this.match(row-tmp, col-tmp, img))
                 count++;
             else
                 keepGoing = false;
@@ -145,7 +139,7 @@ class Board {
             while(keepGoing) {
                 tmp++;
 
-                if (this.match(row+tmp, col+tmp, color))
+                if (this.match(row+tmp, col+tmp, img))
                     count++;
                 else
                     keepGoing = false;
@@ -158,13 +152,13 @@ class Board {
         }
     }
 
-    matchHorizontal(row, col, color) {
+    matchHorizontal(row, col, img) {
         let count = 0;
         let tmp = 0;
         let keepGoing = true;
 
         while(keepGoing) {
-            if (this.match(row, col+(tmp+=1), color))
+            if (this.match(row, col+(tmp+=1), img))
                 count++;
             else
                 keepGoing = false;
@@ -177,7 +171,7 @@ class Board {
             tmp = 0;
 
             while(keepGoing) {
-                if (this.match(row, col-(tmp+=1), color))
+                if (this.match(row, col-(tmp+=1), img))
                     count++;
                 else
                     keepGoing = false;
@@ -190,13 +184,13 @@ class Board {
         }
     }
 
-    matchVertical(row, col, color) {
+    matchVertical(row, col, img) {
         let count = 0;
         let tmp = 0;
         let keepGoing = true;
 
         while(keepGoing) {
-            if (this.match(row+(tmp+=1), col, color))
+            if (this.match(row+(tmp+=1), col, img))
                 count++;
             else
                 keepGoing = false;
@@ -208,9 +202,9 @@ class Board {
             return false;
     }
 
-    match(row, col, color) {
+    match(row, col, img) {
         if (this.inside(row, col)) {
-            return (this.slots[row][col].getColor() == color);
+            return (this.slots[row][col].getImg() == img);
         }
     }
 
