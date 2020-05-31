@@ -92,7 +92,7 @@ class Board {
                 keepGoing = false;
         }
 
-        if (count == 3)
+        if (count >= 3)
             return true;
         else {
             keepGoing = true;
@@ -107,7 +107,7 @@ class Board {
                     keepGoing = false;
             }
 
-            if (count == 3)
+            if (count >= 3)
                 return true;
         }
 
@@ -130,7 +130,7 @@ class Board {
                 keepGoing = false;
         }
 
-        if (count == 3)
+        if (count >= 3)
             return true;
         else {
             keepGoing = true;
@@ -145,7 +145,7 @@ class Board {
                     keepGoing = false;
             }
 
-            if (count == 3)
+            if (count >= 3)
                 return true;
             else
                 return false;
@@ -164,7 +164,7 @@ class Board {
                 keepGoing = false;
         }
 
-        if (count == 3)
+        if (count >= 3)
             return true;
         else {
             keepGoing = true;
@@ -177,7 +177,7 @@ class Board {
                     keepGoing = false;
             }
 
-            if (count == 3)
+            if (count >= 3)
                 return true;
             else
                 return false;
@@ -196,7 +196,7 @@ class Board {
                 keepGoing = false;
         }
 
-        if (count == 3)
+        if (count >= 3)
             return true;
         else
             return false;

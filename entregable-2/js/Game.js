@@ -188,9 +188,6 @@ class Game {
         let i = 0;
         let length = chip.length;
         let found = false;
-        console.log(e.layerX);
-        console.log(e.layerY);
-        console.log(this.chipsP1[21]);
         
         while (!found && i < length) {
             if (chip[i].hit(e.layerX, e.layerY)) {
@@ -294,22 +291,22 @@ class Game {
 
         if (position != false) {
             this.deleteChip();
+            this.countChips--;
             
-            if (this.countChips-- == 0) {
+            if (this.countChips == 0) {
                 alert('Empate!');
                 this.start();
             }
-            console.log(this.countChips);
-            
-
-            let win = this.board.checkWin(position);
-
-            if(win) {
-                alert('Gano el jugador ' + this.turn);
-                this.start();
-            }
             else {
-                this.turn = turnChange;
+                let win = this.board.checkWin(position);
+    
+                if(win) {
+                    alert('Gano el jugador ' + this.turn);
+                    this.start();
+                }
+                else {
+                    this.turn = turnChange;
+                }
             }
         }
         else
