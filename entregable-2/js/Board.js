@@ -1,10 +1,11 @@
 class Board {
-    constructor(width, height, canvas) {
+    constructor(width, height, img, canvas) {
         this.width = width;
         this.height = height;
         this.canvas = canvas;
         this.context = this.canvas.getContext('2d');
         this.background = this.createBackground();
+        this.slotImg = img;
         this.slots = this.createSlots();
     }
 
@@ -17,15 +18,15 @@ class Board {
     //que representan los espacios para las fichas
     createSlots() {
         let matrix = [];
-        let startX = 430;
-        let startY = 140;
+        let startX = 395;
+        let startY = 110;
 
         for (let y=0; y<480; y+=80) {
             let row = [];
         
             for (let x=0; x<560; x+=80) {
-                let circle = new Circle(startX + x, startY + y, 35, 'rgb(250, 250, 150)', this.canvas);
-                row.push(circle);
+                let chip = new Chip(startX + x, startY + y, this.slotImg, this.canvas);
+                row.push(chip);
             }    
 
             matrix.push(row);
@@ -49,13 +50,13 @@ class Board {
 
     //"ingreso" la ficha pintando uno de los lugares
     //vacíos del tablero. Si no está vacío
-    setPosition(column, color) {
+    setPosition(column, img) {
         let x = this.slots.length-1;
         let find = false;
 
         while (!find && x >= 0) {
             if (this.slots[x][column].isFree()) {
-                this.slots[x][column].setStyle(color);
+                this.slots[x][column].setImg(img);
                 this.slots[x][column].setTaken();
                 find = true;
             }

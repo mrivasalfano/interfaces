@@ -6,6 +6,8 @@ class Game {
         this.chipsP2;
         this.countChips;
         this.turn;
+        this.chip1Img;
+        this.chip2Img;
         this.draggingId = -1;
         this.slots = this.createSlots();
     }
@@ -63,12 +65,16 @@ class Game {
         this.turn = 1;
 
         //creo el tablero
-        this.board = new Board(7, 6, this.canvas);
+        let slotImg = new Image();
+        slotImg.src = './img/slot.png';
+        slotImg.onload = function() {
+            this.board = new Board(7, 6, slotImg, this.canvas);
+    
+            this.drawStaticItems();
 
-        this.drawStaticItems();
-        
-        //dibujo las fichas de los jugadores
-        this.createPlayers();
+            //dibujo las fichas de los jugadores
+            this.createPlayers();
+        }.bind(this);
     }
 
     drawStaticItems() {
@@ -113,32 +119,49 @@ class Game {
         this.chipsP1 = [];
         this.chipsP2 = [];
 
-        //creo y meto las fichas que son circulos 
+        //creo y meto las fichas
         let tmp = 200;
 
-        for (let i = 0; i < 21; i++) {
-            let chip = new Circle(150, tmp+=15, 35, 'red', this.canvas);
-            this.chipsP1.push(chip);  
-        }
+        let img1 = new Image();
+        img1.src = './img/chip1.png';
+        img1.onload = function() {
+            this.chip1Img = img1;
+            for (let i = 0; i < 21; i++) {
+                // let chip = new Chip(150, tmp+=15, 35, 'red', this.canvas);
+                let chip = new Chip(150, tmp+=15, img1, this.canvas);
+                this.chipsP1.push(chip);  
+            }
+        }.bind(this);
 
-        tmp = 200;
-
-        for (let i = 0; i < 21; i++) {
-            let chip = new Circle(1150, tmp+=15, 35, 'blue', this.canvas);
-            this.chipsP2.push(chip);  
-        }
-        
-        //dibujo las fichas
-        for (let i = this.chipsP1.length-1; i >= 0; i--) {
-            this.chipsP1[i].drawWithBorder();
-            this.chipsP2[i].drawWithBorder();
-        }
+        let img2 = new Image();
+        img2.src = './img/chip2.png';
+        img2.onload = function() {
+            tmp = 200;
+            this.chip2Img = img2;
+            
+            for (let i = 0; i < 21; i++) {
+                // let chip = new Chip(150, tmp+=15, 35, 'red', this.canvas);
+                let chip = new Chip(1050, tmp+=15, img2, this.canvas);
+                this.chipsP2.push(chip);
+            }
+            //una vez creadas las fichas 1 y 2 las dibujo
+            this.drawChips();
+        }.bind(this);
 
         //titulos de jugador 1 y 2
         this.context.font = 'bold 50px Arial';
         this.context.fillStyle = 'black';
         this.context.fillText('Jugador 1', 50, 100);
         this.context.fillText('Jugador 2', 1050, 100);
+    }
+
+    drawChips() {
+        for (let i = this.chipsP1.length-1; i >= 0; i--) {
+            // this.chipsP1[i].drawWithBorder();
+            // this.chipsP2[i].drawWithBorder();
+            this.chipsP1[i].draw();
+            this.chipsP2[i].draw();
+        }
     }
 
     checkHit(e) {
@@ -169,7 +192,7 @@ class Game {
     }
 
     moveChip(e, chips) {
-        chips[this.draggingId].setPosition(e.layerX, e.layerY);
+        chips[this.draggingId].setPosition(e.layerX - 35, e.layerY - 35);
                     
         this.reDraw();
     }
@@ -222,21 +245,16 @@ class Game {
                 
                 //si está dentro de una columna
                 if (inside) {
-                    let color;
-                    let turnChange;
                     
                     //según si es el pj 1 o 2 cambio
                     //el color y turno
                     if (this.turn == 1) {
-                        color = 'red';
-                        turnChange = 2;
+                        this.putAndCheckWin(column-1, this.chip1Img, 2);
                     }
                     else {
-                        color = 'blue';
-                        turnChange = 1;
+                        this.putAndCheckWin(column-1, this.chip2Img, 1);
                     }
                     
-                    this.putAndCheckWin(column-1, color, turnChange);
                 }
                 //si no la vuelvo a su posición original
                 else {
@@ -262,8 +280,8 @@ class Game {
     //en el lugar y que me diga si el jugador
     //gana con esa jugada. Si gana reinicio 
     //el juego
-    putAndCheckWin(column, color, turnChange) {
-        let position = this.board.setPosition(column, color);
+    putAndCheckWin(column, img, turnChange) {
+        let position = this.board.setPosition(column, img);
 
         if (position != false) {
             this.deleteChip();
@@ -297,11 +315,11 @@ class Game {
         this.drawStaticItems();
         
         for (let i = this.chipsP1.length-1; i >= 0; i--) {
-            this.chipsP1[i].drawWithBorder('red');
+            this.chipsP1[i].draw();
         }
         
         for (let i = this.chipsP2.length-1; i >= 0; i--) {
-            this.chipsP2[i].drawWithBorder('blue');
+            this.chipsP2[i].draw();
         }
 
         this.context.font = 'bold 50px Arial';
