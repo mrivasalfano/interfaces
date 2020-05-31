@@ -67,6 +67,7 @@ class Game {
         //creo el tablero
         let slotImg = new Image();
         slotImg.onload = function() {
+                                    
             let bg = new Image();
             bg.onload = function() {
                 this.board = new Board(7, 6, slotImg, bg, this.canvas);
@@ -252,7 +253,6 @@ class Game {
                 
                 //si está dentro de una columna
                 if (inside) {
-                    
                     //según si es el pj 1 o 2 cambio
                     //el color y turno
                     if (this.turn == 1) {
@@ -261,7 +261,6 @@ class Game {
                     else {
                         this.putAndCheckWin(column-1, this.chip2Img, 1);
                     }
-                    
                 }
                 //si no la vuelvo a su posición original
                 else {

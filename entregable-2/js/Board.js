@@ -31,7 +31,7 @@ class Board {
     }
 
     draw() {
-        this.context.drawImage(this.background, 370, 85, 615, 500);
+        this.context.drawImage(this.background, 370, 85, 615, 520);
 
         //dibujo los círculos/slots
         for (let i = 0; i < this.slots.length; i++) {
