@@ -134,7 +134,7 @@ class Game {
         img1.onload = function() {
             this.chip1Img = img1;
             for (let i = 0; i < 21; i++) {
-                let chip = new Chip(150, tmp+=15, img1, this.canvas);
+                let chip = new Chip(150, tmp+=15, 64, img1, this.canvas);
                 this.chipsP1.push(chip);  
             }
             
@@ -145,7 +145,7 @@ class Game {
                 this.chip2Img = img2;
                 
                 for (let i = 0; i < 21; i++) {
-                    let chip = new Chip(1150, tmp+=15, img2, this.canvas);
+                    let chip = new Chip(1150, tmp+=15, 64, img2, this.canvas);
                     this.chipsP2.push(chip);
                 }
                 
@@ -186,9 +186,12 @@ class Game {
 
     checkHitPlayer(e, chip) {
         let i = 0;
-        let length = chip.length-1;
+        let length = chip.length;
         let found = false;
-
+        console.log(e.layerX);
+        console.log(e.layerY);
+        console.log(this.chipsP1[21]);
+        
         while (!found && i < length) {
             if (chip[i].hit(e.layerX, e.layerY)) {
                 found = true;
@@ -200,7 +203,7 @@ class Game {
     }
 
     moveChip(e, chips) {
-        chips[this.draggingId].setPosition(e.layerX - 35, e.layerY - 35);
+        chips[this.draggingId].setPosition(e.layerX - 32, e.layerY - 32);
                     
         this.reDraw();
     }

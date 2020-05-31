@@ -20,7 +20,7 @@ class Board {
             let row = [];
         
             for (let x=0; x<560; x+=80) {
-                let chip = new Chip(startX + x, startY + y, this.slotImg, this.canvas);
+                let chip = new Chip(startX + x, startY + y, 64, this.slotImg, this.canvas);
                 row.push(chip);
             }    
 

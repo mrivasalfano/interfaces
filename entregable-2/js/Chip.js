@@ -1,7 +1,8 @@
 class Chip extends Figure {
-    constructor(x, y, img, canvas) {
+    constructor(x, y, size, img, canvas) {
         super(x, y, canvas);
         this.image = img;
+        this.size = size;
         this.free = true;
         this.originalX = x;
         this.originalY = y;
@@ -9,7 +10,7 @@ class Chip extends Figure {
 
 
     hit(x, y) {
-        return (x > this.x) && (x < this.x + 70) && (y > this.y) && (y < this.y + 70)
+        return (x > this.x) && (x < this.x + this.size) && (y > this.y) && (y < this.y + this.size)
     }
 
     originalPosition() {
@@ -18,7 +19,7 @@ class Chip extends Figure {
     }
 
     draw() {
-        this.context.drawImage(this.image, this.x, this.y, 64, 64);
+        this.context.drawImage(this.image, this.x, this.y, this.size, this.size);
     }
 
     setPosition(x, y) {
