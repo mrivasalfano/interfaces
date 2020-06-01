@@ -36,6 +36,32 @@ class Game {
         this.context.fillText('Su turno', xTitle, 50);
     }
 
+    winAlert() {
+        let x;
+        let xTitle;
+        let y = 20;
+        let w = 290;
+        let h = 130;
+
+        if (this.turn == 1) {
+            x = 25;
+            xTitle = 115;
+        }
+        else {
+            x = 1030;
+            xTitle = 1120;
+        }
+
+        let rect = new Rect(x, y, w, h, this.canvas);
+        rect.drawWithBorder('rgb(0, 255, 0)');
+
+        this.context.font = 'bold 18px Arial';
+        this.context.fillStyle = 'black';
+        this.context.fillText('¡Felicidades!', xTitle, 50);
+        this.context.fillText('Ganaste :D', xTitle+5, 135);
+        this.drawPlayerName();
+    }
+
     createSlots() {
         //crea los lugares donde van a entrar las fichas
         //son invisibles porque me sirven para detectar
@@ -158,11 +184,7 @@ class Game {
 
         img1.src = './img/chip1.png';
 
-        //titulos de jugador 1 y 2
-        this.context.font = 'bold 50px Arial';
-        this.context.fillStyle = 'black';
-        this.context.fillText('Jugador 1', 50, 100);
-        this.context.fillText('Jugador 2', 1050, 100);
+        this.drawPlayerName();
     }
 
     drawChips() {
@@ -301,18 +323,22 @@ class Game {
                 let win = this.board.checkWin(position);
     
                 if(win) {
-                    alert('Gano el jugador ' + this.turn);
-                    this.start();
+                    this.reDraw();
+                    this.winAlert();
+                    setTimeout(() => {
+                        this.start();
+                    }, 3000);
                 }
                 else {
                     this.turn = turnChange;
+                    this.reDraw();
                 }
             }
         }
-        else
+        else {
             this.originalPosition();
-
-        this.reDraw();
+            this.reDraw();
+        }
     }
 
     //redibuja el tablero, fichas, jugadores, etc
@@ -329,6 +355,10 @@ class Game {
             this.chipsP2[i].draw();
         }
 
+        this.drawPlayerName();
+    }
+
+    drawPlayerName() {
         this.context.font = 'bold 50px Arial';
         this.context.fillStyle = 'black';
         this.context.fillText('Jugador 1', 50, 100);
