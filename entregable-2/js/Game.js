@@ -23,7 +23,7 @@ class Game {
             x = 25;
             xTitle = 125;
         }
-        else {
+        else if (this.turn == 2) {
             x = 1030;
             xTitle = 1130;
         }
@@ -47,7 +47,7 @@ class Game {
             x = 25;
             xTitle = 115;
         }
-        else {
+        else if (this.turn == 2) {
             x = 1030;
             xTitle = 1120;
         }
@@ -60,6 +60,8 @@ class Game {
         this.context.fillText('¡Felicidades!', xTitle, 50);
         this.context.fillText('Ganaste :D', xTitle+5, 135);
         this.drawPlayerName();
+
+        this.turn = -1;
     }
 
     createSlots() {
@@ -201,7 +203,7 @@ class Game {
         if (this.turn == 1) {
             this.checkHitPlayer(e, this.chipsP1);
         }
-        else {
+        else if (this.turn == 2) {
             this.checkHitPlayer(e, this.chipsP2);
         }
     }
@@ -231,7 +233,7 @@ class Game {
         if (this.turn == 1) {
             this.chipsP1.splice(this.draggingId, 1);
         }
-        else {
+        else if (this.turn == 2) {
             this.chipsP2.splice(this.draggingId, 1);
         }    
     }
@@ -250,7 +252,7 @@ class Game {
                 if (this.turn == 1) {
                     this.moveChip(e, this.chipsP1);
                 }
-                else {
+                else if (this.turn == 2) {
                     this.moveChip(e, this.chipsP2);
                 }
             }
@@ -280,7 +282,7 @@ class Game {
                     if (this.turn == 1) {
                         this.putAndCheckWin(column-1, this.chip1Img, 2);
                     }
-                    else {
+                    else if (this.turn == 2) {
                         this.putAndCheckWin(column-1, this.chip2Img, 1);
                     }
                 }
