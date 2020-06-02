@@ -2,8 +2,13 @@ document.addEventListener('DOMContentLoaded', e => {
     let canvas = document.querySelector('#gameBoard');
     let game;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = 1366;
+    canvas.height = 600;
+
+    if (window.innerWidth >= 1920) {
+        document.body.style.padding = "100px";
+        document.body.style.background = "rgb(120, 120, 120)";
+    }
 
     startGame();    
     
