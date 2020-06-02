@@ -12,9 +12,15 @@ class Board {
     //crea y retorna una matriz con los círculos
     //que representan los espacios para las fichas
     createSlots() {
-        let matrix = [];
         let startX = 402;
         let startY = 115;
+
+        if (this.canvas.width >= 1000) {
+            startX += 200;
+            startY += 200;
+        }
+
+        let matrix = [];
 
         for (let y=0; y<480; y+=80) {
             let row = [];
@@ -31,7 +37,15 @@ class Board {
     }
 
     draw() {
-        this.context.drawImage(this.background, 370, 85, 615, 520);
+        let startX = 370;
+        let startY = 85;
+
+        if (this.canvas.width >= 1000) {
+            startX += 200;
+            startY += 200;
+        }
+
+        this.context.drawImage(this.background, startX, startY, 615, 520);
 
         //dibujo los círculos/slots
         for (let i = 0; i < this.slots.length; i++) {

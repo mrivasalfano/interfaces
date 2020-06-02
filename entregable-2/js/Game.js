@@ -119,10 +119,16 @@ class Game {
 
         //dibujo indicador de donde meter las fichas
         //con un título
-        let tmp = 335;
+        let x = 335;
+        let y = 50;
+
+        if (this.canvas.width >= 1000) {
+            x += 200;
+            y += 200;
+        }
 
         for (let i = 0; i < 7; i++) {
-            this.drawArrow(tmp+=80);
+            this.drawArrow(x+=80, y);
         }
 
         this.context.font = 'bold 18px Arial';
@@ -137,13 +143,13 @@ class Game {
         this.drawTurnIndicator();
     }
 
-    drawArrow(x) {
+    drawArrow(x, y) {
         this.context.fillStyle = "#222222";
 
         this.context.beginPath();
-        this.context.moveTo(x, 50);
-        this.context.lineTo(x+30, 50);
-        this.context.lineTo(x+15, 70);
+        this.context.moveTo(x, y);
+        this.context.lineTo(x+30, y);
+        this.context.lineTo(x+15, y+20);
         this.context.closePath();
 
         this.context.fill();
