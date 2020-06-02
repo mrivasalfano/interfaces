@@ -317,6 +317,7 @@ class Game {
             this.countChips--;
             
             if (this.countChips == 0) {
+                this.reDraw();
                 alert('Empate!');
                 this.start();
             }
