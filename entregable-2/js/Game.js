@@ -95,7 +95,6 @@ class Game {
         //creo el tablero
         let slotImg = new Image();
         slotImg.onload = function() {
-                                    
             let bg = new Image();
             bg.onload = function() {
                 this.board = new Board(7, 6, slotImg, bg, this.canvas);
@@ -119,16 +118,10 @@ class Game {
 
         //dibujo indicador de donde meter las fichas
         //con un título
-        let x = 335;
-        let y = 50;
-
-        if (this.canvas.width >= 1000) {
-            x += 200;
-            y += 200;
-        }
+        let tmp = 335;
 
         for (let i = 0; i < 7; i++) {
-            this.drawArrow(x+=80, y);
+            this.drawArrow(tmp+=80);
         }
 
         this.context.font = 'bold 18px Arial';
@@ -143,13 +136,13 @@ class Game {
         this.drawTurnIndicator();
     }
 
-    drawArrow(x, y) {
+    drawArrow(x) {
         this.context.fillStyle = "#222222";
 
         this.context.beginPath();
-        this.context.moveTo(x, y);
-        this.context.lineTo(x+30, y);
-        this.context.lineTo(x+15, y+20);
+        this.context.moveTo(x, 50);
+        this.context.lineTo(x+30, 50);
+        this.context.lineTo(x+15, 70);
         this.context.closePath();
 
         this.context.fill();
