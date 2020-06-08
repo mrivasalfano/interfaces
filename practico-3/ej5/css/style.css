@@ -1,0 +1,12 @@
+#luffy {
+    width: 50px;
+    height: 55px;
+    margin: auto;
+    background: url('../img/punch.png') left center;
+    animation: punch .5s steps(7) infinite reverse;
+}
+
+@keyframes punch {
+    0% { background-position: 0px; }
+    100% { background-position: -404px; }   
+}
