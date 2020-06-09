@@ -1,0 +1,18 @@
+CSS: 
+    -Animación de volar normal.
+    -Animación de muerte o choque.
+
+JS:
+    -Para impulsar lo muevo hacia arriba cierta cantidad de px (ver si usar animación de css a la vez).
+    -Clases:
+        -Player: Va a tener la posicion en pantalla y va a saber si chocó o no. Empieza en una posición
+                 determinada y va cayendo mientras el jugador no lo impulse. Va a saber si se fue de la pantalla.
+        -Game: Va a controlar desde variables como tiempo/vida/puntos (según lo que elija después)
+               y va a dibujar cada ciertos frames el jugador y los obstaculos a evitar.
+               También va a tener los listener del click/espacio del usuario para saber cuándo 
+               se impulsó. En caso de no impulsarse y caer "fuera" el juego termina. En caso
+               de irse arriba de la pantalla debería controlar que no pueda pasar, como si hubiera
+               un techo.
+        -Barrier: Va a usar una imagen y se va a dibujar de manera random en la pantalla, para tener
+               diferentes alturas, pero siempre a una misma distancia entre ellos. Luego se van moviendo
+               a una velocidad determinada para dar la sensación de que el jugador avanza.

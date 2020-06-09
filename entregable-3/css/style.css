@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url(../resources/background.png);
+    height: 100vh;
+    width: 100vw;
+}
+
+#container {
+    bottom: 250px;
+    position: absolute;
+    width: 168px;
+    height: 105px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#plane {
+    position: absolute;
+    width: 168px;
+    height: 105px;
+    margin: auto;
+    background: url('../resources/plane/fly.png') left center;
+    animation: fly .8s steps(8) infinite;
+}
+
+@keyframes fly {
+    0% {background-position: 0px;}
+    100% {background-position: -1344px;}   
+}
+
+#dead {
+    position: absolute;
+    left: 500px;
+    width: 176px;
+    height: 200px;
+    margin: auto;
+    background: url('../resources/plane/dead_completo.png') left center;
+    animation: dead 1s steps(8);
+}
+
+@keyframes dead {
+    0% {background-position: 0px; top: 20px;}
+    100% {background-position: -1408px; top: 700px;}   
+}
+
