@@ -34,16 +34,6 @@ body {
     100% {background-position: -1344px;}   
 }
 
-#dead {
-    position: absolute;
-    left: 500px;
-    width: 176px;
-    height: 200px;
-    margin: auto;
-    background: url('../resources/plane/dead_completo.png') left center;
-    animation: dead 1s steps(8);
-}
-
 @keyframes dead {
     0% {background-position: 0px; top: 20px;}
     100% {background-position: -1408px; top: 700px;}   
