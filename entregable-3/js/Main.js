@@ -14,7 +14,14 @@ window.onload = e => {
         document.querySelector('#plane').classList.remove('hide');
         playBtn.style.display = 'none';
         playBtn.style.zIndex = '-1';
+
+        let container = document.querySelector('#container');
         
+        setInterval(e => {
+            let top = window.getComputedStyle(container, null).getPropertyValue("top");
+            container.style.top = (top+5) + 'px';
+        }, 40);
+
         game = new Game();
     });
 };
