@@ -18,6 +18,31 @@ body {
     display: none;
 }
 
+/* Prueba de obstáculos acercándose
+#column {
+    position: absolute;
+    height: 300px;
+    width: 70px;
+    top: 301px;
+    left: 1000px;
+    animation: left 15s;
+}
+
+#column2 {
+    position: absolute;
+    height: 100px;
+    width: 70px;
+    top: 0px;
+    left: 1000px;   
+    transform: rotate(180deg);
+    animation: left 15s;
+}
+*/
+
+@keyframes left {
+    100% {left: 0px;}
+}
+
 #playGame {
     display: flex;
     justify-content: center;

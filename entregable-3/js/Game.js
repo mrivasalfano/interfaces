@@ -18,12 +18,12 @@ class Game {
         // }
 
         window.addEventListener('keyup', e => {
-            if (e.keycode == 32) {
+            if (e.keyCode == 32) {
                 this.goUp = true;
             }
         });
 
-        this.intervalId = setInterval(this.loop.bind(this), 40);
+        this.intervalId = setInterval(this.loop.bind(this), 33);
     }
 
     loop() {
@@ -32,7 +32,7 @@ class Game {
         //     this.goUp = false;
         // }
 
-        this.fall();
+        this.checkMove();
         // this.player.update();
 
         // for (let i = 0; i < this.obstacles.length; i++) {
@@ -48,16 +48,27 @@ class Game {
         this.updateScreen();
     }
 
-    fall() {
+    checkMove() {
         let top = window.getComputedStyle(container, null).getPropertyValue("top");
         top = parseInt(top.split('px')[0]);
-        top+=2;
-        
-        if (top <= this.maxTop)
-            this.player.setPosition(top);
-        else {
-            this.endGame();
+
+        if (this.goUp) {
+            top-=40;
+            
+            if (top < 0)
+                top = 0;
+
+            this.player.setPosition(top)
+            this.goUp = false;
         }
+        else {
+            if (top <= this.maxTop)
+                this.player.setPosition(top+2);
+            else {
+                this.endGame();
+            }
+        }
+
     }
 
     checkColition(obstacle) {
