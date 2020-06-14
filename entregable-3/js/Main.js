@@ -15,14 +15,7 @@ window.onload = e => {
         playBtn.style.display = 'none';
         playBtn.style.zIndex = '-1';
 
-        //calculo el maximo de top que le puedo dr al pj
-        let container = document.querySelector('#container');
-        let body = document.querySelector('body');
-        let bodyHeight = parseInt(window.getComputedStyle(body, null).getPropertyValue('height').split('px')[0]);
-        let containerHeight = parseInt(window.getComputedStyle(container, null).getPropertyValue("height").split('px')[0]);
-        let maxTop = bodyHeight - containerHeight;
-
-        let game = new Game(maxTop);
+        let game = new Game();
         game.initGame();
     });
 };

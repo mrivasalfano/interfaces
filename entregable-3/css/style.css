@@ -24,11 +24,11 @@ body {
     background-size: cover;
     position: absolute;
     top: 0px;
-    left: 1000px;
+    left: 1500px;
     transform: rotate(180deg);
     width: 5%;
     height: 50%;
-    animation: left 15s infinite;
+    /* animation: left 15s infinite; */
 }
 
 #obstacle2 {
@@ -36,15 +36,16 @@ body {
     background-size: cover;
     position: absolute;
     top: 480.5px;
+    left: 1500px;
     width: 5%;
     height: 20%;
-    animation: left 15s infinite;
+    /* animation: left 15s infinite; */
 }
 
-@keyframes left {
+/* @keyframes left {
     0% {left: 1500px}
     100% {left: -100px}
-}
+} */
 
 #playGame {
     display: flex;

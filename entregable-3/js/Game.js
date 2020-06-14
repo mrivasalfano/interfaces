@@ -1,18 +1,36 @@
 class Game {
     constructor(max) {
-        this.player;
-        this.obstacles = [document.querySelector('#obstacle1'), document.querySelector('#obstacle2')];
+        this.obstacles = [];
         this.score;
         this.goUp = false;
         this.intervalId;
         this.maxTop = max;
+        this.playerContainer;
+        this.body;
+        this.bodyHeight;
+        this.containerHeight
+        this.maxTop;
+        this.playerTop;
     }
 
     initGame() {
-        this.player = new Player();
+        //calculo el maximo de top que le puedo dr al pj
+        this.playerContainer = document.querySelector('#container');
+        this.body = document.querySelector('body');
+        this.bodyHeight = parseInt(window.getComputedStyle(this.body, null).getPropertyValue('height').split('px')[0]);
+        this.containerHeight = parseInt(window.getComputedStyle(this.playerContainer, null).getPropertyValue("height").split('px')[0]);
+        this.maxTop = this.bodyHeight - this.containerHeight;
+        let top = window.getComputedStyle(this.playerContainer, null).getPropertyValue("top");
+        this.playerTop = parseInt(top.split('px')[0]);
+
+        this.player = new Player(this.playerContainer);
 
         this.score = 0;
 
+        let up = document.querySelector('#obstacle1');
+        let down = document.querySelector('#obstacle2');
+
+        this.obstacles.push(new Obstacle(up, down, this.bodyHeight));
         // for (let i = 0; i < 5; i++) {
         //     this.obstacles.push(new Obstacle());
         // }
@@ -39,7 +57,7 @@ class Game {
         //     this.obstacles[i].update();
         // }
 
-        if (this.checkColition()) {
+        if (this.checkCollision()) {
             this.endGame();
         } else {
             this.score++;
@@ -49,23 +67,20 @@ class Game {
     }
 
     checkMove() {
-        let top = window.getComputedStyle(container, null).getPropertyValue("top");
-        top = parseInt(top.split('px')[0]);
-
         if (this.goUp) {
-            top-=40;
+            this.playerTop -= 40;
             
-            if (top < 0)
+            if (this.playerTop < 0)
                 top = 0;
 
-            this.player.setPosition(top)
+            this.player.setPosition(this.playerTop)
             this.goUp = false;
         }
         else {
-            top+=3;
+            this.playerTop += 3;
 
-            if (top <= this.maxTop)
-                this.player.setPosition(top);
+            if (this.playerTop <= this.maxTop)
+                this.player.setPosition(this.playerTop);
             else {
                 this.endGame();
             }
@@ -73,21 +88,17 @@ class Game {
 
     }
 
-    checkColition() {
+    checkCollision() {
         //Ver si el pajaro choco;
-        let up = parseInt(window.getComputedStyle(this.obstacles[0], null).getPropertyValue('height').split('px')[0]);
-        let down = parseInt(window.getComputedStyle(this.obstacles[1], null).getPropertyValue('height').split('px')[0]);
-        let left = parseInt(window.getComputedStyle(this.obstacles[1], null).getPropertyValue('left').split('px')[0]);
-        
-        return this.player.colition(up, down, left);
+        return this.obstacles[0].collision(this.player);
     }
 
     updateScreen() {
         //this.playerDiv.style.top = this.player.position;
-        this.player.updateScreen();
-
+        this.player.update();
+        this.obstacles[0].update();
         // for (let i = 0; i < this.obstacles.length; i++) {
-        //     this.obstacles[i].updateScreen();
+        //     this.obstacles[i].update();
         //     //this.obstacles[i].obstacleDiv.style.left = this.obstacles[i].position;
         // }
 
