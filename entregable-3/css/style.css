@@ -12,35 +12,38 @@ body {
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .hide {
     display: none;
 }
 
-/* Prueba de obstáculos acercándose
-#column {
+#obstacle1 {
+    background: url('../resources/obstacle/column_1.png') no-repeat;
+    background-size: cover;
     position: absolute;
-    height: 300px;
-    width: 70px;
-    top: 301px;
+    top: 0px;
     left: 1000px;
-    animation: left 15s;
+    transform: rotate(180deg);
+    width: 5%;
+    height: 50%;
+    animation: left 15s infinite;
 }
 
-#column2 {
+#obstacle2 {
+    background: url('../resources/obstacle/column_1.png') no-repeat;
+    background-size: cover;
     position: absolute;
-    height: 100px;
-    width: 70px;
-    top: 0px;
-    left: 1000px;   
-    transform: rotate(180deg);
-    animation: left 15s;
+    top: 480.5px;
+    width: 5%;
+    height: 20%;
+    animation: left 15s infinite;
 }
-*/
 
 @keyframes left {
-    100% {left: 0px;}
+    0% {left: 1500px}
+    100% {left: -100px}
 }
 
 #playGame {
@@ -86,7 +89,6 @@ body {
 }
 
 #container {
-    top: 250px;
     position: absolute;
     width: 168px;
     height: 105px;
@@ -96,9 +98,8 @@ body {
 }
 
 #plane {
-    position: absolute;
-    width: 168px;
-    height: 105px;
+    width: 100%;
+    height: 100%;
     margin: auto;
     background: url('../resources/plane/fly.png') left center;
     animation: fly .8s steps(8) infinite;

@@ -1,7 +1,7 @@
 class Game {
     constructor(max) {
         this.player;
-        this.obstacles = [];
+        this.obstacles = [document.querySelector('#obstacle1'), document.querySelector('#obstacle2')];
         this.score;
         this.goUp = false;
         this.intervalId;
@@ -16,7 +16,7 @@ class Game {
         // for (let i = 0; i < 5; i++) {
         //     this.obstacles.push(new Obstacle());
         // }
-
+        
         window.addEventListener('keyup', e => {
             if (e.keyCode == 32) {
                 this.goUp = true;
@@ -39,11 +39,11 @@ class Game {
         //     this.obstacles[i].update();
         // }
 
-        // if (this.checkColition(this.obstacles[n])) {
-        //     this.endGame();
-        // } else {
-        //     this.score++;
-        // }
+        if (this.checkColition()) {
+            this.endGame();
+        } else {
+            this.score++;
+        }
 
         this.updateScreen();
     }
@@ -62,8 +62,10 @@ class Game {
             this.goUp = false;
         }
         else {
+            top+=3;
+
             if (top <= this.maxTop)
-                this.player.setPosition(top+2);
+                this.player.setPosition(top);
             else {
                 this.endGame();
             }
@@ -71,8 +73,13 @@ class Game {
 
     }
 
-    checkColition(obstacle) {
+    checkColition() {
         //Ver si el pajaro choco;
+        let up = parseInt(window.getComputedStyle(this.obstacles[0], null).getPropertyValue('height').split('px')[0]);
+        let down = parseInt(window.getComputedStyle(this.obstacles[1], null).getPropertyValue('height').split('px')[0]);
+        let left = parseInt(window.getComputedStyle(this.obstacles[1], null).getPropertyValue('left').split('px')[0]);
+        
+        return this.player.colition(up, down, left);
     }
 
     updateScreen() {
