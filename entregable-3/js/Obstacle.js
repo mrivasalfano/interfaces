@@ -18,7 +18,7 @@ class Obstacle {
     }
 
     update() {
-        if((this.left-5) <= 0)
+        if((this.left-5) <= (0 - this.width))
             this.left = this.originalLeft;
         else
             this.left -= 5;

@@ -1,10 +1,12 @@
 class Game {
-    constructor(max) {
+    constructor(playBtn) {
         this.obstacles = [];
         this.score;
+        this.playBtn = playBtn;
+        this.scoreDiv;
         this.goUp = false;
         this.intervalId;
-        this.maxTop = max;
+        this.maxTop;
         this.playerContainer;
         this.body;
         this.bodyHeight;
@@ -42,7 +44,15 @@ class Game {
         this.intervalId = setInterval(this.loop.bind(this), 33);
     }
 
+    restart() {
+        this.score = 0;
+        clearInterval(this.intervalId);
+        this.intervalId = setInterval(this.loop.bind(this), 33);
+    } 
+
     createUsefullVar() {
+        //div de score
+        this.scoreDiv = document.querySelector('#score');
         //guardo el contenedor del jugador
         this.playerContainer = document.querySelector('#player-container');
         //guardo el body y su alto
@@ -61,8 +71,6 @@ class Game {
 
         if (this.checkCollision()) {
             this.endGame();
-        } else {
-            this.score++;
         }
 
         this.updateScreen();
@@ -113,7 +121,6 @@ class Game {
 
     endGame() {
         clearInterval(this.intervalId);
-        alert('perdiste');
-        window.location.reload();
+        this.playBtn.click();
     }
 }
