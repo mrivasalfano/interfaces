@@ -2,17 +2,47 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
-body {
-    background: url(../resources/background.png);
+#background {
+    background: url('../resources/sky_parallax.png');
+    background-size: cover;
     height: 100vh;
     width: 100vw;
+}
+
+#mountains {
+    background: url('../resources/mountain_parallax.png') repeat-x;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    animation: bg-parallax 60s linear infinite;
+}
+
+#clouds {
+    background: url('../resources/cloud_parallax.png') repeat-x;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    animation: bg-parallax 30s linear infinite;
+}
+
+#desert {
+    background: url('../resources/desert_parallax.png') repeat-x;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    animation: bg-parallax 10s linear infinite;
+}
+
+@keyframes bg-parallax {
+    0% {background-position: 100vw;}
+    100% {background-position: 0;}
 }
 
 .hide {
@@ -28,7 +58,6 @@ body {
     transform: rotate(180deg);
     width: 5%;
     height: 50%;
-    /* animation: left 15s infinite; */
 }
 
 #obstacle2 {
@@ -39,13 +68,49 @@ body {
     left: 1500px;
     width: 5%;
     height: 20%;
-    /* animation: left 15s infinite; */
 }
 
-/* @keyframes left {
-    0% {left: 1500px}
-    100% {left: -100px}
-} */
+#obstacle3 {
+    background: url('../resources/obstacle/column_1.png') no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 1900px;
+    transform: rotate(180deg);
+    width: 5%;
+    height: 20%;
+}
+
+#obstacle4 {
+    background: url('../resources/obstacle/column_1.png') no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 300.5px;
+    left: 1900px;
+    width: 5%;
+    height: 50%;
+}
+
+#obstacle5 {
+    background: url('../resources/obstacle/column_1.png') no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 2300px;
+    transform: rotate(180deg);
+    width: 5%;
+    height: 35%;
+}
+
+#obstacle6 {
+    background: url('../resources/obstacle/column_1.png') no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 390.5px;
+    left: 2300px;
+    width: 5%;
+    height: 35%;
+}
 
 #playGame {
     display: flex;
@@ -71,7 +136,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-flow: column wrap;
-    font-size: 2vh;
+    font-size: .9em;
     font-family: 'Press Start 2P', cursive;
     background: #e9e922;
     width: 30vw;
@@ -82,17 +147,17 @@ body {
 }
 
 #rules p {
-    margin: 0.5em;
+    margin: 0.3em;
 }
 
 #playGame:hover {
     background: #e9e933;
 }
 
-#container {
-    position: absolute;
-    width: 168px;
+#player-container {
     height: 105px;
+    width: 168px;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -102,8 +167,16 @@ body {
     width: 100%;
     height: 100%;
     margin: auto;
-    background: url('../resources/plane/fly.png') left center;
+}
+
+.fly {
     animation: fly .8s steps(8) infinite;
+    background: url('../resources/plane/fly.png') left center;
+}
+
+.dead {
+    animation: dead .8s steps(8) infinite;
+    background: url('../resources/plane/dead_completo.png') left center;
 }
 
 @keyframes fly {
@@ -112,7 +185,7 @@ body {
 }
 
 @keyframes dead {
-    0% {background-position: 0px; top: 20px;}
-    100% {background-position: -1408px; top: 450px;}   
+    0% {background-position: 0px;}
+    100% {background-position: -1408px;}   
 }
 

@@ -3,14 +3,14 @@
 //constantes de los elementos del DOM
 const btnLapiz = document.querySelector('#btnLapiz');
 const btnGoma = document.querySelector('#btnGoma');
-const canvas = document.querySelector('#imgContainer');
+const canvas = document.querySelector('#imgplayer-container');
 const download = document.querySelector('#btnDownload');
 const descartar = document.querySelector('#btnDescartar');
 const context = canvas.getContext('2d');
 const btnReset = document.querySelector('#btnReset');
 let userImg = document.querySelector('#userImg');
 const filtros = document.querySelectorAll('.filtro');
-const filtrosContainer = document.querySelector('.filtros');
+const filtrosplayer-container = document.querySelector('.filtros');
 const colorPicker = document.querySelector('.jscolor');
 let color = '#000000';
 let tamañoLapiz = 2;
@@ -358,12 +358,12 @@ userImg.addEventListener('change', (e) => {
 //para filtros
 function habilitarFiltros(habilitar) {
     if (habilitar) {
-        filtrosContainer.classList.remove('hide');
-        filtrosContainer.classList.add('show');
+        filtrosplayer-container.classList.remove('hide');
+        filtrosplayer-container.classList.add('show');
     }
     else {
-        filtrosContainer.classList.remove('show');
-        filtrosContainer.classList.add('hide');
+        filtrosplayer-container.classList.remove('show');
+        filtrosplayer-container.classList.add('hide');
     }
 }
 

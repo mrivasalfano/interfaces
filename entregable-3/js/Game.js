@@ -8,20 +8,13 @@ class Game {
         this.playerContainer;
         this.body;
         this.bodyHeight;
-        this.containerHeight
+        this.playerHeight
         this.maxTop;
         this.playerTop;
     }
 
     initGame() {
-        //calculo el maximo de top que le puedo dr al pj
-        this.playerContainer = document.querySelector('#container');
-        this.body = document.querySelector('body');
-        this.bodyHeight = parseInt(window.getComputedStyle(this.body, null).getPropertyValue('height').split('px')[0]);
-        this.containerHeight = parseInt(window.getComputedStyle(this.playerContainer, null).getPropertyValue("height").split('px')[0]);
-        this.maxTop = this.bodyHeight - this.containerHeight;
-        let top = window.getComputedStyle(this.playerContainer, null).getPropertyValue("top");
-        this.playerTop = parseInt(top.split('px')[0]);
+        this.createUsefullVar();
 
         this.player = new Player(this.playerContainer);
 
@@ -30,10 +23,15 @@ class Game {
         let up = document.querySelector('#obstacle1');
         let down = document.querySelector('#obstacle2');
 
+        let up2 = document.querySelector('#obstacle3');
+        let down2 = document.querySelector('#obstacle4');
+
+        let up3 = document.querySelector('#obstacle5');
+        let down3 = document.querySelector('#obstacle6');
+
         this.obstacles.push(new Obstacle(up, down, this.bodyHeight));
-        // for (let i = 0; i < 5; i++) {
-        //     this.obstacles.push(new Obstacle());
-        // }
+        this.obstacles.push(new Obstacle(up2, down2, this.bodyHeight));
+        this.obstacles.push(new Obstacle(up3, down3, this.bodyHeight));
         
         window.addEventListener('keyup', e => {
             if (e.keyCode == 32) {
@@ -44,18 +42,22 @@ class Game {
         this.intervalId = setInterval(this.loop.bind(this), 33);
     }
 
+    createUsefullVar() {
+        //guardo el contenedor del jugador
+        this.playerContainer = document.querySelector('#player-container');
+        //guardo el body y su alto
+        this.body = document.querySelector('body');
+        this.bodyHeight = parseInt(window.getComputedStyle(this.body, null).getPropertyValue('height').split('px')[0]);
+        this.playerHeight = parseInt(window.getComputedStyle(this.playerContainer, null).getPropertyValue("height").split('px')[0]);
+        //calculo el límite de top para no pasarme del "suelo"
+        this.maxTop = this.bodyHeight - this.playerHeight;
+        //guardo el top del jugador que luego ire sumando o restando
+        let top = window.getComputedStyle(this.playerContainer, null).getPropertyValue("top");
+        this.playerTop = parseInt(top.split('px')[0]);
+    }
+
     loop() {
-        // if (this.goUp) {
-        //     this.player.goUp();
-        //     this.goUp = false;
-        // }
-
-        this.checkMove();
-        // this.player.update();
-
-        // for (let i = 0; i < this.obstacles.length; i++) {
-        //     this.obstacles[i].update();
-        // }
+        this.checkPlayerMove();
 
         if (this.checkCollision()) {
             this.endGame();
@@ -66,7 +68,7 @@ class Game {
         this.updateScreen();
     }
 
-    checkMove() {
+    checkPlayerMove() {
         if (this.goUp) {
             this.playerTop -= 40;
             
@@ -89,18 +91,22 @@ class Game {
     }
 
     checkCollision() {
-        //Ver si el pajaro choco;
-        return this.obstacles[0].collision(this.player);
+        //recorro los obstáculos y veo si colisonó con alguno
+        let response;
+
+        this.obstacles.forEach(obs => {
+            response = obs.collision(this.player);
+        });
+
+        return response;
     }
 
     updateScreen() {
-        //this.playerDiv.style.top = this.player.position;
         this.player.update();
-        this.obstacles[0].update();
-        // for (let i = 0; i < this.obstacles.length; i++) {
-        //     this.obstacles[i].update();
-        //     //this.obstacles[i].obstacleDiv.style.left = this.obstacles[i].position;
-        // }
+        
+        this.obstacles.forEach(obs => {
+            obs.update();
+        });
 
         // this.scoreDiv.innerHTML = this.score;
     }
@@ -108,5 +114,6 @@ class Game {
     endGame() {
         clearInterval(this.intervalId);
         alert('perdiste');
+        window.location.reload();
     }
 }

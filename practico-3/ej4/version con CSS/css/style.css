@@ -36,7 +36,7 @@
     z-index: 10;
 }
 
-.minutes-container, .hours-container, .seconds-container {
+.minutes-player-container, .hours-player-container, .seconds-player-container {
     position: absolute;
     top: 0;
     right: 0;
