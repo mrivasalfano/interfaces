@@ -88,7 +88,7 @@ class Game {
         this.checkPlayerMove();
 
         //si colisionó con algún obstáculo pierde
-        if (this.checkCollision())
+        if (this.collision())
             this.endGame();
 
         //actualiza los elementos en la pantalla
@@ -126,15 +126,14 @@ class Game {
 
     }
 
-    checkCollision() {
+    collision() {
         //recorro los obstáculos y veo si el jugador colisionó con alguno
-        let response;
+        for (let i = 0; i < this.obstacles.length; i++) {
+            if (this.obstacles[i].collision(this.player))
+                return true;            
+        }
 
-        this.obstacles.forEach(obs => {
-            response = obs.collision(this.player);
-        });
-
-        return response;
+        return false;
     }
 
     //actualizo posición del jugador, obstáculos y el score
@@ -150,6 +149,7 @@ class Game {
 
     endGame() {
         //hago click al botón play así se reinicia el juego
+        alert('Perdiste :(');
         this.playBtn.click();
     }
 }

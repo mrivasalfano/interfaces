@@ -24,7 +24,7 @@ window.onload = e => {
             playBtn.style.zIndex = '-1';
 
             //si no saco el focus, cuando apreto espacio para saltar
-            //es como si apretara click en el botón
+            //es como si apretara click en el botón y se reinicia el juego
             playBtn.blur();
 
             game.start();
