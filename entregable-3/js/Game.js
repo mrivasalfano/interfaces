@@ -13,15 +13,17 @@ class Game {
         this.playerHeight
         this.maxTop;
         this.playerTop;
+        this.originalTop;
     }
 
     initGame() {
+        //creo variables útiles
         this.createUsefullVar();
 
+        //creo al jugador y le paso su div contenedor
         this.player = new Player(this.playerContainer);
 
-        this.score = 0;
-
+        //creo obstáculos
         let up = document.querySelector('#obstacle1');
         let down = document.querySelector('#obstacle2');
 
@@ -35,20 +37,33 @@ class Game {
         this.obstacles.push(new Obstacle(up2, down2, this.bodyHeight));
         this.obstacles.push(new Obstacle(up3, down3, this.bodyHeight));
         
+        //evento para impulsar el avión con la barra espaciadora
         window.addEventListener('keyup', e => {
-            if (e.keyCode == 32) {
+            if (e.keyCode == 32) 
                 this.goUp = true;
-            }
         });
-
-        this.intervalId = setInterval(this.loop.bind(this), 33);
     }
 
-    restart() {
+    start() {
+        //reinicio el score y creo el interval del game loop
         this.score = 0;
-        clearInterval(this.intervalId);
         this.intervalId = setInterval(this.loop.bind(this), 33);
-    } 
+    }
+    
+    end() {
+        //borro el interval del game loop
+        clearInterval(this.intervalId);
+
+        //vuelvo el top del jugador al original
+        this.playerTop = this.originalTop;
+        this.player.setPosition(this.playerTop);
+        this.player.update();
+        
+        //reinicio obstáculos
+        this.obstacles.forEach(obs => {
+            obs.restart();
+        });
+    }
 
     createUsefullVar() {
         //div de score
@@ -61,34 +76,47 @@ class Game {
         this.playerHeight = parseInt(window.getComputedStyle(this.playerContainer, null).getPropertyValue("height").split('px')[0]);
         //calculo el límite de top para no pasarme del "suelo"
         this.maxTop = this.bodyHeight - this.playerHeight;
-        //guardo el top del jugador que luego ire sumando o restando
+        //guardo el top original del jugador
         let top = window.getComputedStyle(this.playerContainer, null).getPropertyValue("top");
-        this.playerTop = parseInt(top.split('px')[0]);
+        this.originalTop = parseInt(top.split('px')[0]);
+        //el top del jugador empieza como original
+        this.playerTop = this.originalTop;
     }
 
     loop() {
+        //checkea si el jugador tiene que subir o bajar
         this.checkPlayerMove();
 
-        if (this.checkCollision()) {
+        //si colisionó con algún obstáculo pierde
+        if (this.checkCollision())
             this.endGame();
-        }
 
+        //actualiza los elementos en la pantalla
         this.updateScreen();
     }
 
     checkPlayerMove() {
         if (this.goUp) {
+            //resto 40 al top del jugador
             this.playerTop -= 40;
-            
-            if (this.playerTop < 0)
-                top = 0;
 
+            //en caso de quedar en negativo lo vuelvo a 0
+            //simulando que se choca el techo
+            if (this.playerTop < 0)
+                this.playerTop = 0;
+
+            //actualizo su posición
             this.player.setPosition(this.playerTop)
+            //pongo en false para que no siga saltando
+            //infinitamente
             this.goUp = false;
         }
         else {
+            //sumo 3 al top del jugador
             this.playerTop += 3;
 
+            //si el top actual es mayor o igual al máximo
+            //significa que tocó el piso y perdió
             if (this.playerTop <= this.maxTop)
                 this.player.setPosition(this.playerTop);
             else {
@@ -99,7 +127,7 @@ class Game {
     }
 
     checkCollision() {
-        //recorro los obstáculos y veo si colisonó con alguno
+        //recorro los obstáculos y veo si el jugador colisionó con alguno
         let response;
 
         this.obstacles.forEach(obs => {
@@ -109,6 +137,7 @@ class Game {
         return response;
     }
 
+    //actualizo posición del jugador, obstáculos y el score
     updateScreen() {
         this.player.update();
         
@@ -120,7 +149,7 @@ class Game {
     }
 
     endGame() {
-        clearInterval(this.intervalId);
+        //hago click al botón play así se reinicia el juego
         this.playBtn.click();
     }
 }
