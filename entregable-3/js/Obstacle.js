@@ -11,17 +11,20 @@ class Obstacle {
     }
 
     collision(player) {
-        if(this.left >= player.getLeft() && this.left <= (player.getLeft() + player.getWidth())) 
-            return (player.getPosition() <= this.upHeight) || ((player.getPosition() + player.getHeight()) >= (this.bodyHeight - this.downHeight)); //falta 
+        if ((this.left + this.width) >= player.getLeft() && this.left <= (player.getLeft() + player.getWidth()))
+            return (player.getPosition() <= this.upHeight) || ((player.getPosition() + player.getHeight()) >= (this.bodyHeight - this.downHeight));
         else 
             return false;
     }
 
     update() {
+        //si me voy fuera de la pantalla
+        //vuelvo a mi posición original
         if((this.left-5) <= (0 - this.width))
             this.left = this.originalLeft;
         else
             this.left -= 5;
+        
         this.upDiv.style.left = this.left + 'px';
         this.downDiv.style.left = this.left + 'px';
     }

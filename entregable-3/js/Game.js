@@ -26,13 +26,13 @@ class Game {
         //creo obstáculos
         let up = document.querySelector('#obstacle1');
         let down = document.querySelector('#obstacle2');
-
+        
         let up2 = document.querySelector('#obstacle3');
         let down2 = document.querySelector('#obstacle4');
-
+        
         let up3 = document.querySelector('#obstacle5');
         let down3 = document.querySelector('#obstacle6');
-
+        
         this.obstacles.push(new Obstacle(up, down, this.bodyHeight));
         this.obstacles.push(new Obstacle(up2, down2, this.bodyHeight));
         this.obstacles.push(new Obstacle(up3, down3, this.bodyHeight));
@@ -40,8 +40,26 @@ class Game {
         //evento para impulsar el avión con la barra espaciadora
         window.addEventListener('keyup', e => {
             if (e.keyCode == 32) 
-                this.goUp = true;
+            this.goUp = true;
         });
+    }
+    
+    createUsefullVar() {
+        //div de score
+        this.scoreDiv = document.querySelector('#score');
+        //guardo el contenedor del jugador
+        this.playerContainer = document.querySelector('#player-container');
+        //guardo el body y su alto
+        this.body = document.querySelector('body');
+        this.bodyHeight = parseInt(window.getComputedStyle(this.body, null).getPropertyValue('height').split('px')[0]);
+        this.playerHeight = parseInt(window.getComputedStyle(this.playerContainer, null).getPropertyValue("height").split('px')[0]);
+        //calculo el límite de top para no pasarme del "suelo"
+        this.maxTop = this.bodyHeight - this.playerHeight;
+        //guardo el top original del jugador
+        let top = window.getComputedStyle(this.playerContainer, null).getPropertyValue("top");
+        this.originalTop = parseInt(top.split('px')[0]);
+        //el top del jugador empieza como original
+        this.playerTop = this.originalTop;
     }
 
     start() {
@@ -65,34 +83,16 @@ class Game {
         });
     }
 
-    createUsefullVar() {
-        //div de score
-        this.scoreDiv = document.querySelector('#score');
-        //guardo el contenedor del jugador
-        this.playerContainer = document.querySelector('#player-container');
-        //guardo el body y su alto
-        this.body = document.querySelector('body');
-        this.bodyHeight = parseInt(window.getComputedStyle(this.body, null).getPropertyValue('height').split('px')[0]);
-        this.playerHeight = parseInt(window.getComputedStyle(this.playerContainer, null).getPropertyValue("height").split('px')[0]);
-        //calculo el límite de top para no pasarme del "suelo"
-        this.maxTop = this.bodyHeight - this.playerHeight;
-        //guardo el top original del jugador
-        let top = window.getComputedStyle(this.playerContainer, null).getPropertyValue("top");
-        this.originalTop = parseInt(top.split('px')[0]);
-        //el top del jugador empieza como original
-        this.playerTop = this.originalTop;
-    }
-
     loop() {
         //checkea si el jugador tiene que subir o bajar
         this.checkPlayerMove();
 
+        //actualiza los elementos en la pantalla
+        this.updateScreen();
+
         //si colisionó con algún obstáculo pierde
         if (this.collision())
             this.endGame();
-
-        //actualiza los elementos en la pantalla
-        this.updateScreen();
     }
 
     checkPlayerMove() {
@@ -123,7 +123,6 @@ class Game {
                 this.endGame();
             }
         }
-
     }
 
     collision() {
