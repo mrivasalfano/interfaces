@@ -5,6 +5,7 @@ class Game {
         this.playBtn = playBtn;
         this.scoreDiv;
         this.goUp = false;
+        this.upTimer = 10;
         this.intervalId;
         this.maxTop;
         this.playerContainer;
@@ -97,23 +98,29 @@ class Game {
 
     checkPlayerMove() {
         if (this.goUp) {
-            //resto 40 al top del jugador
-            this.playerTop -= 60;
-
-            //en caso de quedar en negativo lo vuelvo a 0
-            //simulando que se choca el techo
-            if (this.playerTop < 0)
-                this.playerTop = 0;
-
-            //actualizo su posición
-            this.player.setPosition(this.playerTop)
-            //pongo en false para que no siga saltando
-            //infinitamente
-            this.goUp = false;
+            if (this.upTimer > 0) {
+                this.upTimer--;
+                //resto 40 al top del jugador
+                this.playerTop -= 5;
+    
+                //en caso de quedar en negativo lo vuelvo a 0
+                //simulando que se choca el techo
+                if (this.playerTop < 0)
+                    this.playerTop = 0;
+    
+                //actualizo su posición
+                this.player.setPosition(this.playerTop)
+                //pongo en false para que no siga saltando
+                //infinitamente
+            }
+            else {
+                this.goUp = false;
+                this.upTimer = 10;
+            }
         }
         else {
             //sumo 3 al top del jugador
-            this.playerTop += 3;
+            this.playerTop += 1;
 
             //si el top actual es mayor o igual al máximo
             //significa que tocó el piso y perdió
