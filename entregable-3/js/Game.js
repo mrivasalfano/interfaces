@@ -33,9 +33,9 @@ class Game {
         let up3 = document.querySelector('#obstacle5');
         let down3 = document.querySelector('#obstacle6');
         
-        this.obstacles.push(new Obstacle(up, down, this.bodyHeight));
-        this.obstacles.push(new Obstacle(up2, down2, this.bodyHeight));
-        this.obstacles.push(new Obstacle(up3, down3, this.bodyHeight));
+        this.obstacles.push(new Obstacle(up, down, 8, 50, 20, 108, this.bodyHeight));
+        this.obstacles.push(new Obstacle(up2, down2, 8, 20, 50, 148, this.bodyHeight));
+        this.obstacles.push(new Obstacle(up3, down3, 8, 35, 35, 188, this.bodyHeight));
         
         //evento para impulsar el avión con la barra espaciadora
         window.addEventListener('keyup', e => {
@@ -65,7 +65,7 @@ class Game {
     start() {
         //reinicio el score y creo el interval del game loop
         this.score = 0;
-        this.intervalId = setInterval(this.loop.bind(this), 33);
+        this.intervalId = setInterval(this.loop.bind(this), 16);
     }
     
     end() {
@@ -98,7 +98,7 @@ class Game {
     checkPlayerMove() {
         if (this.goUp) {
             //resto 40 al top del jugador
-            this.playerTop -= 40;
+            this.playerTop -= 60;
 
             //en caso de quedar en negativo lo vuelvo a 0
             //simulando que se choca el techo
