@@ -13,19 +13,19 @@
 }
 
 #mountains {
-    background: url('../resources/mountain_parallax_600.png') repeat-x;
+    background: url('../resources/mountain_parallax_600.png');
     background-size: cover;
     width: 100%;
     height: 100%;
-    /* animation: bg-parallax 30s linear infinite; */
+    animation: bg-parallax 30s linear infinite;
 }
 
 #clouds {
-    background: url('../resources/cloud_parallax_600.png') repeat-x;
+    background: url('../resources/cloud_parallax_600.png');
     background-size: contain;
     width: 100%;
     height: 100%;
-    /* animation: bg-parallax 10s linear infinite; */
+    animation: bg-parallax 10s linear infinite;
 }
 
 /* #diamante {
@@ -37,7 +37,7 @@
 } */
 
 #desert {
-    background: url('../resources/desert_parallax_600.png') repeat-x;
+    background: url('../resources/desert_parallax_600.png');
     background-size: contain;
     width: 100%;
     height: 100%;
@@ -45,7 +45,7 @@
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    /* animation: bg-parallax 5s linear infinite; */
+    animation: bg-parallax 5s linear infinite;
 }
 
 @keyframes bg-parallax {
