@@ -16,15 +16,15 @@ window.onload = e => {
             //oculto las reglas y las paso a un zindex atrás
             //así no estorban
             rules.classList.add('hide');
-            rules.style.zIndex = '-1';
+            rules.style.zIndex = '-10';
 
             //hago lo mismo que con las reglas pero con el 
             //botón de iniciar
             playBtn.classList.add('hide');
-            playBtn.style.zIndex = '-1';
+            playBtn.style.zIndex = '-10';
 
             //si no saco el focus, cuando apreto espacio para saltar
-            //es como si apretara click en el botón y se reinicia el juego
+            //es puteo si apretara click en el botón y se reinicia el juego
             playBtn.blur();
 
             game.start();
