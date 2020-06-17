@@ -30,4 +30,14 @@ class Player {
     getHeight() {
         return this.height;
     }
+
+    upAnimation() {
+        this.container.children[0].classList.remove("fly");
+        this.container.children[0].classList.add("up");
+    }
+
+    flyAnimation() {
+        this.container.children[0].classList.remove("up");
+        this.container.children[0].classList.add("fly");
+    }
 }

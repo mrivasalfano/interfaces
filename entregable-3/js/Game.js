@@ -34,14 +34,16 @@ class Game {
         let up3 = document.querySelector('#obstacle5');
         let down3 = document.querySelector('#obstacle6');
         
-        this.obstacles.push(new Obstacle(up, down, 8, 50, 20, 108, this.bodyHeight));
-        this.obstacles.push(new Obstacle(up2, down2, 8, 20, 50, 148, this.bodyHeight));
-        this.obstacles.push(new Obstacle(up3, down3, 8, 35, 35, 188, this.bodyHeight));
+        this.obstacles.push(new Obstacle(up, down, 8, 40, 20, 108, this.bodyHeight));
+        this.obstacles.push(new Obstacle(up2, down2, 8, 20, 40, 148, this.bodyHeight));
+        this.obstacles.push(new Obstacle(up3, down3, 8, 30, 30, 188, this.bodyHeight));
         
         //evento para impulsar el avión con la barra espaciadora
         window.addEventListener('keyup', e => {
-            if (e.keyCode == 32) 
-            this.goUp = true;
+            if (e.keyCode == 32) {
+                this.goUp = true;
+                this.player.upAnimation();
+            }
         });
     }
     
@@ -116,6 +118,7 @@ class Game {
             else {
                 this.goUp = false;
                 this.upTimer = 10;
+                this.player.flyAnimation();
             }
         }
         else {
