@@ -48,5 +48,6 @@ window.onload = e => {
         playBtn.click();
         loseDiv.classList.add('hide');
         loseDiv.classList.remove('show');
+        loseDiv.style.zIndex = '-1';
     });
 };

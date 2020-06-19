@@ -184,6 +184,7 @@ class Game {
                 this.player.noneAnimation();
                 this.loseDiv.classList.remove('hide');
                 this.loseDiv.classList.add('show');
+                this.loseDiv.style.zIndex = '2';
             }
         }, 16);
 
