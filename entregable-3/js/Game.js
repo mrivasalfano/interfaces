@@ -5,7 +5,7 @@ class Game {
         this.playBtn = playBtn;
         this.scoreDiv;
         this.goUp = false;
-        this.upTimer = 20;
+        this.upTimer = 10;
         this.intervalId;
         this.maxTop;
         this.playerContainer;
@@ -109,7 +109,7 @@ class Game {
             if (this.upTimer > 0) {
                 this.upTimer--;
                 //resto 40 al top del jugador
-                this.playerTop -= 4;
+                this.playerTop -= 5;
     
                 //en caso de quedar en negativo lo vuelvo a 0
                 //simulando que se choca el techo
@@ -123,7 +123,7 @@ class Game {
             }
             else {
                 this.goUp = false;
-                this.upTimer = 20;
+                this.upTimer = 10;
                 this.player.flyAnimation();
             }
         }
