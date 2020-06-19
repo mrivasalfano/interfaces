@@ -80,14 +80,14 @@
 
 .obstacle-up {
     background: url('../resources/obstacle/column_1.png');
-    background-size: cover;
+    background-size: 100%;
     position: absolute;
     transform: rotate(180deg);
 }
 
 .obstacle-down {
     background: url('../resources/obstacle/column_1.png');
-    background-size: cover;
+    background-size: 100%;
     position: absolute;
 }
 
@@ -159,8 +159,8 @@
 }
 
 .dead {
-    animation: dead .8s steps(8) infinite;
-    background: url('../resources/plane/dead_completo.png') left center;
+    background: url('../resources/plane/dead_crash.png') left center;
+    animation: dead .5s steps(2) infinite;
 }
 
 .up {
@@ -180,6 +180,6 @@
 
 @keyframes dead {
     0% {background-position: 0px;}
-    100% {background-position: -1408px;}   
+    100% {background-position: -344px;}   
 }
 

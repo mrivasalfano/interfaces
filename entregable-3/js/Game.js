@@ -81,9 +81,6 @@ class Game {
     }
     
     end() {
-        //borro el interval del game loop
-        clearInterval(this.intervalId);
-
         //vuelvo el top del jugador al original
         this.playerTop = this.originalTop;
         this.player.setPosition(this.playerTop);
@@ -132,7 +129,7 @@ class Game {
         }
         else {
             //sumo 3 al top del jugador
-            this.playerTop += 1;
+            this.playerTop += 2;
 
             //si el top actual es mayor o igual al máximo
             //significa que tocó el piso y perdió
@@ -166,9 +163,24 @@ class Game {
     }
 
     endGame() {
-        //hago click al botón play así se reinicia el juego
-        this.player.noneAnimation();
-        alert('Perdiste :(');
-        this.playBtn.click();
+        //borro el interval del game loop
+        clearInterval(this.intervalId);
+        // //animación de muerte
+        this.player.deadAnimation();
+        
+        let deadInterval = setInterval(() => {
+            if (this.playerTop < (this.bodyHeight + this.playerHeight)) {
+                this.player.setPosition(this.playerTop += 5);
+                this.player.update();
+            }
+            else {
+                clearInterval(deadInterval);
+                //hago click al botón play así se reinicia el juego
+                this.player.noneAnimation();
+                alert('Perdiste :(');
+                this.playBtn.click();
+            }
+        }, 16);
+
     }
 }

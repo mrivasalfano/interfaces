@@ -8,7 +8,7 @@ class Obstacle {
         this.originalLeft = this.left;
         this.startLeft = startLeft;
         this.width = width;
-        this.randomValues = [20, 30, 40];
+        this.randomValues = [10, 20, 30, 40, 50];
         this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
         this.vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
         this.bodyHeight = bodyHeight * 100 / window.innerHeight; //transformación del height en px a vh

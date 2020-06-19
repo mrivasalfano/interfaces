@@ -41,8 +41,15 @@ class Player {
         this.container.children[0].classList.add("fly");
     }
 
+    deadAnimation() {
+        this.container.children[0].classList.remove("up");
+        this.container.children[0].classList.remove("fly");
+        this.container.children[0].classList.add("dead");
+    }
+
     noneAnimation() {
         this.container.children[0].classList.remove("fly");
         this.container.children[0].classList.remove("up");
+        this.container.children[0].classList.remove("dead");
     }
 }
