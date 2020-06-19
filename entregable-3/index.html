@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="gameContainer">
+        <!-- Fondos parallax -->
         <div id="background"></div>
         <div id="mountains"></div>
         <div id="left_cloud"></div>
@@ -15,26 +16,29 @@
         <div id="desert"></div>
         <div id="up"></div>
         
+        <!-- Botón de jugar -->
         <button id="playGame" type="button">
             <p>PLAY GAME</p>
         </button>
+        <!-- Reglas del juego -->
         <div id="rules">
             <p>Objetivo: El juego consiste en superar los obstáculos sin tocarlos, obteniendo un punto por cada uno.</p>
             <p>Controles: El avión puede impulsarse con la barra espaciadora.</p>
             <p>Advertencia: ¡Cuidado con tocar el "suelo"!</p>
         </div>
+        <!-- Contenedor del jugador -->
         <div id="player-container">
-            <div id="plane" class="hide fly"></div>
+            <div id="plane" class="hide"></div>
         </div>
         
-        <div id="up"></div>
+        <!-- Obstáculos y score -->
         <div id="score"></div>
-        <div id="obstacle1"></div>
-        <div id="obstacle2"></div>
-        <div id="obstacle3"></div>
-        <div id="obstacle4"></div>
-        <div id="obstacle5"></div>
-        <div id="obstacle6"></div>
+        <div id="obstacle1" class="obstacle-up"></div>
+        <div id="obstacle2" class="obstacle-down"></div>
+        <div id="obstacle3" class="obstacle-up"></div>
+        <div id="obstacle4" class="obstacle-down"></div>
+        <div id="obstacle5" class="obstacle-up"></div>
+        <div id="obstacle6" class="obstacle-down"></div>
     </div>
     
     <!-- <img id="diamante" src="resources/Diamante.png" alt=""> -->

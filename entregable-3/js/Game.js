@@ -24,7 +24,7 @@ class Game {
         //creo al jugador y le paso su div contenedor
         this.player = new Player(this.playerContainer);
 
-        //creo obstáculos
+        //divs pertenecienes a los obstáclos
         let up = document.querySelector('#obstacle1');
         let down = document.querySelector('#obstacle2');
         
@@ -34,9 +34,17 @@ class Game {
         let up3 = document.querySelector('#obstacle5');
         let down3 = document.querySelector('#obstacle6');
         
-        this.obstacles.push(new Obstacle(up, down, 8, 40, 20, 108, this.bodyHeight));
-        this.obstacles.push(new Obstacle(up2, down2, 8, 20, 40, 148, this.bodyHeight));
-        this.obstacles.push(new Obstacle(up3, down3, 8, 30, 30, 188, this.bodyHeight));
+        //las medidas siempre en viewport
+        let width = 8;
+
+        //indica donde van a arrancar cuando vuelvan
+        let left = 100 + width;
+        let startLeft = left;
+
+        //creo los obstáculos
+        this.obstacles.push(new Obstacle(up, down, width, left, this.bodyHeight, startLeft));
+        this.obstacles.push(new Obstacle(up2, down2, width, left+=40, this.bodyHeight, startLeft));
+        this.obstacles.push(new Obstacle(up3, down3, width, left+=40, this.bodyHeight, startLeft));
         
         //evento para impulsar el avión con la barra espaciadora
         window.addEventListener('keyup', e => {
@@ -68,6 +76,7 @@ class Game {
     start() {
         //reinicio el score y creo el interval del game loop
         this.score = 0;
+        this.player.flyAnimation();
         this.intervalId = setInterval(this.loop.bind(this), 16);
     }
     
@@ -158,6 +167,7 @@ class Game {
 
     endGame() {
         //hago click al botón play así se reinicia el juego
+        this.player.noneAnimation();
         alert('Perdiste :(');
         this.playBtn.click();
     }

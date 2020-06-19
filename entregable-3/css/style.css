@@ -21,7 +21,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 60s linear infinite;
+    /* animation: bg-parallax 60s linear infinite; */
 }
 
 #left_cloud {
@@ -31,7 +31,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 10s linear infinite;
+    /* animation: bg-parallax 10s linear infinite; */
 }
 
 #right_cloud {
@@ -41,7 +41,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 10s linear infinite;
+    /* animation: bg-parallax 10s linear infinite; */
 }
 
 #desert {
@@ -51,7 +51,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 5s linear infinite;
+    /* animation: bg-parallax 5s linear infinite; */
 }
 
 #gameContainer {
@@ -78,67 +78,17 @@
     display: none;
 }
 
-#obstacle1 {
-    background: url('../resources/obstacle/column_1.png') no-repeat;
+.obstacle-up {
+    background: url('../resources/obstacle/column_1.png');
     background-size: cover;
     position: absolute;
-    /* top: 0vh;
-    left: 108vw; */
     transform: rotate(180deg);
-    /* width: 8vw;
-    height: 50vh; */
 }
 
-#obstacle2 {
-    background: url('../resources/obstacle/column_1.png') no-repeat;
+.obstacle-down {
+    background: url('../resources/obstacle/column_1.png');
     background-size: cover;
     position: absolute;
-    /* top: 80vh;
-    left: 108vw;
-    width: 8vw;
-    height: 20vh; */
-}
-
-#obstacle3 {
-    background: url('../resources/obstacle/column_1.png') no-repeat;
-    background-size: cover;
-    position: absolute;
-    /* top: 0vh;
-    left: 148vw; */
-    transform: rotate(180deg);
-    /* width: 8vw;
-    height: 20vh; */
-}
-
-#obstacle4 {
-    background: url('../resources/obstacle/column_1.png') no-repeat;
-    background-size: cover;
-    position: absolute;
-    /* top: 50vh;
-    left: 148vw;
-    width: 8vw;
-    height: 50vh; */
-}
-
-#obstacle5 {
-    background: url('../resources/obstacle/column_1.png') no-repeat;
-    background-size: cover;
-    position: absolute;
-    /* top: 0vh;
-    left: 188vw; */
-    transform: rotate(180deg);
-    /* width: 8vw;
-    height: 35vh; */
-}
-
-#obstacle6 {
-    background: url('../resources/obstacle/column_1.png') no-repeat;
-    background-size: cover;
-    position: absolute;
-    /* top: 65vh;
-    left: 188vw;
-    width: 8vw;
-    height: 35vh; */
 }
 
 #playGame {

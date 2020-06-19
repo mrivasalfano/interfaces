@@ -40,4 +40,9 @@ class Player {
         this.container.children[0].classList.remove("up");
         this.container.children[0].classList.add("fly");
     }
+
+    noneAnimation() {
+        this.container.children[0].classList.remove("fly");
+        this.container.children[0].classList.remove("up");
+    }
 }
