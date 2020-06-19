@@ -1,8 +1,9 @@
 class Game {
-    constructor(playBtn) {
+    constructor(loseDiv) {
+        this.playing = false;
         this.obstacles = [];
         this.score;
-        this.playBtn = playBtn;
+        this.loseDiv = loseDiv;
         this.scoreDiv;
         this.goUp = false;
         this.upTimer = 10;
@@ -48,9 +49,11 @@ class Game {
         
         //evento para impulsar el avión con la barra espaciadora
         window.addEventListener('keyup', e => {
-            if (e.keyCode == 32) {
-                this.goUp = true;
-                this.player.upAnimation();
+            if (this.playing) {
+                if (e.keyCode == 32) {
+                    this.goUp = true;
+                    this.player.upAnimation();
+                }
             }
         });
     }
@@ -75,6 +78,7 @@ class Game {
 
     start() {
         //reinicio el score y creo el interval del game loop
+        this.playing = true;
         this.score = 0;
         this.player.flyAnimation();
         this.intervalId = setInterval(this.loop.bind(this), 16);
@@ -163,6 +167,7 @@ class Game {
     }
 
     endGame() {
+        this.playing = false;
         //borro el interval del game loop
         clearInterval(this.intervalId);
         // //animación de muerte
@@ -177,8 +182,8 @@ class Game {
                 clearInterval(deadInterval);
                 //hago click al botón play así se reinicia el juego
                 this.player.noneAnimation();
-                alert('Perdiste :(');
-                this.playBtn.click();
+                this.loseDiv.classList.remove('hide');
+                this.loseDiv.classList.add('show');
             }
         }, 16);
 

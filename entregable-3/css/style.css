@@ -129,6 +129,45 @@
     box-shadow: 0px 6px 0px #b1b113;
 }
 
+#restart {
+    margin-top: 3vh;
+    padding: 1vh;
+    background: #e9e922;
+    border-radius: 7px;
+    border: 1px solid #b1b113;
+    font-size: 1.5em;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#lose *:hover {
+    background: #e9e933;
+}
+
+#lose p{
+    font-size: 1em;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lose {
+    /* position: absolute;
+    z-index: -1;
+    top: 40vh; */
+    flex-flow: column wrap;
+    font-size: .9em;
+    background: #e9e922;
+    height: 15vh;
+    width: 20vw;
+    border-radius: 10px;
+    border: 1px solid #b1b113;
+    box-shadow: 0px 6px 0px #b1b113;
+}
+
 #rules p {
     margin: 0.3em;
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entregable 3 - Rivas Alfano Manuel - Interfaces</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <div id="gameContainer">
@@ -18,13 +19,18 @@
         
         <!-- Botón de jugar -->
         <button id="playGame" type="button">
-            <p>PLAY GAME</p>
+            <p>JUGAR</p>
         </button>
         <!-- Reglas del juego -->
         <div id="rules">
             <p>Objetivo: El juego consiste en superar los obstáculos sin tocarlos, obteniendo un punto por cada uno.</p>
             <p>Controles: El avión puede impulsarse con la barra espaciadora.</p>
             <p>Advertencia: ¡Cuidado con tocar el "suelo"!</p>
+        </div>
+        <!-- Cartel de perder -->
+        <div id="lose" class="hide">
+            <p>¡Perdiste! :(</p>
+            <button id="restart">Reintentar</button>
         </div>
         <!-- Contenedor del jugador -->
         <div id="player-container">

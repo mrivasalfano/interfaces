@@ -1,9 +1,11 @@
 window.onload = e => {
     let playBtn = document.querySelector('#playGame');
+    let restartBtn = document.querySelector('#restart');
+    let loseDiv = document.querySelector('#lose');
     let rules = document.querySelector('#rules');
     let plane = document.querySelector('#plane')
     let playing = false;
-    let game = new Game(playBtn);
+    let game = new Game(loseDiv);
     game.initGame();
 
     //botón para iniciar juego
@@ -40,5 +42,11 @@ window.onload = e => {
             
             game.end();
         }
+    });
+
+    restartBtn.addEventListener('click', e => {
+        playBtn.click();
+        loseDiv.classList.add('hide');
+        loseDiv.classList.remove('show');
     });
 };
