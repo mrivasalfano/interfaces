@@ -9,6 +9,7 @@ class Game {
         this.goUp = false;
         this.upTimer = 10;
         this.intervalId;
+        this.bonus = [];
         this.timeInterval;
         this.maxTop;
         this.playerContainer;
@@ -48,6 +49,9 @@ class Game {
         this.obstacles.push(new Obstacle(up, down, width, left, this.bodyHeight, startLeft));
         this.obstacles.push(new Obstacle(up2, down2, width, left+=40, this.bodyHeight, startLeft));
         this.obstacles.push(new Obstacle(up3, down3, width, left+=40, this.bodyHeight, startLeft));
+
+        //creo los bonus
+        // this.bonus.push(new Bonus());
         
         //evento para impulsar el avión con la barra espaciadora
         window.addEventListener('keyup', e => {
@@ -108,6 +112,9 @@ class Game {
         //obstáculos sumo un punto
         this.checkScore();
 
+        //si agarró un diamante sumo el tiempo
+        // this.checkBonus();
+
         //actualiza los elementos en la pantalla
         this.updateScreen();
 
@@ -117,6 +124,13 @@ class Game {
         //si colisionó con algún obstáculo pierde
         if (this.collision())
             this.endGame();
+    }
+
+    checkBonus() {
+        for (let i = 0; i < this.bonus.length; i++) {
+            if (this.bonus[i].collision(this.player))
+                this.time += 10;            
+        }
     }
 
     checkPlayerMove() {
@@ -183,7 +197,8 @@ class Game {
             obs.update();
         });
 
-        this.scoreDiv.children[0].innerHTML = this.score;
+        this.scoreDiv.children[0].innerHTML = 'Score: ' + this.score;
+        this.scoreDiv.children[1].innerHTML = 'Tiempo: ' + this.time;
     }
 
     endGame() {

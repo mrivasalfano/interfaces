@@ -65,14 +65,15 @@
 
 #score {
     position: absolute;
-    top: 10vh;
+    top: 1vh;
     display: flex;
+    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
     z-index: 1;
-    height: 10vh;
-    width: 10vw;
-    font-size: 4vw;
+    height: 18vh;
+    width: 20vw;
+    font-size: 2vw;
 }
 
 #score p {
