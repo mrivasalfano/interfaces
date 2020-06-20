@@ -63,6 +63,16 @@
     align-items: center;
 }
 
+#bonus {
+    background: url('../resources/diamond.png');
+    background-size: 100%;
+    position: absolute;
+    top: 300px;
+    height: 100px;
+    width: 100px;
+    left: 1000px;
+}
+
 #score {
     position: absolute;
     top: 1vh;

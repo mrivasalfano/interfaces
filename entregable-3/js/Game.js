@@ -51,7 +51,7 @@ class Game {
         this.obstacles.push(new Obstacle(up3, down3, width, left+=40, this.bodyHeight, startLeft));
 
         //creo los bonus
-        // this.bonus.push(new Bonus());
+        this.bonus.push(new Bonus(document.querySelector('#bonus')));
         
         //evento para impulsar el avión con la barra espaciadora
         window.addEventListener('keyup', e => {
@@ -90,6 +90,7 @@ class Game {
         this.player.flyAnimation();
         this.intervalId = setInterval(this.loop.bind(this), 16);
         this.timeInterval = setInterval(() => {this.time--;}, 1000);
+        this.player.setPosition(this.playerTop);
     }
     
     end() {
@@ -113,7 +114,7 @@ class Game {
         this.checkScore();
 
         //si agarró un diamante sumo el tiempo
-        // this.checkBonus();
+        this.checkBonus();
 
         //actualiza los elementos en la pantalla
         this.updateScreen();
@@ -128,8 +129,11 @@ class Game {
 
     checkBonus() {
         for (let i = 0; i < this.bonus.length; i++) {
-            if (this.bonus[i].collision(this.player))
-                this.time += 10;            
+            if (this.bonus[i].collision(this.player)) {
+                this.time += 10;        
+                this.bonus[i].destroy();    
+                this.bonus.splice(i, 1);
+            }
         }
     }
 
@@ -173,9 +177,8 @@ class Game {
     checkScore() {
         //recorro los obstáculos y veo si el jugador lo superó y sumo al score
         for (let i = 0; i < this.obstacles.length; i++) {
-            if (this.obstacles[i].overcome(this.player.getLeft())) {
-                this.score++;            
-            }
+            if (this.obstacles[i].overcome(this.player.getLeft())) 
+                this.score++; 
         }
     }
 
@@ -195,6 +198,10 @@ class Game {
         
         this.obstacles.forEach(obs => {
             obs.update();
+        });
+
+        this.bonus.forEach(bon => {
+            bon.update();
         });
 
         this.scoreDiv.children[0].innerHTML = 'Score: ' + this.score;
