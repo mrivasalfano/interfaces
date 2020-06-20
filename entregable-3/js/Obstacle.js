@@ -4,6 +4,8 @@ class Obstacle {
         this.downDiv = down;
         this.upHeight;
         this.downHeight;
+        this.scoreDiv;
+        this.overcomed = false;
         this.left = left;
         this.originalLeft = this.left;
         this.startLeft = startLeft;
@@ -13,6 +15,14 @@ class Obstacle {
         this.vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
         this.bodyHeight = bodyHeight * 100 / window.innerHeight; //transformación del height en px a vh
         this.setStyle();
+    }
+
+    overcome(playerLeft) {
+        if (!this.overcomed) {
+            this.overcomed = playerLeft > ((this.left * this.vw / 100) + (this.width * this.vw / 100));
+        }
+
+        return this.overcomed;
     }
 
     setStyle() {

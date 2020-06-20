@@ -21,7 +21,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 60s linear infinite;
+    /* animation: bg-parallax 60s linear infinite; */
 }
 
 #left_cloud {
@@ -31,7 +31,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 10s linear infinite;
+    /* animation: bg-parallax 10s linear infinite; */
 }
 
 #right_cloud {
@@ -41,7 +41,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 10s linear infinite;
+    /* animation: bg-parallax 10s linear infinite; */
 }
 
 #desert {
@@ -51,7 +51,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 5s linear infinite;
+    /* animation: bg-parallax 5s linear infinite; */
 }
 
 #gameContainer {

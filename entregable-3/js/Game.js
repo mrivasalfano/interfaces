@@ -99,6 +99,10 @@ class Game {
     loop() {
         //checkea si el jugador tiene que subir o bajar
         this.checkPlayerMove();
+                
+        //si "colisiono" con la parte invisible entre los dos
+        //obstáculos sumo un punto
+        this.checkScore();
 
         //actualiza los elementos en la pantalla
         this.updateScreen();
@@ -106,6 +110,9 @@ class Game {
         //si colisionó con algún obstáculo pierde
         if (this.collision())
             this.endGame();
+
+            console.log(this.score);
+            
     }
 
     checkPlayerMove() {
@@ -113,7 +120,7 @@ class Game {
             if (this.upTimer > 0) {
                 this.upTimer--;
                 //resto 40 al top del jugador
-                this.playerTop -= 5;
+                this.playerTop -= 7;
     
                 //en caso de quedar en negativo lo vuelvo a 0
                 //simulando que se choca el techo
@@ -133,7 +140,7 @@ class Game {
         }
         else {
             //sumo 3 al top del jugador
-            this.playerTop += 2;
+            this.playerTop += 3;
 
             //si el top actual es mayor o igual al máximo
             //significa que tocó el piso y perdió
@@ -141,6 +148,16 @@ class Game {
                 this.player.setPosition(this.playerTop);
             else {
                 this.endGame();
+            }
+        }
+    }
+
+    checkScore() {
+        //recorro los obstáculos y veo si el jugador lo superó y sumo al score
+        for (let i = 0; i < this.obstacles.length; i++) {
+            if (this.obstacles[i].overcome(this.player.getLeft())) {
+                this.score++;            
+                console.log(this.score);
             }
         }
     }
