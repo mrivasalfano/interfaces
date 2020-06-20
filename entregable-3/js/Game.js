@@ -110,9 +110,6 @@ class Game {
         //si colisionó con algún obstáculo pierde
         if (this.collision())
             this.endGame();
-
-            console.log(this.score);
-            
     }
 
     checkPlayerMove() {
@@ -157,7 +154,6 @@ class Game {
         for (let i = 0; i < this.obstacles.length; i++) {
             if (this.obstacles[i].overcome(this.player.getLeft())) {
                 this.score++;            
-                console.log(this.score);
             }
         }
     }
@@ -180,7 +176,7 @@ class Game {
             obs.update();
         });
 
-        // this.scoreDiv.innerHTML = this.score;
+        this.scoreDiv.children[0].innerHTML = this.score;
     }
 
     endGame() {

@@ -4,7 +4,6 @@ class Obstacle {
         this.downDiv = down;
         this.upHeight;
         this.downHeight;
-        this.scoreDiv;
         this.overcomed = false;
         this.left = left;
         this.originalLeft = this.left;
@@ -18,11 +17,17 @@ class Obstacle {
     }
 
     overcome(playerLeft) {
+        //si no fue sobrepasado me fijo si su left más su width
+        //(pasandolo a pixeles), es menor al left del jugador, por lo
+        //tanto el obstáculo fue sobrepasado
         if (!this.overcomed) {
-            this.overcomed = playerLeft > ((this.left * this.vw / 100) + (this.width * this.vw / 100));
+            this.overcomed = (((this.left + this.width) * this.vw / 100) < playerLeft);
+            return this.overcomed;
         }
-
-        return this.overcomed;
+        //si ya fue sobrepasado retorno false porque si no todo el tiempo
+        //va a decir que fue sobrepasado y seguiría sumando puntos
+        else
+            return false;
     }
 
     setStyle() {
@@ -69,6 +74,7 @@ class Obstacle {
             this.random();
             this.left = this.startLeft;
             this.setStyle();
+            this.overcomed = false;
         }
         else 
             this.left -= 0.3;

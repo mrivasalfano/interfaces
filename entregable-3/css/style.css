@@ -63,6 +63,25 @@
     align-items: center;
 }
 
+#score {
+    position: absolute;
+    top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    height: 10vh;
+    width: 10vw;
+    font-size: 4vw;
+}
+
+#score p {
+    text-shadow: -4px 0 #000, 0 4px #000, 4px 0 #000, 0 -4px #000;
+    font-size: 1em;
+    color: #e9e922;
+    font-family: 'Press Start 2P', cursive;
+}
+
 @keyframes bg-parallax {
     100% {background-position-x: -100vw;}
 }
