@@ -150,7 +150,7 @@ class Game {
             if (this.upTimer > 0) {
                 this.upTimer--;
                 //resto 40 al top del jugador
-                this.playerTop -= 10;
+                this.playerTop -= 8;
     
                 //en caso de quedar en negativo lo vuelvo a 0
                 //simulando que se choca el techo
