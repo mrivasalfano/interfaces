@@ -21,7 +21,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 60s linear infinite;
+    /* animation: bg-parallax 60s linear infinite; */
 }
 
 #left_cloud {
@@ -31,7 +31,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 10s linear infinite;
+    /* animation: bg-parallax 10s linear infinite; */
 }
 
 #right_cloud {
@@ -41,7 +41,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 10s linear infinite;
+    /* animation: bg-parallax 10s linear infinite; */
 }
 
 #desert {
@@ -51,17 +51,7 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    animation: bg-parallax 7s linear infinite;
-}
-
-#snow {
-    position: absolute;
-    z-index: -1;
-    background: url('../resources/Snow.png');
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    animation: bg-parallax 5s linear infinite;
+    /* animation: bg-parallax 7s linear infinite; */
 }
 
 #gameContainer {

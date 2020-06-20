@@ -101,13 +101,13 @@ class Game {
         this.player.flyAnimation();
         this.intervalId = setInterval(this.loop.bind(this), 16);
         this.timeInterval = setInterval(() => {this.time--;}, 1000);
-        this.player.setPosition(this.playerTop);
+        this.player.setTop(this.playerTop);
     }
     
     end() {
         //vuelvo el top del jugador al original
         this.playerTop = this.originalTop;
-        this.player.setPosition(this.playerTop);
+        this.player.setTop(this.playerTop);
         this.player.update();
         
         //reinicio obstáculos
@@ -158,7 +158,7 @@ class Game {
                     this.playerTop = 0;
     
                 //actualizo su posición
-                this.player.setPosition(this.playerTop)
+                this.player.setTop(this.playerTop)
                 //pongo en false para que no siga saltando
                 //infinitamente
             }
@@ -170,12 +170,12 @@ class Game {
         }
         else {
             //sumo 3 al top del jugador
-            this.playerTop += 3;
+            this.playerTop += 3.5;
 
             //si el top actual es mayor o igual al máximo
             //significa que tocó el piso y perdió
             if (this.playerTop <= this.maxTop)
-                this.player.setPosition(this.playerTop);
+                this.player.setTop(this.playerTop);
             else {
                 this.endGame();
             }
@@ -231,7 +231,7 @@ class Game {
             //intervalo de caída
             let deadInterval = setInterval(() => {
                 if (this.playerTop < (this.bodyHeight + this.playerHeight)) {
-                    this.player.setPosition(this.playerTop += 5);
+                    this.player.setTop(this.playerTop += 5);
                     this.player.update();
                 }
                 else {

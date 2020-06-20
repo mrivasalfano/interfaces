@@ -18,9 +18,9 @@ class Bonus {
 
     collision(player) {
         //si el diamante está dentro del jugador en el eje X
-        if ((this.left < (player.getLeft() + player.getWidth())) && (this.left + this.width) > player.getLeft())
+        if ((this.left < player.getRight()) && (this.left + this.width) > player.getLeft())
             //me fijo si en el eje Y está dentro
-            return (this.top < (player.getPosition() + player.getHeight())) && (this.top + this.height) > player.getPosition();
+            return (this.top < player.getBottom()) && (this.top + this.height) > player.getTop();
     }
 
     update() {

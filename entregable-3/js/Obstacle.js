@@ -56,12 +56,12 @@ class Obstacle {
         //tengo el problema que si achico o agrando la pantalla
         //las medidas cambian y choco antes o después
         let playerLeft = player.getLeft() * 100 / this.vw;
-        let playerWidth = player.getWidth() * 100 / this.vw;
-        let playerTop = player.getPosition() * 100 / this.vh;
-        let playerHeight = player.getHeight() * 100 / this.vh;
+        let playerRight = player.getRight() * 100 / this.vw;
+        let playerTop = player.getTop() * 100 / this.vh;
+        let playerBottom = player.getBottom() * 100 / this.vh;
 
-        if ((this.left + this.width) >= playerLeft && this.left <= (playerLeft + playerWidth))
-            return (playerTop <= this.upHeight) || ((playerTop + playerHeight) >= (this.bodyHeight - this.downHeight));
+        if ((this.left + this.width) >= playerLeft && this.left <= playerRight)
+            return (playerTop <= this.upHeight) || (playerBottom >= (this.bodyHeight - this.downHeight));
         else 
             return false;
     }

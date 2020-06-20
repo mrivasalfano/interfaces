@@ -4,31 +4,31 @@ class Player {
         this.height = parseInt(window.getComputedStyle(this.container, null).getPropertyValue('height').split('px')[0]);
         this.left = parseInt(window.getComputedStyle(this.container, null).getPropertyValue('left').split('px')[0]);
         this.width = parseInt(window.getComputedStyle(this.container, null).getPropertyValue('width').split('px')[0]);
-        this.position;
+        this.top;
     }
 
     update() {
-        this.container.style.top = this.position + 'px';
+        this.container.style.top = this.top + 'px';
     }
 
-    setPosition(top) {
-        this.position = top;
+    setTop(top) {
+        this.top = top;
     }
 
-    getPosition() {
-        return this.position;
+    getTop() {
+        return this.top;
     }
 
     getLeft() {
         return this.left;
     }
 
-    getWidth() {
-        return this.width;
+    getBottom() {
+        return this.top + this.height;
     }
 
-    getHeight() {
-        return this.height;
+    getRight() {
+        return this.left + this.width;
     }
 
     upAnimation() {
