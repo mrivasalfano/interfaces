@@ -174,14 +174,13 @@
 }
 
 #lose {
-    /* position: absolute;
-    z-index: -1;
-    top: 40vh; */
+    /* Lo pongo por JS así puedo esconterlo con la clase hide */
+    /* display: flex; */
     flex-flow: column wrap;
     font-size: .9em;
     background: #e9e922;
-    height: 15vh;
-    width: 20vw;
+    height: 20vh;
+    width: 30vw;
     border-radius: 10px;
     border: 1px solid #b1b113;
     box-shadow: 0px 6px 0px #b1b113;

@@ -1,5 +1,6 @@
 class Game {
     constructor(loseDiv) {
+        this.time = 10;
         this.playing = false;
         this.obstacles = [];
         this.score;
@@ -8,6 +9,7 @@ class Game {
         this.goUp = false;
         this.upTimer = 10;
         this.intervalId;
+        this.timeInterval;
         this.maxTop;
         this.playerContainer;
         this.body;
@@ -80,8 +82,10 @@ class Game {
         //reinicio el score y creo el interval del game loop
         this.playing = true;
         this.score = 0;
+        this.time = 10;
         this.player.flyAnimation();
         this.intervalId = setInterval(this.loop.bind(this), 16);
+        this.timeInterval = setInterval(() => {this.time--;}, 1000);
     }
     
     end() {
@@ -106,6 +110,9 @@ class Game {
 
         //actualiza los elementos en la pantalla
         this.updateScreen();
+
+        if(this.time == 0)
+            this.endGame();
 
         //si colisionó con algún obstáculo pierde
         if (this.collision())
@@ -183,23 +190,36 @@ class Game {
         this.playing = false;
         //borro el interval del game loop
         clearInterval(this.intervalId);
-        // //animación de muerte
-        this.player.deadAnimation();
-        
-        let deadInterval = setInterval(() => {
-            if (this.playerTop < (this.bodyHeight + this.playerHeight)) {
-                this.player.setPosition(this.playerTop += 5);
-                this.player.update();
-            }
-            else {
-                clearInterval(deadInterval);
-                //hago click al botón play así se reinicia el juego
-                this.player.noneAnimation();
-                this.loseDiv.classList.remove('hide');
-                this.loseDiv.classList.add('show');
-                this.loseDiv.style.zIndex = '2';
-            }
-        }, 16);
+        clearInterval(this.timeInterval);
 
+        //si NO perdió por límite de tiempo
+        if(this.time != 0) {
+            //animación de muerte
+            this.player.deadAnimation();
+        
+            //intervalo de caída
+            let deadInterval = setInterval(() => {
+                if (this.playerTop < (this.bodyHeight + this.playerHeight)) {
+                    this.player.setPosition(this.playerTop += 5);
+                    this.player.update();
+                }
+                else {
+                    clearInterval(deadInterval);
+                    this.lose('¡Qué choque! :O');
+                }
+            }, 16);
+        }
+        else
+            this.lose('Te quedaste sin tiempo :(');
+
+        
+    }
+
+    lose(msg) {
+        this.player.noneAnimation();
+        this.loseDiv.children[0].innerHTML = msg;
+        this.loseDiv.classList.remove('hide');
+        this.loseDiv.classList.add('show');
+        this.loseDiv.style.zIndex = '2';
     }
 }

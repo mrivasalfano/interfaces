@@ -85,6 +85,7 @@ class Obstacle {
 
     restart() {
         this.left = this.originalLeft;
+        this.overcomed = false;
     }
 
     random() {
