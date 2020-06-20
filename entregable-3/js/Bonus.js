@@ -2,6 +2,8 @@ class Bonus {
     constructor(div) {
         this.container = div;
         this.top;
+        this.minTop = 50;
+        this.maxTop = window.innerHeight - 70;
         this.width = parseInt(window.getComputedStyle(div, null).getPropertyValue('width').split('px')[0]);
         this.left = window.innerWidth + this.width;
         this.height = parseInt(window.getComputedStyle(div, null).getPropertyValue('height').split('px')[0]);
@@ -10,7 +12,7 @@ class Bonus {
 
     random() {
         this.container.style.left = this.left + 'px';
-        this.top = Math.floor(Math.random() * (window.innerHeight - 40)) + 40;
+        this.top = Math.floor(Math.random() * this.maxTop) + this.minTop;
         this.container.style.top = this.top + 'px';
     }
 
