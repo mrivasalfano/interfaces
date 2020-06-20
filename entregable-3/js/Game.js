@@ -1,6 +1,6 @@
 class Game {
     constructor(loseDiv) {
-        this.time = 10;
+        this.time = 20;
         this.playing = false;
         this.obstacles = [];
         this.score;
@@ -9,7 +9,7 @@ class Game {
         this.goUp = false;
         this.upTimer = 10;
         this.intervalId;
-        this.bonus = [];
+        this.bonus;
         this.timeInterval;
         this.maxTop;
         this.playerContainer;
@@ -50,8 +50,8 @@ class Game {
         this.obstacles.push(new Obstacle(up2, down2, width, left+=40, this.bodyHeight, startLeft));
         this.obstacles.push(new Obstacle(up3, down3, width, left+=40, this.bodyHeight, startLeft));
 
-        //creo los bonus
-        this.bonus.push(new Bonus(document.querySelector('#bonus')));
+        //creo el bonus
+        this.createBonus();
         
         //evento para impulsar el avión con la barra espaciadora
         window.addEventListener('keyup', e => {
@@ -62,6 +62,17 @@ class Game {
                 }
             }
         });
+    }
+
+    createBonus() {
+        if(this.bonus != null)
+            this.bonus.destroy();    
+
+        this.bonus = null;
+        let bonus = document.createElement('div');
+        bonus.classList.add('bonus');
+        document.querySelector('#bonusContainer').appendChild(bonus);
+        this.bonus = new Bonus(bonus);
     }
     
     createUsefullVar() {
@@ -86,7 +97,7 @@ class Game {
         //reinicio el score y creo el interval del game loop
         this.playing = true;
         this.score = 0;
-        this.time = 10;
+        this.time = 20;
         this.player.flyAnimation();
         this.intervalId = setInterval(this.loop.bind(this), 16);
         this.timeInterval = setInterval(() => {this.time--;}, 1000);
@@ -128,12 +139,9 @@ class Game {
     }
 
     checkBonus() {
-        for (let i = 0; i < this.bonus.length; i++) {
-            if (this.bonus[i].collision(this.player)) {
-                this.time += 10;        
-                this.bonus[i].destroy();    
-                this.bonus.splice(i, 1);
-            }
+        if (this.bonus.collision(this.player)) {
+            this.time += 10;        
+            this.createBonus();
         }
     }
 
@@ -142,7 +150,7 @@ class Game {
             if (this.upTimer > 0) {
                 this.upTimer--;
                 //resto 40 al top del jugador
-                this.playerTop -= 7;
+                this.playerTop -= 10;
     
                 //en caso de quedar en negativo lo vuelvo a 0
                 //simulando que se choca el techo
@@ -200,9 +208,10 @@ class Game {
             obs.update();
         });
 
-        this.bonus.forEach(bon => {
-            bon.update();
-        });
+        
+        this.bonus.update();
+        if(this.bonus.out())
+            this.createBonus();
 
         this.scoreDiv.children[0].innerHTML = 'Score: ' + this.score;
         this.scoreDiv.children[1].innerHTML = 'Tiempo: ' + this.time;

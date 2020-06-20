@@ -44,8 +44,9 @@ class Obstacle {
         this.upDiv.style.height = this.upHeight + 'vh';
         this.downDiv.style.height = this.downHeight + 'vh';
 
-        this.upDiv.style.top = 0 + 'vh';
-        this.downDiv.style.top = (100 - this.downHeight) + 'vh';
+        //ahora lo hago desde css
+        // this.upDiv.style.top = 0 + 'vh';
+        // this.downDiv.style.top = (100 - this.downHeight) + 'vh';
     }
 
     collision(player) {

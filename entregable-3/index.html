@@ -21,17 +21,21 @@
         <button id="playGame" type="button">
             <p>JUGAR</p>
         </button>
+
         <!-- Reglas del juego -->
         <div id="rules">
-            <p>Objetivo: El juego consiste en superar los obstáculos sin tocarlos, obteniendo un punto por cada uno.</p>
+            <p>Objetivo: El juego consiste en superar los obstáculos sin tocarlos, obteniendo la mayor cantidad de puntos antes que se termine el tiempo.</p>
+            <p>Bonus: Los diamantes dan más tiempo ;)</p>
             <p>Controles: El avión puede impulsarse con la barra espaciadora.</p>
             <p>Advertencia: ¡Cuidado con tocar el "suelo"!</p>
         </div>
+
         <!-- Cartel de perder -->
         <div id="lose" class="hide">
             <p></p>
             <button id="restart">Reintentar</button>
         </div>
+        
         <!-- Contenedor del jugador -->
         <div id="player-container">
             <div id="plane" class="hide"></div>
@@ -42,7 +46,11 @@
             <p></p>
             <p></p>
         </div>
-        <div id="bonus"></div>
+
+        <!-- acá voy a crear y agregar los bonus -->
+        <div id="bonusContainer"></div>
+
+        <!-- los 3 obstáculos que van iterando y cambiando de forma -->
         <div id="obstacle1" class="obstacle-up"></div>
         <div id="obstacle2" class="obstacle-down"></div>
         <div id="obstacle3" class="obstacle-up"></div>
