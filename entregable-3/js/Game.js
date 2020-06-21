@@ -205,10 +205,10 @@ class Game {
 
     collision() {
         //recorro los obstáculos y veo si el jugador colisionó con alguno
-        // for (let i = 0; i < this.obstacles.length; i++) {
-        //     if (this.obstacles[i].collision(this.player))
-        //         return true;            
-        // }
+        for (let i = 0; i < this.obstacles.length; i++) {
+            if (this.obstacles[i].collision(this.player))
+                return true;            
+        }
 
         return false;
     }
