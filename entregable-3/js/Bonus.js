@@ -1,8 +1,8 @@
 class Bonus {
     constructor(div) {
         this.container = div;
-        this.minLeft = 108 * window.innerWidth / 100; //el left del primer obstaculo en px
-        this.maxLeft = this.minLeft + (8 * window.innerWidth / 100) + (40 * window.innerWidth / 100); //el left + el width + la distancia entre los obstaculos
+        this.minLeft = (108 * window.innerWidth / 100) + 100; //el left del primer obstaculo en px
+        this.maxLeft = this.minLeft + (8 * window.innerWidth / 100) + (40 * window.innerWidth / 100) - 200; //el left + el width + la distancia entre los obstaculos
         this.top;
         this.minTop = 50;
         this.maxTop = window.innerHeight - 150;

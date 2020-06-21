@@ -234,6 +234,11 @@
     animation: up 160ms steps(10) infinite;
 }
 
+.bonusAnimation {
+    background: url('../resources/plane/bonus.png');
+    animation: bonus 1600ms steps(5) infinite;
+}
+
 @keyframes up {
     0% {background-position: 0px;}
     100% {background-position: -1680px;}   
@@ -247,5 +252,10 @@
 @keyframes dead {
     0% {background-position: 0px;}
     100% {background-position: -344px;}   
+}
+
+@keyframes bonus {
+    0% {background-position: 0px;}
+    100% {background-position: -840px;}   
 }
 

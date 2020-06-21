@@ -32,18 +32,23 @@ class Player {
     }
 
     upAnimation() {
-        this.container.children[0].classList.remove("fly");
+        this.noneAnimation();
         this.container.children[0].classList.add("up");
     }
 
     flyAnimation() {
-        this.container.children[0].classList.remove("up");
+        this.noneAnimation();
         this.container.children[0].classList.add("fly");
     }
 
+    
+    bonusAnimation() {
+        this.noneAnimation();
+        this.container.children[0].classList.add("bonusAnimation");
+    }
+    
     deadAnimation() {
-        this.container.children[0].classList.remove("up");
-        this.container.children[0].classList.remove("fly");
+        this.noneAnimation();
         this.container.children[0].classList.add("dead");
     }
 
@@ -51,5 +56,6 @@ class Player {
         this.container.children[0].classList.remove("fly");
         this.container.children[0].classList.remove("up");
         this.container.children[0].classList.remove("dead");
+        this.container.children[0].classList.remove("bonusAnimation");
     }
 }

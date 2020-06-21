@@ -56,10 +56,11 @@ class Game {
         
         //evento para impulsar el avión con la barra espaciadora
         window.addEventListener('keyup', e => {
-            if (this.playing) {
+            if (this.playing ) {
                 if (e.keyCode == 32) {
                     this.goUp = true;
-                    this.player.upAnimation();
+                    if (!this.bonusAnimation)
+                        this.player.upAnimation();
                 }
             }
         });
@@ -147,6 +148,12 @@ class Game {
         //tiempo y creo un nuevo bonus
         if (this.bonus.collision(this.player)) {
             this.time += 10;        
+            this.bonusAnimation = true;
+            this.player.bonusAnimation();
+            setTimeout(() => {
+                this.bonusAnimation = false;
+                this.player.flyAnimation();
+            }, 1600);
             this.createBonus();
         }
     }
@@ -198,10 +205,10 @@ class Game {
 
     collision() {
         //recorro los obstáculos y veo si el jugador colisionó con alguno
-        for (let i = 0; i < this.obstacles.length; i++) {
-            if (this.obstacles[i].collision(this.player))
-                return true;            
-        }
+        // for (let i = 0; i < this.obstacles.length; i++) {
+        //     if (this.obstacles[i].collision(this.player))
+        //         return true;            
+        // }
 
         return false;
     }
