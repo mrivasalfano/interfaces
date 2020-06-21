@@ -44,11 +44,12 @@ class Game {
         //indica donde van a arrancar cuando vuelvan
         let left = 100 + width;
         let startLeft = left;
+        let distance = 40;
 
         //creo los obstáculos
         this.obstacles.push(new Obstacle(up, down, width, left, this.bodyHeight, startLeft));
-        this.obstacles.push(new Obstacle(up2, down2, width, left+=40, this.bodyHeight, startLeft));
-        this.obstacles.push(new Obstacle(up3, down3, width, left+=40, this.bodyHeight, startLeft));
+        this.obstacles.push(new Obstacle(up2, down2, width, left+=distance, this.bodyHeight, startLeft));
+        this.obstacles.push(new Obstacle(up3, down3, width, left+=distance, this.bodyHeight, startLeft));
 
         //creo el bonus
         this.createBonus();
@@ -114,6 +115,9 @@ class Game {
         this.obstacles.forEach(obs => {
             obs.restart();
         });
+
+        //creo un nuevo bonus
+        this.createBonus();
     }
 
     loop() {
@@ -139,6 +143,8 @@ class Game {
     }
 
     checkBonus() {
+        //si el jugador tocó el bonus le sumo
+        //tiempo y creo un nuevo bonus
         if (this.bonus.collision(this.player)) {
             this.time += 10;        
             this.createBonus();
@@ -200,7 +206,7 @@ class Game {
         return false;
     }
 
-    //actualizo posición del jugador, obstáculos y el score
+    //actualizo posición del jugador, obstáculos, etc
     updateScreen() {
         this.player.update();
         
@@ -208,7 +214,7 @@ class Game {
             obs.update();
         });
 
-        
+        //si el bonus se va fuera de la pantalla creo uno nuevo
         this.bonus.update();
         if(this.bonus.out())
             this.createBonus();

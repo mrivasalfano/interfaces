@@ -97,4 +97,8 @@ class Obstacle {
         //el obstáculo de abajo calcula su alto para quedar proporcionado
         this.downHeight = (60 - this.upHeight);
     }
+
+    getRight() {
+        return this.left + this.width;
+    }
 }

@@ -1,18 +1,22 @@
 class Bonus {
     constructor(div) {
         this.container = div;
+        this.minLeft = 108 * window.innerWidth / 100; //el left del primer obstaculo en px
+        this.maxLeft = this.minLeft + (8 * window.innerWidth / 100) + (40 * window.innerWidth / 100); //el left + el width + la distancia entre los obstaculos
         this.top;
         this.minTop = 50;
-        this.maxTop = window.innerHeight - 70;
+        this.maxTop = window.innerHeight - 150;
         this.width = parseInt(window.getComputedStyle(div, null).getPropertyValue('width').split('px')[0]);
-        this.left = window.innerWidth + this.width;
+        this.left;
         this.height = parseInt(window.getComputedStyle(div, null).getPropertyValue('height').split('px')[0]);
         this.random();
     }
 
     random() {
+        this.left = Math.floor(Math.random() * (this.maxLeft - this.minLeft + 1) + this.minLeft);
         this.container.style.left = this.left + 'px';
-        this.top = Math.floor(Math.random() * this.maxTop) + this.minTop;
+        // this.top = Math.floor(Math.random() * this.maxTop) + this.minTop;
+        this.top = Math.floor(Math.random() * (this.maxTop - this.minTop + 1) + this.minTop);
         this.container.style.top = this.top + 'px';
     }
 
