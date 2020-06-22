@@ -19,6 +19,8 @@ class Game {
         this.maxTop;
         this.playerTop;
         this.originalTop;
+        this.flySound;
+        this.explosionSound;
     }
 
     initGame() {
@@ -59,11 +61,20 @@ class Game {
             if (this.playing ) {
                 if (e.keyCode == 32) {
                     this.goUp = true;
+                    this.flySound.pause();
+                    this.jumpSound.play();
                     if (!this.bonusAnimation)
                         this.player.upAnimation();
                 }
             }
         });
+
+        this.flySound = new Audio('resources/sounds/fly.wav');
+        this.flySound.loop = true;
+
+        this.explosionSound = new Audio('resources/sounds/explosion.wav');
+
+        this.jumpSound = new Audio('resources/sounds/jump.wav');
     }
 
     createBonus() {
@@ -104,6 +115,7 @@ class Game {
         this.intervalId = setInterval(this.loop.bind(this), 16);
         this.timeInterval = setInterval(() => {this.time--;}, 1000);
         this.player.setTop(this.playerTop);
+        this.flySound.play();
     }
     
     end() {
@@ -179,6 +191,7 @@ class Game {
                 this.goUp = false;
                 this.upTimer = 10;
                 this.player.flyAnimation();
+                this.flySound.play();
             }
         }
         else {
@@ -231,6 +244,8 @@ class Game {
     }
 
     endGame() {
+        this.flySound.pause();
+        this.explosionSound.play();
         this.playing = false;
         //borro el interval del game loop
         clearInterval(this.intervalId);
