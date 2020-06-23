@@ -15,7 +15,6 @@ class Bonus {
     random() {
         this.left = Math.floor(Math.random() * (this.maxLeft - this.minLeft + 1) + this.minLeft);
         this.container.style.left = this.left + 'px';
-        // this.top = Math.floor(Math.random() * this.maxTop) + this.minTop;
         this.top = Math.floor(Math.random() * (this.maxTop - this.minTop + 1) + this.minTop);
         this.container.style.top = this.top + 'px';
     }

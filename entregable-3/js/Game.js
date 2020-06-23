@@ -59,19 +59,7 @@ class Game {
         //creo el bonus
         this.createBonus();
         
-        //evento para impulsar el avión con la barra espaciadora
-        window.addEventListener('keyup', e => {
-            if (this.playing ) {
-                if (e.keyCode == 32) {
-                    this.goUp = true;
-                    this.flySound.pause();
-                    this.jumpSound.play();
-                    if (!this.bonusAnimation)
-                        this.player.upAnimation();
-                }
-            }
-        });
-
+        //efectos de sonido
         this.flySound = new Audio('resources/sounds/fly.wav');
         this.flySound.loop = true;
 
@@ -88,7 +76,19 @@ class Game {
         this.flySound.volume = 0.1;
         this.explosionSound.volume = 0.1;
         this.jumpSound.volume = 0.03;
-        
+
+        //evento para impulsar el avión con la barra espaciadora
+        window.addEventListener('keyup', e => {
+            if (this.playing ) {
+                if (e.keyCode == 32) {
+                    this.goUp = true;
+                    this.flySound.pause();
+                    this.jumpSound.play();
+                    if (!this.bonusAnimation)
+                        this.player.upAnimation();
+                }
+            }
+        });
     }
 
     createBonus() {
