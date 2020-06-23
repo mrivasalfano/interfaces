@@ -83,9 +83,9 @@ class Game {
 
         this.coinSound = new Audio('resources/sounds/coin.wav');
 
-        this.startSound.volume = 0.3;
-        this.coinSound.volume = 0.3;
-        this.flySound.volume = 0.3;
+        this.startSound.volume = 0.2;
+        this.coinSound.volume = 0.1;
+        this.flySound.volume = 0.2;
         this.explosionSound.volume = 0.2;
         this.jumpSound.volume = 0.1;
         
