@@ -181,7 +181,7 @@ class Game {
             setTimeout(() => {
                 this.bonusAnimation = false;
                 this.player.flyAnimation();
-            }, 1600);
+            }, 2000);
             this.createBonus();
         }
     }
@@ -206,8 +206,9 @@ class Game {
             else {
                 this.goUp = false;
                 this.upTimer = 10;
-                this.player.flyAnimation();
                 this.flySound.play();
+                if(!this.bonusAnimation)
+                    this.player.flyAnimation();
             }
         }
         else {

@@ -236,7 +236,7 @@
 
 .bonusAnimation {
     background: url('../resources/plane/bonus.png');
-    animation: bonus 1600ms steps(5) infinite;
+    animation: bonus 2s steps(5) infinite;
 }
 
 @keyframes up {
