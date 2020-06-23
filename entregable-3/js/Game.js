@@ -21,6 +21,9 @@ class Game {
         this.originalTop;
         this.flySound;
         this.explosionSound;
+        this.jumpSound;
+        this.startSound;
+        this.coinSound;
     }
 
     initGame() {
@@ -75,6 +78,17 @@ class Game {
         this.explosionSound = new Audio('resources/sounds/explosion.wav');
 
         this.jumpSound = new Audio('resources/sounds/jump.wav');
+
+        this.startSound = new Audio('resources/sounds/start.wav');
+
+        this.coinSound = new Audio('resources/sounds/coin.wav');
+
+        this.startSound.volume = 0.3;
+        this.coinSound.volume = 0.3;
+        this.flySound.volume = 0.3;
+        this.explosionSound.volume = 0.2;
+        this.jumpSound.volume = 0.1;
+        
     }
 
     createBonus() {
@@ -116,6 +130,7 @@ class Game {
         this.timeInterval = setInterval(() => {this.time--;}, 1000);
         this.player.setTop(this.playerTop);
         this.flySound.play();
+        this.startSound.play();
     }
     
     end() {
@@ -159,6 +174,7 @@ class Game {
         //si el jugador tocó el bonus le sumo
         //tiempo y creo un nuevo bonus
         if (this.bonus.collision(this.player)) {
+            this.coinSound.play()
             this.time += 10;        
             this.bonusAnimation = true;
             this.player.bonusAnimation();
