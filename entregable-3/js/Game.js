@@ -87,7 +87,7 @@ class Game {
         this.coinSound.volume = 0.1;
         this.flySound.volume = 0.1;
         this.explosionSound.volume = 0.1;
-        this.jumpSound.volume = 0.05;
+        this.jumpSound.volume = 0.03;
         
     }
 
