@@ -1,9 +1,12 @@
-body {
-    background: #A8DADC;
-    width: 100vw;
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    background: #A8DADC;
+    width: 100vw;
 }
 
 nav {
