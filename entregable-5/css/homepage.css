@@ -3,8 +3,10 @@
 }
 
 .card-musica {
-    margin: 20px 0px 20px 0px;
+    /* margin: 20px 0px 20px 0px; */
     width: 100%;
+    overflow: hidden;
+    background: #457B9D;
 }
 
 .card-musica .title {
@@ -20,12 +22,13 @@
 }
 
 .card-musica .content {
-    width: 100%;
-    background: #457B9D;
+    width: auto;
     padding: 10px 20px 10px 20px;
     display: flex;
     flex-direction: row;
-    overflow-x: hidden;
+    position: relative;
+    left: 0;
+    transition: all .5s ease-in;
 }
 
 .card-musica .content .item {
@@ -52,8 +55,36 @@
     margin: 0;
 }
 
+.contenedor-card .flechas {
+    display: none;
+}
+
+
+
 @media only screen and (min-width: 768px) {
-    .main-container {
-        width: 80vw;
+    .contenedor-card .flechas {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10%;
+    }
+
+    .contenedor-card .flechas button {
+        padding: 0;
+        background: none;
+        border: none;
+        font-size: 40px;
+        color: #1D3557;
+    }
+
+    .contenedor-card {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin: 20px 0px 20px 0px;
+    }
+    
+    .contenedor-card .card-musica {
+        width: auto;
     }
 }
