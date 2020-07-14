@@ -1,0 +1,56 @@
+body {
+    background: #1D3557;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#imgLogin {
+    height: 220px;
+    width: 200px;
+}
+
+.jumbotron {
+    height: 290px;
+}
+
+#btnLogin {
+    background: #83C727;
+    padding: 7px 15px;
+    border-radius: 5px;
+    border: none;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #122642;
+}
+
+#recuperarContraseña {
+    color: #1D3557;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration-line: underline;
+}
+
+#crearCuenta {
+    width: 169px;
+    height: 44px;
+    border: 1px solid #A8DADC;
+    border-radius: 5px;
+    background: none;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 28px;
+    color: #F1FAEE;
+}

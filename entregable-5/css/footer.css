@@ -1,0 +1,250 @@
+body {
+    background: #A8DADC;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#reproductor .reproduccionMobile {
+    display: none;
+}
+
+#reproductor .controlesMobile {
+    display: none;
+}
+
+#reproductor {
+    background: #1D3557 ;
+    height: 80px;
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#reproductor .corazon {
+    width: 6vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reproductor .corazon i {
+    font-size: 40px;
+    color: #E63946;
+}
+
+#reproductor .volumen {
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 25px;
+}
+
+#reproductor .volumen .estrellas {
+    font-size: 1em;
+    color: #FFD700;
+    margin-top: 10px;
+}
+
+#reproductor .volumen .sliderContainer {
+    width: 100%;
+    padding: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#reproductor .volumen .sliderContainer i {
+    font-size: 22px;
+    color: #A8DADC;
+    width: 10%
+}
+
+#reproductor .volumen .sliderVolumen {
+    width: 80%;
+    height: 4px;
+    background: #83C727;
+    border-radius: 10px;
+}
+
+#reproductor .reproduccion {
+    width: 54vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#reproductor .reproduccion .controles i {
+    font-size: 40px;
+    color: #A8DADC;
+    margin: 5px;
+}
+
+
+#reproductor .reproduccion .barraReproduccion {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#reproductor .reproduccion .barraReproduccion p {
+    font-size: 15px;
+    height: 4px;
+    color: #F1FAEE;
+}
+
+#reproductor .reproduccion .barraReproduccion .barra {
+    width: 100%;
+    height: 4px;
+    background: #83C727;
+    margin: 0px 5px 0px 5px;
+}
+
+#reproductor .cancion {
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #F1FAEE;
+}
+
+#reproductor .cancion .titulo {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 26px;
+    margin-bottom: 5px;
+}
+
+#reproductor .cancion .nombre {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+@media only screen and (max-width: 1000px) {
+    #reproductor .volumen .estrellas {
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    #reproductor .volumen .estrellas {
+        font-size: 0.7em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #reproductor .volumen {
+        display: none;
+    }
+
+    #reproductor .reproduccion {
+        display: none;
+    }
+
+    #reproductor .cancion {
+        display: none;
+    }
+
+    #reproductor .reproduccionMobile {
+        display: flex;
+    }
+
+    #reproductor .controlesMobile {
+        display: flex;
+    }
+
+    #reproductor .corazon {
+        width: 10vw;
+    }
+
+    #reproductor .reproduccionMobile {
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #reproductor .controlesMobile {
+        width: 30vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #reproductor .controlesMobile i {
+        font-size: 36px;
+        color: #A8DADC;
+        margin: 5px;
+    }
+
+    #reproductor .corazon i {
+        font-size: 25px;
+    }
+
+    #reproductor {
+        height: 60px;
+    }
+
+    #reproductor .reproduccionMobile .barraReproduccion {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 3px;
+    }
+
+    #reproductor .reproduccionMobile .barraReproduccion p {
+        font-size: 15px;
+        height: 4px;
+        color: #F1FAEE;
+    }
+    
+    #reproductor .reproduccionMobile .barraReproduccion .barra {
+        width: 100%;
+        height: 4px;
+        background: #83C727;
+        margin: 0px 5px 0px 5px;
+    }
+
+    #reproductor .reproduccionMobile .cancion {
+        width: 25vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #F1FAEE;
+    }
+    
+    #reproductor .reproduccionMobile  .cancion .titulo {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 16px;
+        text-align: center;
+    }
+    
+    #reproductor .reproduccionMobile .cancion .nombre {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
