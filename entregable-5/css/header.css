@@ -9,8 +9,14 @@ body {
 nav {
     background: #1D3557 ;
     position: sticky;
+    z-index: 1;
     top: 0;
     width: 100vw;
+}
+
+.active {
+    font-weight: bold;
+    color: #457B9D !important;
 }
 
 .linkNotificacion {
@@ -74,15 +80,30 @@ nav {
     text-decoration: none;
     color: #F1FAEE;
     font-size: 16px;
-    transition: all 0.2s ease-in;
+    /* transition: all 0.2s ease-in; */
 }
 
-#linksNavBar a:hover {
+
+.underline::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #A8DADC;
+    transition: width .3s;
+}
+
+.underline:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+
+/* #linksNavBar a:hover {
     transition: all 0.2s ease-out;
     color: #A8DADC;
     font-size: 18px;
     border-bottom: #A8DADC solid 1px;
-}
+} */
 
 #notificaciones {
     width: 10vw;
