@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
 async function crearCards() {
     let cardMusica = await fetch('../templates/card-musica.html');
+    cardMusica = await cardMusica.text();
 
     document.querySelector('.main-container').innerHTML = cardMusica;
 }
