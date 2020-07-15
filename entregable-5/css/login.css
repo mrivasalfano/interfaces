@@ -22,9 +22,7 @@ body {
     border-radius: 5px;
     border: none;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
+    
     font-size: 24px;
     line-height: 28px;
     color: #122642;
@@ -32,9 +30,6 @@ body {
 
 #recuperarContraseña {
     color: #1D3557;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
     font-size: 16px;
     line-height: 24px;
     text-decoration-line: underline;
@@ -47,9 +42,7 @@ body {
     border-radius: 5px;
     background: none;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
+
     font-size: 20px;
     line-height: 28px;
     color: #F1FAEE;

@@ -1,118 +1,69 @@
-body {
-    background: #A8DADC;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-#reproductor .reproduccionMobile {
+.reproductor__volumen {
     display: none;
 }
 
-#reproductor .controlesMobile {
-    display: none;
-}
-
-#reproductor {
-    background: #1D3557 ;
-    height: 80px;
+.reproductor {
     position: fixed;
-    width: 100vw;
     bottom: 0;
-    display: flex;
-    flex-direction: row;
+    width: 100%;
+    background: #1D3557;
+    display: grid;
+    grid-template-columns: 1fr 5fr 3fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "corazon controles cancion"
+        "corazon reproduccion cancion";
+    padding: 5px;
 }
 
-#reproductor .corazon {
-    width: 6vw;
+/* corazón */
+.reproductor__corazon {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#reproductor .corazon i {
-    font-size: 40px;
+    grid-area: corazon;
     color: #E63946;
 }
 
-#reproductor .volumen {
-    width: 15vw;
+.reproductor__corazon i {
+    margin: auto;
+    font-size: 35px;
+}
+
+/* controles */
+.reproductor__controles {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 25px;
+    justify-content: center;
+    grid-area: controles;
 }
 
-#reproductor .volumen .estrellas {
-    font-size: 1em;
-    color: #FFD700;
-    margin-top: 10px;
-}
-
-#reproductor .volumen .sliderContainer {
-    width: 100%;
-    padding: 5%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#reproductor .volumen .sliderContainer i {
-    font-size: 22px;
-    color: #A8DADC;
-    width: 10%
-}
-
-#reproductor .volumen .sliderVolumen {
-    width: 80%;
-    height: 4px;
-    background: #83C727;
-    border-radius: 10px;
-}
-
-#reproductor .reproduccion {
-    width: 54vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-
-#reproductor .reproduccion .controles i {
-    font-size: 40px;
+.reproductor__controles i {
+    font-size: 36px;
     color: #A8DADC;
     margin: 5px;
 }
 
-
-#reproductor .reproduccion .barraReproduccion {
-    width: 80%;
+/* barra reproduccion */
+.reproductor__reproduccion {
+    grid-area: reproduccion;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    margin-bottom: 5px;
+    height: 10px;
 }
 
-#reproductor .reproduccion .barraReproduccion p {
-    font-size: 15px;
-    height: 4px;
+.reproductor__reproduccion-numero {
+    font-size: 12px;
     color: #F1FAEE;
 }
 
-#reproductor .reproduccion .barraReproduccion .barra {
-    width: 100%;
+.reproductor__reproduccion-barra {
+    flex: 1;
+    margin: 0px 5px;
     height: 4px;
     background: #83C727;
-    margin: 0px 5px 0px 5px;
 }
 
-#reproductor .cancion {
-    width: 25vw;
+/* nombre cancion */
+.reproductor__cancion {
+    grid-area: cancion;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -120,131 +71,57 @@ body {
     color: #F1FAEE;
 }
 
-#reproductor .cancion .titulo {
+.reproductor__cancion-titulo {
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
-    line-height: 26px;
-    margin-bottom: 5px;
+    font-size: 18px;
+    text-align: center;
 }
 
-#reproductor .cancion .nombre {
+.reproductor__cancion-nombre {
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 15px;
+    text-align: center;
 }
 
-@media only screen and (max-width: 1000px) {
-    #reproductor .volumen .estrellas {
-        font-size: 0.8em;
-    }
-}
-
-@media only screen and (max-width: 900px) {
-    #reproductor .volumen .estrellas {
-        font-size: 0.7em;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    #reproductor .volumen {
-        display: none;
+@media only screen and (min-width: 768px) {
+    .reproductor__volumen {
+        display: block;
+        grid-area: volumen;
+        padding: 0px 5px;
     }
 
-    #reproductor .reproduccion {
-        display: none;
+    .reproductor__volumen-estrellas {
+        font-size: 19px;
+        color: #FFD700;
+        margin-bottom: 5px;
     }
 
-    #reproductor .cancion {
-        display: none;
-    }
-
-    #reproductor .reproduccionMobile {
+    .reproductor__volumen-sliderContainer {
         display: flex;
-    }
-
-    #reproductor .controlesMobile {
-        display: flex;
-    }
-
-    #reproductor .corazon {
-        width: 10vw;
-    }
-
-    #reproductor .reproduccionMobile {
-        width: 60vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
         align-items: center;
-    }
-
-    #reproductor .controlesMobile {
-        width: 30vw;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #reproductor .controlesMobile i {
-        font-size: 36px;
-        color: #A8DADC;
-        margin: 5px;
-    }
-
-    #reproductor .corazon i {
-        font-size: 25px;
-    }
-
-    #reproductor {
-        height: 60px;
-    }
-
-    #reproductor .reproduccionMobile .barraReproduccion {
-        width: 90%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 3px;
-    }
-
-    #reproductor .reproduccionMobile .barraReproduccion p {
-        font-size: 15px;
-        height: 4px;
-        color: #F1FAEE;
     }
     
-    #reproductor .reproduccionMobile .barraReproduccion .barra {
-        width: 100%;
+    .reproductor__volumen-sliderContainer i {
+        font-size: 22px;
+        color: #A8DADC;
+        width: 22px;
+    }
+    
+    .reproductor__volumen-sliderContainer-sliderVolumen {
+        flex: 1;
         height: 4px;
         background: #83C727;
-        margin: 0px 5px 0px 5px;
+        border-radius: 10px;
+        margin: 0px 5px;
     }
 
-    #reproductor .reproduccionMobile .cancion {
-        width: 25vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: #F1FAEE;
+    .reproductor {
+        grid-template-columns: 0.5fr 1fr 4fr 1fr;
+        grid-template-areas: 
+            "corazon volumen cancion controles"
+            "corazon volumen reproduccion controles";
     }
-    
-    #reproductor .reproduccionMobile  .cancion .titulo {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 14px;
-        line-height: 16px;
-        text-align: center;
-    }
-    
-    #reproductor .reproduccionMobile .cancion .nombre {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 14px;
-    }
+
 }
