@@ -6,14 +6,16 @@ document.addEventListener('DOMContentLoaded', e => {
             crearCards().then(e => {
                 let flechasIzq = document.querySelectorAll('.flecha__izquierda');
                 let flechasDer = document.querySelectorAll('.flecha__derecha');
-                
+                let pixeles = 200;
+
                 flechasIzq.forEach(flecha => {
                     flecha.addEventListener('click', e => {
                         let contenedorMusica = flecha.parentNode.nextElementSibling.children[1];
 
                         let leftActual = parseInt(window.getComputedStyle(contenedorMusica,null).getPropertyValue('left'));
-                        
-                        contenedorMusica.style.left = (leftActual + 200) + 'px';                         
+
+                        if (leftActual < 0)
+                            contenedorMusica.style.left = (leftActual + pixeles) + 'px';                         
                     });
                 });
 
@@ -22,8 +24,11 @@ document.addEventListener('DOMContentLoaded', e => {
                         let contenedorMusica = flecha.parentNode.previousElementSibling.children[1];
 
                         let leftActual = parseInt(window.getComputedStyle(contenedorMusica,null).getPropertyValue('left'));
-                        
-                        contenedorMusica.style.left = (leftActual - 200) + 'px';  
+
+                        //funciona pero es un parche nada más, los 800
+                        //no deberían ser fijos
+                        if (leftActual > (-800))
+                            contenedorMusica.style.left = (leftActual - pixeles) + 'px';  
                     });
                 });
             });
