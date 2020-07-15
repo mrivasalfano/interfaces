@@ -1,8 +1,13 @@
 "use strict"
 
-document.addEventListener('DOMContentLoaded', e => {
+async function crearNavBar() {
+    let navBar = await fetch('templates/navbar.html');
+    navBar = await navBar.text();
+
+    document.querySelector('header').innerHTML = navBar;
+
     let iconoHamburguesa = document.querySelector('#iconoHamburguesa');
-    let linksNavBar = document.querySelector('#linksNavBar');
+    let linksNavBar = document.querySelector('#links');
 
     iconoHamburguesa.addEventListener('click', e => {
         let desplegado = iconoHamburguesa.getAttribute('data-desplegado');
@@ -16,4 +21,6 @@ document.addEventListener('DOMContentLoaded', e => {
             iconoHamburguesa.setAttribute('data-desplegado', 'false');
         }
     });
-});
+
+    return true;
+}

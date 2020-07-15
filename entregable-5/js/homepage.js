@@ -1,11 +1,15 @@
 "use strict"
 
 document.addEventListener('DOMContentLoaded', e => {
-    document.querySelector('#btnBuscar').addEventListener('click', e => {
-        location.replace('busqueda.html')
+    crearNavBar().then(e => {
+        crearReproductor().then(e => {
+            document.querySelector('#btnBuscar').addEventListener('click', e => {
+                location.replace('busqueda.html')
+            });
+        
+            // crearCards();
+        })
     });
-
-    crearCards();
 });
 
 async function crearCards() {
