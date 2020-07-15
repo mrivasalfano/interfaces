@@ -6,6 +6,10 @@ async function crearNavBar() {
 
     document.querySelector('header').innerHTML = navBar;
 
+    document.querySelector('#btnBuscar').addEventListener('click', e => {
+        location.replace('busqueda.html')
+    });
+    
     let iconoHamburguesa = document.querySelector('#iconoHamburguesa');
     let linksNavBar = document.querySelector('#links');
 

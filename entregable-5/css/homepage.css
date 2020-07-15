@@ -12,7 +12,6 @@
 .card-musica .title {
     background: #1D3557;
     padding: 1px 0px 1px 10px;
-    height: 30px;
     width: 100%;
     font-style: normal;
     font-weight: bold;
@@ -23,12 +22,12 @@
 
 .card-musica .content {
     width: auto;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 20px;
     display: flex;
     flex-direction: row;
     position: relative;
     left: 0;
-    transition: all .5s ease-in;
+    transition: all .4s ease-in;
 }
 
 .card-musica .content .item {
@@ -36,11 +35,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 10px 0px 10px;
+    margin: 0px 10px;
 }
 
 .card-musica .content .item img {
-    width: 80px;
+    min-width: 80px;
     height: 80px;
     margin-bottom: 10px;
 }
@@ -55,21 +54,28 @@
     margin: 0;
 }
 
-.contenedor-card .flechas {
+.contenedor-card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.contenedor-card .flecha {
     display: none;
 }
 
 
 
 @media only screen and (min-width: 768px) {
-    .contenedor-card .flechas {
+    .contenedor-card .flecha {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 10%;
     }
 
-    .contenedor-card .flechas button {
+    .contenedor-card .flecha button {
         padding: 0;
         background: none;
         border: none;
@@ -78,10 +84,7 @@
     }
 
     .contenedor-card {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        margin: 20px 0px 20px 0px;
+        margin: 20px 0px;
     }
     
     .contenedor-card .card-musica {
