@@ -58,7 +58,7 @@
     flex: 1;
     margin: 0px 5px;
     height: 4px;
-    background: #83C727;
+    background: #F1FAEE;
 }
 
 /* nombre cancion */
@@ -69,6 +69,15 @@
     justify-content: center;
     align-items: center;
     color: #F1FAEE;
+}
+
+.cambiarTitulo {
+    animation: cambiarTitulo 1s;
+}
+
+@keyframes cambiarTitulo {
+    0% {opacity: 0%};
+    100% {opacity: 100%};
 }
 
 .reproductor__cancion-titulo {

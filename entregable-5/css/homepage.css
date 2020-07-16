@@ -1,20 +1,15 @@
-body {
-    /* overflow-x: hidden; */
-}
-
 .main-container {
     width: 100%;
     margin-bottom: 100px; /* para que no lo tape el footer */
 }
 
-.card-musica {
-    /* margin: 20px 0px 20px 0px; */
+.contenedor-card__card {
     width: 100%;
     overflow: hidden;
     background: #457B9D;
 }
 
-.card-musica .title {
+.contenedor-card__card-title {
     background: #1D3557;
     padding: 1px 0px 1px 10px;
     width: 100%;
@@ -25,7 +20,7 @@ body {
     color: #F1FAEE;
 }
 
-.card-musica .content {
+.contenedor-card__card-content {
     width: auto;
     padding: 10px 20px;
     display: flex;
@@ -33,30 +28,39 @@ body {
     position: relative;
     left: 0;
     transition: all .4s ease-in;
+    overflow-x: auto;
 }
 
-.card-musica .content .item {
+.contenedor-card__card-content-item {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin: 0px 10px;
+    flex-shrink: 0;
+    flex-basis: 100px;
 }
 
-.card-musica .content .item img {
-    min-width: 80px;
+.contenedor-card__card-content-item:hover div{
+    color: #A8DADC;
+}
+
+.contenedor-card__card-content-item img {
+    width: 80px;
     height: 80px;
     margin-bottom: 10px;
 }
 
-.card-musica .content .item p {
+.contenedor-card__card-content-item div {
     text-align: center;
     line-height: 1;
-    font-style: normal;
-    font-weight: normal;
     font-size: 15px;
     color: #F1FAEE;
-    margin: 0;
+    padding: 2px 0px;
+}
+
+.contenedor-card__card-content-item-title {
+    font-weight: bold;
 }
 
 .contenedor-card {
@@ -66,21 +70,21 @@ body {
     margin: 20px 0px;
 }
 
-.contenedor-card .flecha {
+.contenedor-card__flecha {
     display: none;
 }
 
 
 
 @media only screen and (min-width: 768px) {
-    .contenedor-card .flecha {
+    .contenedor-card__flecha {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 10%;
     }
 
-    .contenedor-card .flecha button {
+    .contenedor-card__flecha button {
         padding: 0;
         background: none;
         border: none;
@@ -92,7 +96,11 @@ body {
         margin: 20px 0px;
     }
     
-    .contenedor-card .card-musica {
+    .contenedor-card__card {
         width: auto;
+    }
+
+    .contenedor-card__card-content {
+        overflow: hidden;
     }
 }
