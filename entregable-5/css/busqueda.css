@@ -1,0 +1,47 @@
+.seccionBusqueda {
+    padding: 10px;
+}
+
+.seccionBusqueda__titulo {
+    color: #1D3557;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.seccionBusqueda__contenido-item {
+    background: #FFFFFF;
+    border: 1px solid #457B9D;
+    box-shadow: 1px 2px 0px #457B9D;
+    border-radius: 9px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.seccionBusqueda__contenido-item i {
+    color: #457B9D;
+    text-align: center;
+}
+
+.seccionBusqueda__contenido-item-logo {
+    font-size: 25px !important;
+    width: 40px;
+}
+
+.seccionBusqueda__contenido-item-play {
+    font-size: 30px !important;
+    width: 40px;
+}
+
+.seccionBusqueda__contenido-item-opciones {
+    font-size: 20px !important;
+    width: 20px;
+}
+
+.seccionBusqueda__contenido-item-nombre {
+    font-size: 16px;
+    color: #1D3557;
+    flex: 1;
+}

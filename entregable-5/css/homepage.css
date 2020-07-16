@@ -45,10 +45,16 @@
     color: #A8DADC;
 }
 
+.contenedor-card__card-content-item:hover img{
+    width: 85px;
+    height: 85px;
+}
+
 .contenedor-card__card-content-item img {
     width: 80px;
     height: 80px;
     margin-bottom: 10px;
+    transition: all .3s ease;
 }
 
 .contenedor-card__card-content-item div {
@@ -57,6 +63,7 @@
     font-size: 15px;
     color: #F1FAEE;
     padding: 2px 0px;
+    transition: all .3s ease;
 }
 
 .contenedor-card__card-content-item-title {
