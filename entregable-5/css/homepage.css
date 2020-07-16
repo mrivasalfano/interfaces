@@ -48,6 +48,7 @@
 .contenedor-card__card-content-item:hover img{
     width: 85px;
     height: 85px;
+    margin-bottom: 5px;
 }
 
 .contenedor-card__card-content-item img {

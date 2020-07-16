@@ -18,7 +18,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 10px;
+    padding: 10px;
     margin: 10px;
 }
 
@@ -70,7 +70,7 @@
     }
 
     .seccionBusqueda__contenido-item-nombre {
-        margin: 20px 0px 10px 0px;
+        margin: 20px 0px;
     }
 
     .seccionBusqueda__contenido-item {

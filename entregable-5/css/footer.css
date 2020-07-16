@@ -25,20 +25,22 @@
 
 .reproductor__corazon i {
     margin: auto;
-    font-size: 35px;
+    font-size: 30px;
 }
 
 /* controles */
 .reproductor__controles {
     display: flex;
     justify-content: center;
+    align-items: start;
     grid-area: controles;
+    height: 50px;
 }
 
 .reproductor__controles i {
-    font-size: 36px;
+    font-size: 40px;
     color: #A8DADC;
-    margin: 5px;
+    margin: 0px 5px;
 }
 
 /* barra reproduccion */
@@ -69,6 +71,7 @@
     justify-content: center;
     align-items: center;
     color: #F1FAEE;
+    padding: 8px 0px;
 }
 
 .cambiarTitulo {
@@ -96,9 +99,12 @@
 
 @media only screen and (min-width: 768px) {
     .reproductor__volumen {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
         grid-area: volumen;
         padding: 0px 5px;
+        max-width: 120px;
     }
 
     .reproductor__volumen-estrellas {
@@ -133,4 +139,8 @@
             "corazon volumen reproduccion controles";
     }
 
+    .reproductor__controles {
+        align-items: center;
+        height: auto;
+    }
 }
