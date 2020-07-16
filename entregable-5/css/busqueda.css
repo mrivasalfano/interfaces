@@ -1,5 +1,6 @@
 .seccionBusqueda {
     padding: 10px;
+    margin-bottom: 50px;
 }
 
 .seccionBusqueda__titulo {
@@ -18,6 +19,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
+    margin: 10px;
 }
 
 .seccionBusqueda__contenido-item i {
@@ -25,23 +27,61 @@
     text-align: center;
 }
 
-.seccionBusqueda__contenido-item-logo {
-    font-size: 25px !important;
-    width: 40px;
+.seccionBusqueda__contenido-item i:last-child {
+    text-align: end;
 }
 
-.seccionBusqueda__contenido-item-play {
+.seccionBusqueda__contenido-item-logo {
     font-size: 30px !important;
     width: 40px;
+} 
+
+.seccionBusqueda__contenido-item-playOpciones-play {
+    font-size: 40px !important;
+    width: 40px;
 }
 
-.seccionBusqueda__contenido-item-opciones {
-    font-size: 20px !important;
-    width: 20px;
+.seccionBusqueda__contenido-item-playOpciones-opciones {
+    font-size: 30px !important;
+    width: 30px;
 }
 
 .seccionBusqueda__contenido-item-nombre {
-    font-size: 16px;
-    color: #1D3557;
+    color: #1d3557;
     flex: 1;
+    text-align: center;
+    padding: 0px 10px;
+}
+
+.seccionBusqueda__contenido-item-nombre-artista {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.seccionBusqueda__contenido-item-nombre-cancion {
+    font-size: 16px;
+}
+
+@media only screen and (min-width: 500px) {
+    .seccionBusqueda__contenido {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .seccionBusqueda__contenido-item-nombre {
+        margin: 20px 0px 10px 0px;
+    }
+
+    .seccionBusqueda__contenido-item {
+        flex-direction: column;
+        min-width: 200px;
+    }
+
+    .seccionBusqueda__contenido-item-playOpciones {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+    }
 }
