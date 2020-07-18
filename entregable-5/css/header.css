@@ -118,6 +118,10 @@ nav #links a {
         display: none;
     }
 
+    .links-perfil {
+        display: none; 
+    }
+
     nav #usuario {
         display: block;
     }

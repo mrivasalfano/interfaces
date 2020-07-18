@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', e => {
 });
 
 async function crearSecciones() {
-    let titles = ['Canciones', 'Artistas', 'Álbums', 'Playlists', 'Podcasts'];
+    let titles = ['Canciones', 'Artistas', 'Álbums', 'PlayLists', 'Podcasts'];
     let seccionBusqueda = await fetch('templates/seccionBusqueda.html');
     seccionBusqueda = await seccionBusqueda.text();
 

@@ -21,7 +21,6 @@
 }
 
 .contenedor-card__card-content {
-    width: auto;
     padding: 10px 20px;
     display: flex;
     flex-direction: row;
@@ -103,12 +102,9 @@
     .contenedor-card {
         margin: 20px 0px;
     }
-    
-    .contenedor-card__card {
-        width: auto;
-    }
 
     .contenedor-card__card-content {
         overflow: hidden;
+        width: auto;
     }
 }

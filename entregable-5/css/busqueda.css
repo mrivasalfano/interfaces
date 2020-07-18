@@ -1,6 +1,14 @@
+.main-container {
+    margin-bottom: 100px;
+}
+
 .seccionBusqueda {
     padding: 10px;
     margin-bottom: 50px;
+}
+
+.seccionBusqueda__contenido-item img{
+    display: none;
 }
 
 .seccionBusqueda__titulo {
@@ -20,6 +28,7 @@
     align-items: center;
     padding: 10px;
     margin: 10px;
+    position: relative;
 }
 
 .seccionBusqueda__contenido-item i {
@@ -36,12 +45,12 @@
     width: 40px;
 } 
 
-.seccionBusqueda__contenido-item-playOpciones-play {
+.seccionBusqueda__contenido-item-play {
     font-size: 40px !important;
     width: 40px;
 }
 
-.seccionBusqueda__contenido-item-playOpciones-opciones {
+.seccionBusqueda__contenido-item-opciones {
     font-size: 30px !important;
     width: 30px;
 }
@@ -63,6 +72,21 @@
     font-size: 16px;
 }
 
+.seccionBusqueda__verMas {
+    display: flex;
+    justify-content: center;
+}
+
+.seccionBusqueda__verMas button {
+    background: #457B9D;
+    border-radius: 5px;
+    border: none;
+    color: #F1FAEE;
+    text-decoration-line: underline;
+    font-size: 14px;
+    padding: 10px;
+}
+
 @media only screen and (min-width: 500px) {
     .seccionBusqueda__contenido {
         display: flex;
@@ -78,10 +102,22 @@
         min-width: 200px;
     }
 
-    .seccionBusqueda__contenido-item-playOpciones {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
+    .seccionBusqueda__contenido-item-opciones {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .seccionBusqueda__verMas button {
+        width: 50%;
+    }
+
+    .seccionBusqueda__contenido-item-logo {
+        display: none !important;
+    }
+
+    .seccionBusqueda__contenido-item img {
+        display: block;
+        width: 80px;
     }
 }

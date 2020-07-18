@@ -1,0 +1,201 @@
+.main-container {
+    padding: 20px;
+    margin-bottom: 100px;
+}
+
+/* PORTADA */
+.portada img {
+    width: 100%;
+    height: 100%;
+}
+
+/* CANCION */
+.cancion {
+    color: #1D3557;
+    text-align: center;
+}
+
+.cancion__artista {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* VALORACIONES */
+.valoraciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    border: 2px solid #457b9d4f;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.valoraciones__estrellas {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.valoraciones__opinar-titulo {
+    color: #457B9D;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+}
+
+.valoraciones__opinar textarea {
+    width: 100%;
+    height: 150px;
+    margin: 10px 0px;
+    resize: none;
+}
+
+.valoraciones__opinar button {
+    border: none;
+    background: #83C727;
+    border-radius: 5px;
+    height: 50px;
+    width: 100%;
+    color: #122642;
+    font-size: 24px;
+}
+
+/* OPINIONES */
+.opiniones {
+    margin-top: 50px;
+}
+
+.opiniones__titulo {
+    color: #1D3557;
+    font-weight: bold;
+    font-size: 21px;
+    text-align: center;
+}
+
+.opiniones__contenido-item {
+    background: #457B9D;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+.opiniones__contenido-item-titulo {
+    color: #1D3557;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.opiniones__contenido-item-mensaje {
+    font-size: 16px;
+    color: #F1FAEE;
+}
+
+.opiniones__contenido-item-valoracion {
+    font-size: 25px;
+    display: flex;
+    width: 50px;
+    margin-left: auto;
+}
+
+.opiniones__contenido-item-valoracion i {
+    color: #FFD700;
+}
+
+.opiniones__contenido-item-valoracion div {
+    color: #F1FAEE;
+    font-size: 20px;
+}
+
+/* ACCIONES */
+.acciones {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.acciones button{
+    border: none;
+    background: #457B9D;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.acciones button i {
+    font-size: 25px;
+}
+
+.acciones :first-child {
+    margin-right: 5px;
+}
+
+.acciones button div {
+    font-size: 16px;
+    color: #F1FAEE;
+}
+
+.acciones_favoritos {
+    color: #E63946;
+}
+
+.acciones_playlist {
+    color: #83C727;
+    font-size: 25px;
+}
+
+@media only screen and (min-width: 800px) {
+    .main-container {
+        display: grid;
+        grid-template-columns: 5fr 3fr;
+        grid-template-rows: 250px 60px 50px auto;
+        grid-template-areas: 
+                            "portada valoraciones"
+                            "cancion valoraciones"
+                            "acciones valoraciones"
+                            "opiniones opiniones"
+                            ;
+    }
+
+    .portada {
+        grid-area: portada;
+        margin-right: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .portada img {
+        max-width: 500px;
+    }
+
+    .cancion {
+        grid-area: cancion;
+    }
+
+    .valoraciones {
+        grid-area: valoraciones;
+        border: none;
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        justify-content: end;
+    }
+
+    .opiniones {
+        grid-area: opiniones;
+    }
+
+    .acciones {
+        grid-area: acciones;
+        margin-top: 0;
+    }
+
+    .opiniones {
+        margin-top: 40px;
+    }
+
+    .opiniones__contenido-item {
+        max-width: 500px;
+        margin: 10px auto;
+    }
+}
