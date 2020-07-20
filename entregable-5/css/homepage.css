@@ -60,7 +60,6 @@
 .contenedor-card__card-content-item div {
     text-align: center;
     line-height: 1;
-    font-size: 15px;
     color: #F1FAEE;
     padding: 2px 0px;
     transition: all .3s ease;
@@ -68,6 +67,11 @@
 
 .contenedor-card__card-content-item-title {
     font-weight: bold;
+    font-size: 17px;
+}
+
+.contenedor-card__card-content-name {
+    font-size: 14px;
 }
 
 .contenedor-card {
