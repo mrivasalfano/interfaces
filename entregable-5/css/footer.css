@@ -99,6 +99,12 @@
     text-align: center;
 }
 
+@media only screen and (min-width: 400px) {
+    .reproductor {
+        grid-template-columns: 100px auto 100px;
+    }
+}
+
 @media only screen and (min-width: 768px) {
     .reproductor__volumen {
         display: flex;

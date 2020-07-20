@@ -38,6 +38,7 @@
 
 .seccionBusqueda__contenido-item-corazon {
     color: white !important;
+    font-size: 30px;
     text-shadow: -1px 0 #E63946, 0 1px #E63946, 1px 0 #E63946, 0 -1px #E63946;
 }
 
