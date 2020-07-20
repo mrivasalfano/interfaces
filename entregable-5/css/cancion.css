@@ -46,7 +46,7 @@
 
 @keyframes animacionSeleccion {
     50% {color: #e9c707; font-size: 43px;}
-    100% {color: #FFD700; font-size: 40px; transform: rotateY(360deg)};
+    100% {color: #FFD700; font-size: 40px; transform: rotateY(360deg);};
 }
 
 .valoraciones__opinar-titulo {

@@ -71,12 +71,23 @@ document.addEventListener('DOMContentLoaded', e => {
 });
 
 async function crearCards() {
-    let titles = ['AÚN SIN VALORAR', 'ESCUCHADO RECIENTEMENTE', 'RECOMENDADO PARA VOS', 'LO MÁS ESCUCHADO'];
-    let cardMusica = await fetch('templates/card-musica.html');
+    let titles = ['AÚN SIN VALORAR', 'ESCUCHADO RECIENTEMENTE'];
+    let cardMusica = await fetch('templates/homepage/card-musica.html');
     cardMusica = await cardMusica.text();
 
     titles.forEach(title => {
         document.querySelector('.main-container').innerHTML += cardMusica;
+        let titulos = document.querySelectorAll('.contenedor-card__card-title');
+        titulos[titulos.length-1].innerHTML = title;
+    });
+
+    titles = ['RECOMENDADO PARA VOS', 'LO MÁS ESCUCHADO'];
+
+    let cardArtistas = await fetch('templates/homepage/card-artistas.html');
+    cardArtistas = await cardArtistas.text();
+
+    titles.forEach(title => {
+        document.querySelector('.main-container').innerHTML += cardArtistas;
         let titulos = document.querySelectorAll('.contenedor-card__card-title');
         titulos[titulos.length-1].innerHTML = title;
     });

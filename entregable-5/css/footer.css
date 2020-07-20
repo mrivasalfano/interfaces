@@ -8,11 +8,11 @@
     width: 100%;
     background: #1D3557;
     display: grid;
-    grid-template-columns: 1fr 5fr 3fr;
+    grid-template-columns: 50px auto 100px;
     grid-template-rows: auto auto;
     grid-template-areas: 
-        "corazon controles cancion"
-        "corazon reproduccion cancion";
+        "corazon cancion controles"
+        "corazon reproduccion controles";
     padding: 5px;
     min-height: 85px;
 }
@@ -20,6 +20,8 @@
 /* corazón */
 .reproductor__corazon {
     display: flex;
+    justify-content: center;
+    align-items: center;
     grid-area: corazon;
     color: #E63946;
 }
@@ -33,9 +35,8 @@
 .reproductor__controles {
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: center;
     grid-area: controles;
-    height: 50px;
 }
 
 .reproductor__controles i {
@@ -49,7 +50,7 @@
     grid-area: reproduccion;
     display: flex;
     align-items: center;
-    height: 10px;
+    margin: 0px 10px;
 }
 
 .reproductor__reproduccion-numero {
@@ -103,6 +104,7 @@
         display: flex;
         flex-direction: column;
         justify-content: end;
+        align-content: center;
         grid-area: volumen;
         padding: 0px 5px;
         max-width: 120px;
@@ -134,7 +136,7 @@
     }
 
     .reproductor {
-        grid-template-columns: 0.5fr 1fr 4fr 1fr;
+        grid-template-columns: 60px 120px auto 100px;
         grid-template-areas: 
             "corazon volumen cancion controles"
             "corazon volumen reproduccion controles";
