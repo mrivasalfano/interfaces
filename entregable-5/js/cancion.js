@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', e => {
     crearReproductor();
 
     let estrellas = document.querySelector('.valoraciones__estrellas').children;
+    let valoracionActual = 0;
+    let opinion = document.querySelector('#opinionTextArea');
+    let warningAlert = document.querySelector('#warningAlert');
+    let successAlert = document.querySelector('#successAlert');
 
     document.querySelectorAll('.estrella').forEach(estrella => {
         estrella.addEventListener('mouseover', e => {
@@ -41,6 +45,37 @@ document.addEventListener('DOMContentLoaded', e => {
                 estrellas[i].classList.add('fa-star', 'bordeAmarillo', 'animacionSeleccion');      
                 estrellas[i].setAttribute('seleccionada', 'true');          
             }
+
+            valoracionActual = nroEstrella;
         });
     });
+
+    document.querySelector('#btnEnviarOpinion').addEventListener('click', e => {
+        e.preventDefault();
+
+        if(valoracionActual > 0 && opinion.value != '') {
+            document.querySelector('.opiniones__contenido').innerHTML += `
+                <div class="opiniones__contenido-item">
+                    <div class="opiniones__contenido-item-titulo">Usuario logeado dice:</div>
+                    <div class="opiniones__contenido-item-mensaje">${opinion.value}</div>
+                    <div class="opiniones__contenido-item-valoracion">
+                        <i class="fa fa-star"></i>
+                        <div>${valoracionActual}</div>
+                    </div>
+                </div>`;
+                showAlert(successAlert);
+        }
+        else
+            showAlert(warningAlert);
+    });
+
+    function showAlert(elem) {
+        elem.classList.remove('hide');
+        elem.classList.add('show', 'showAlert');
+
+        setTimeout(function(){
+            elem.classList.remove("show");
+            elem.classList.add("hide");
+        },3000);
+    }
 });
