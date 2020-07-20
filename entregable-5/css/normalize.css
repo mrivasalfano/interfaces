@@ -7,7 +7,6 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-
  * {
      box-sizing: border-box;
      margin: 0;
@@ -35,10 +34,10 @@
   
   body {
     background: #A8DADC;
-    width: 100vw;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
+    overflow-x: hidden;
   }
   
   /**

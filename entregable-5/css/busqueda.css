@@ -36,6 +36,11 @@
     text-align: center;
 }
 
+.fa-heart {
+    color: white !important;
+    text-shadow: -1px 0 #E63946, 0 1px #E63946, 1px 0 #E63946, 0 -1px #E63946;
+}
+
 .seccionBusqueda__contenido-item i:last-child {
     text-align: end;
 }
@@ -75,6 +80,7 @@
 .seccionBusqueda__verMas {
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 
 .seccionBusqueda__verMas button {
@@ -106,10 +112,6 @@
         position: absolute;
         right: 10px;
         top: 10px;
-    }
-
-    .seccionBusqueda__verMas button {
-        width: 50%;
     }
 
     .seccionBusqueda__contenido-item-logo {

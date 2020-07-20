@@ -7,15 +7,22 @@ document.addEventListener('DOMContentLoaded', e => {
 });
 
 async function crearSecciones() {
-    let titles = ['Canciones', 'Artistas', 'Álbums', 'PlayLists', 'Podcasts'];
-    let seccionBusqueda = await fetch('templates/seccionBusqueda.html');
-    seccionBusqueda = await seccionBusqueda.text();
+    let mainContainer = document.querySelector('.main-container');
 
-    titles.forEach(title => {
-        document.querySelector('.main-container').innerHTML += seccionBusqueda;
-        let titulos = document.querySelectorAll('.seccionBusqueda__titulo');
-        titulos[titulos.length-1].innerHTML = title;
-    });
+    let canciones = await fetch('templates/busqueda/canciones.html');
+    canciones = await canciones.text();
+
+    mainContainer.innerHTML += canciones;
+
+    let artistas = await fetch('templates/busqueda/artistas.html');
+    artistas = await artistas.text();
+
+    mainContainer.innerHTML += artistas;
+
+    let playlists = await fetch('templates/busqueda/playlists.html');
+    playlists = await playlists.text();
+
+    mainContainer.innerHTML += playlists;
 
     return true;
 }
