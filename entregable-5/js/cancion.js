@@ -63,7 +63,9 @@ document.addEventListener('DOMContentLoaded', e => {
                         <div>${valoracionActual}</div>
                     </div>
                 </div>`;
-                showAlert(successAlert);
+                
+            opinion.value = '';
+            showAlert(successAlert);
         }
         else
             showAlert(warningAlert);

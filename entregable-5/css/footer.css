@@ -14,6 +14,7 @@
         "corazon controles cancion"
         "corazon reproduccion cancion";
     padding: 5px;
+    min-height: 85px;
 }
 
 /* corazón */

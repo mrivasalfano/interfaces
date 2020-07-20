@@ -58,6 +58,10 @@ document.addEventListener('DOMContentLoaded', e => {
                         iconoReproductor.classList.remove('fa-play-circle');
                         iconoReproductor.classList.add('fa-pause-circle');
 
+                        itm.classList.remove('animarSeleccion');
+                        void itm.offsetWidth;
+                        itm.classList.add('animarSeleccion');
+                        
                         contenedorCancion.classList.add('cambiarTitulo');
                     });
                 }); 
