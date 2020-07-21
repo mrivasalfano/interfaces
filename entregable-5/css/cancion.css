@@ -13,6 +13,7 @@
 .cancion {
     color: #1D3557;
     text-align: center;
+    margin-top: 20px;
 }
 
 .cancion__artista {
@@ -25,7 +26,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 100px;
     border-radius: 5px;
     padding: 5px;
 }
@@ -38,21 +39,7 @@
     font-size: 35px;
     margin-bottom: 10px;
     color: #122642;
-}
-
-.bordeAmarillo {
-    color: #FFD700;
-}
-
-.animacionSeleccion {
-    animation: animacionSeleccion .8s;
-}
-
-@keyframes animacionSeleccion {
-    25% {font-size: 33px;}
-    50% {color: #e9c707; font-size: 35px;}
-    75% {font-size: 33px;}
-    100% {color: #FFD700; font-size: 35px; transform: rotateY(360deg);};
+    transform-style: preserve-3d;
 }
 
 .valoraciones__opinar-titulo {
@@ -81,7 +68,7 @@
 
 /* OPINIONES */
 .opiniones {
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 .opiniones__titulo {

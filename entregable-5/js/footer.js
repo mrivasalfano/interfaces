@@ -6,5 +6,9 @@ async function crearReproductor() {
 
     document.querySelector('footer').innerHTML = reproductor;
 
+    let estrellasContainer = document.querySelector('.reproductor__volumen-estrellas'); 
+    new Valoracion(estrellasContainer);
+    
     return true;
 }
+

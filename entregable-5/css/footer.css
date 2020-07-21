@@ -99,6 +99,20 @@
     text-align: center;
 }
 
+.bordeAmarillo {
+    color: #FFD700;
+}
+
+.animacionSeleccion {
+    animation: animacionSeleccion .8s;
+}
+
+@keyframes animacionSeleccion {
+    0% {transform: scale(0.8);}
+    50% {color: #e9c707; transform: scale(1.2)}
+    100% {color: #FFD700; transform: scale(1) rotateY(360deg);}
+}
+
 @media only screen and (min-width: 400px) {
     .reproductor {
         grid-template-columns: 100px auto 100px;
@@ -118,7 +132,7 @@
 
     .reproductor__volumen-estrellas {
         font-size: 16px;
-        color: #FFD700;
+        color: #A8DADC;
         margin-bottom: 5px;
     }
 
