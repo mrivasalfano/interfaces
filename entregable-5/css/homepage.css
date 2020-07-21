@@ -6,18 +6,18 @@
 .contenedor-card__card {
     width: 100%;
     overflow: hidden;
-    background: #457B9D;
+    background: #A8DADC;
 }
 
 .contenedor-card__card-title {
-    background: #1D3557;
+    background: #457B9D;
     padding: 1px 0px 1px 10px;
     width: 100%;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
     line-height: 30px;
-    color: #F1FAEE;
+    color: #FFFFFF;
 }
 
 .contenedor-card__card-content {
@@ -41,7 +41,7 @@
 }
 
 .contenedor-card__card-content-item:hover div{
-    color: #A8DADC;
+    color: #457B9D;
 }
 
 .contenedor-card__card-content-item:hover img{
@@ -60,7 +60,7 @@
 .contenedor-card__card-content-item div {
     text-align: center;
     line-height: 1;
-    color: #F1FAEE;
+    color: #1D3557;
     padding: 2px 0px;
     transition: all .3s ease;
 }

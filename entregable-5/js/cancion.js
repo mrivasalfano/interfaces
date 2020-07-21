@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', e => {
     crearNavBar();
     crearReproductor();
 
-    let estrellas = document.querySelector('.valoraciones__estrellas').children;
+    let estrellasContainer = document.querySelector('.valoraciones__estrellas'); 
+    let estrellas = estrellasContainer.children;
     let valoracionActual = 0;
     let opinion = document.querySelector('#opinionTextArea');
     let warningAlert = document.querySelector('#warningAlert');
@@ -20,8 +21,19 @@ document.addEventListener('DOMContentLoaded', e => {
         });
 
         estrella.addEventListener('mouseleave', e => {
+            //si las coordenadas del mouse son menores al left de la estrella
+            //significa que la "desvaloró"
+            if(e.clientX <= e.target.offsetLeft) {
+                if(!estaSeleccionada(estrella)) {
+                    estrella.classList.remove('fas', 'bordeAmarillo');                
+                    estrella.classList.add('far');
+                }
+            }
+        });
+
+        estrellasContainer.addEventListener('mouseleave', e => {
             for (let i = 4; i >= 0; i--) {
-                if(estrellas[i].getAttribute('seleccionada') == 'false') {
+                if(!estaSeleccionada(estrellas[i])) {
                     estrellas[i].classList.remove('fas', 'bordeAmarillo');                
                     estrellas[i].classList.add('far');
                 }
@@ -49,6 +61,10 @@ document.addEventListener('DOMContentLoaded', e => {
             valoracionActual = nroEstrella;
         });
     });
+
+    function estaSeleccionada(estrella) {
+        return (estrella.getAttribute('seleccionada') == 'true');
+    }
 
     document.querySelector('#btnEnviarOpinion').addEventListener('click', e => {
         e.preventDefault();

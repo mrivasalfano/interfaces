@@ -55,14 +55,14 @@
 
 .reproductor__reproduccion-numero {
     font-size: 12px;
-    color: #F1FAEE;
+    color: #FFFFFF;
 }
 
 .reproductor__reproduccion-barra {
     flex: 1;
     margin: 0px 5px;
     height: 4px;
-    background: #F1FAEE;
+    background: #FFFFFF;
 }
 
 /* nombre cancion */
@@ -72,7 +72,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #F1FAEE;
+    color: #FFFFFF;
     padding: 8px 0px;
 }
 
