@@ -21,12 +21,12 @@ async function crearNavBar() {
 
     iconoHamburguesa.addEventListener('click', () => {
         linksNavBar.classList.add('abrir');
-        divInvisible.classList.add('visible');
+        divInvisible.classList.add('clickeable');
     });
 
     divInvisible.addEventListener('click', () => {
         linksNavBar.classList.remove('abrir');
-        divInvisible.classList.remove('visible');
+        divInvisible.classList.remove('clickeable');
     });
 
     return true;
