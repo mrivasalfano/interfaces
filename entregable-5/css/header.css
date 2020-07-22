@@ -143,17 +143,21 @@ nav #links a {
     }
 
     nav #links {
+        display: flex;
         flex-direction: row;
         align-items: center;
         position: static;
-        width: auto;
-        height: auto;
         background: none;
         margin-right: 20px;
+        visibility: visible;
+        max-width: none;
+        width: auto;
+        transform: none !important;
     }
-    
+
     nav #links a {
         margin: 0px 7px;
+        padding: 0;
     }
 
     nav #logo {
