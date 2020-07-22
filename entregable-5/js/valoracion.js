@@ -30,7 +30,8 @@ class Valoracion {
             estrella.addEventListener('mouseleave', e => {
                 //si las coordenadas del mouse son menores al left de la estrella
                 //significa que la "desvaloró"
-                if(e.clientX <= e.target.offsetLeft) {
+                                
+                if((e.clientX-1) <= e.target.getBoundingClientRect().x) {
                     if(!this.estaSeleccionada(estrella)) {
                         estrella.classList.remove('fas', 'bordeAmarillo');                
                         estrella.classList.add('far');

@@ -24,5 +24,11 @@ async function crearSecciones() {
 
     mainContainer.innerHTML += playlists;
 
+    document.querySelectorAll('.seccionBusqueda__contenido-item').forEach(itm => {
+        itm.addEventListener('click', () => {
+            location.replace('cancion.html');
+        });
+    });
+
     return true;
 }

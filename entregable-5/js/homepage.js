@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', e => {
             crearCards().then(e => {
                 let flechasIzq = document.querySelectorAll('.contenedor-card__flecha-izquierda');
                 let flechasDer = document.querySelectorAll('.contenedor-card__flecha-derecha');
-                let pixeles = 200;
+                let pixeles = 120;
 
                 flechasIzq.forEach(flecha => {
                     flecha.addEventListener('click', e => {

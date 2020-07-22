@@ -68,26 +68,25 @@ nav #hamburguesa {
 
 /* links */
 nav #links {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    position: absolute;
+    position: fixed;
     z-index: 1;
-    top: 68px;
-    left: -100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
-    height: 100vh;
+    max-width: 280px;
     background: #1D3557;
-    transition: all .5s;
-    margin-right: 10px;
+    visibility: hidden;
+    transform: translate3d(280px, 0, 0);
+    transition: opacity .2s,visibility 0ms linear .2s,transform .5s ease;
 }
 
 nav #links a {
     text-decoration: none;
     color: #FFFFFF;
     font-size: 16px;
-    margin: 10px 0px;
+    padding: 20px;
+    display: block;
 }
 
 /* efectos links */
@@ -110,7 +109,24 @@ nav #links a {
 }
 
 .abrir {
-    left: 0 !important;
+    transform: translateZ(0) !important;
+    opacity: 1;
+    visibility: visible !important;
+    transition: opacity .2s,visibility 0ms,transform .5s ease !important;
+}
+
+#divInvisible {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.visible {
+    visibility: visible !important;
 }
 
 @media only screen and (min-width: 900px) {

@@ -6,18 +6,14 @@
 .contenedor-card__card {
     width: 100%;
     overflow: hidden;
-    background: #A8DADC;
 }
 
 .contenedor-card__card-title {
-    background: #457B9D;
-    padding: 1px 0px 1px 10px;
-    width: 100%;
     font-style: normal;
     font-weight: bold;
-    font-size: 18px;
-    line-height: 30px;
-    color: #FFFFFF;
+    font-size: 20px;
+    color: #1D3557;
+    padding: 10px;
 }
 
 .contenedor-card__card-content {
@@ -32,22 +28,26 @@
 
 .contenedor-card__card-content-item {
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin: 0px 10px;
     flex-shrink: 0;
-    flex-basis: 100px;
+    flex-basis: 150px;
+    background: #a8dadc62;
+    border-radius: 5px;
+    box-shadow: 1px solid black;
+    padding: 10px;
 }
 
-.contenedor-card__card-content-item:hover div{
+.contenedor-card__card-content-item i{
+    display: none;
+    font-size: 35px;
+    position: absolute;
     color: #457B9D;
-}
-
-.contenedor-card__card-content-item:hover img{
-    width: 85px;
-    height: 85px;
-    margin-bottom: 5px;
+    bottom: 10px;
+    right: 10px;
 }
 
 .contenedor-card__card-content-item img {
@@ -57,12 +57,19 @@
     transition: all .3s ease;
 }
 
-.contenedor-card__card-content-item div {
+.contenedor-card__card-content-item-cancion div {
     text-align: center;
     line-height: 1;
     color: #1D3557;
     padding: 2px 0px;
     transition: all .3s ease;
+}
+
+.contenedor-card__card-content-item-cancion {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .contenedor-card__card-content-item-title {
@@ -96,7 +103,12 @@
     75% { transform: scale(0.95, 1.05); }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1000px) {
+    .contenedor-card__card-content-item {
+        position: relative;
+        flex-basis: 200px;
+    }
+
     .contenedor-card__flecha {
         display: flex;
         justify-content: center;
@@ -119,5 +131,30 @@
     .contenedor-card__card-content {
         overflow: hidden;
         width: auto;
+    }
+
+    .contenedor-card__card-content-item:hover i {
+        display: block;
+    }
+
+    .contenedor-card__card-content-item:hover img{
+        width: 125px;
+        height: 125px;
+        margin-bottom: 5px;
+    }
+    
+    .contenedor-card__card-content-item img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 10px;
+        transition: all .3s ease;
+    }
+
+    .contenedor-card__card-content-item-cancion {
+        align-items: start;
+    }
+
+    .contenedor-card__card-content-item-cancion div {
+        text-align: start;
     }
 }

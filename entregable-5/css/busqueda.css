@@ -1,5 +1,6 @@
 .main-container {
     margin-bottom: 100px;
+    padding-top: 40px;
 }
 
 .seccionBusqueda {
@@ -80,7 +81,7 @@
 
 .seccionBusqueda__verMas {
     display: flex;
-    justify-content: center;
+    justify-content: end;
     margin-top: 10px;
 }
 
@@ -96,9 +97,8 @@
 
 @media only screen and (min-width: 500px) {
     .seccionBusqueda__contenido {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-around;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 
     .seccionBusqueda__contenido-item-nombre {
@@ -107,7 +107,8 @@
 
     .seccionBusqueda__contenido-item {
         flex-direction: column;
-        min-width: 200px;
+        margin: 20px auto;
+        max-width: 200px;
     }
 
     .seccionBusqueda__contenido-item-opciones {
@@ -123,5 +124,12 @@
     .seccionBusqueda__contenido-item img {
         display: block;
         width: 80px;
+    }
+}
+
+@media only screen and (min-width: 850px) {
+    .seccionBusqueda__contenido {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }

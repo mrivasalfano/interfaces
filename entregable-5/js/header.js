@@ -16,22 +16,19 @@ async function crearNavBar() {
     //a los links para que aparezcan o desaparezcan
     let iconoHamburguesa = document.querySelector('#hamburguesa');
     let linksNavBar = document.querySelector('#links');
+    let divInvisible = document.querySelector('#divInvisible')
     let body = document.querySelector('body');
 
-    iconoHamburguesa.addEventListener('click', e => {
-        let desplegado = iconoHamburguesa.getAttribute('data-desplegado');
+    iconoHamburguesa.addEventListener('click', () => {
+        linksNavBar.classList.add('abrir');
+        divInvisible.classList.add('visible');
+    });
 
-        if(desplegado == 'false') {
-            linksNavBar.classList.add('abrir');
-            iconoHamburguesa.setAttribute('data-desplegado', 'true');
-            body.style.overflow = 'hidden';
-        }
-        else {
-            linksNavBar.classList.remove('abrir');
-            iconoHamburguesa.setAttribute('data-desplegado', 'false');
-            body.style.overflow = 'visible';
-        }
+    divInvisible.addEventListener('click', () => {
+        linksNavBar.classList.remove('abrir');
+        divInvisible.classList.remove('visible');
     });
 
     return true;
 }
+

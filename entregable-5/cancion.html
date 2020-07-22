@@ -17,76 +17,95 @@
     
     <section class="main-container">
         <div class="portada">
-            <img src="img/artistas/portada-queen.jpeg" alt="">
-        </div>
+            <div class="portada__datos">
+                <div class="portada__datos-cancion">
+                    <div class="portada__datos-cancion-artista">Queen</div>
+                    <div class="portada__datos-cancion-nombre">Love of my life</div>
+                </div>
 
-        <div class="cancion">
-            <div class="cancion__artista">Queen</div>
-            <div class="cancion__nombre">Love of my life</div>
-        </div>
+                <div class="portada__datos-acciones">
+                    <div class="portada__datos-favoritos">
+                        <button>
+                            <i class="fas fa-heart"></i> 
+                        </button>
+                    </div>
+    
+                    <div class="portada__datos-play">
+                        <button>
+                            <i class="fa fa-play-circle"></i> 
+                        </button>
+                    </div>
+    
+                    <div class="portada__datos-playlists">
+                        <button>
+                            <i class="fas fa-plus"></i> 
+                            <div>PlayList</div>
+                        </button>
+                    </div>
+                </div>
 
-        <div class="acciones">
-            <button>
-                <i class="fa fa-heart acciones_favoritos"></i> 
-                <div>Favoritos</div> 
-            </button>
-            <button>
-                <i class="fa fa-play-circle acciones_play"></i> 
-            </button>
-            <button>
-                <i class="fa fa-plus-circle acciones_playlist"></i> 
-                <div>PlayList</div>
-            </button>
+                <div class="portada__datos-valoracion">
+                    <div>Valoraciones promedio</div>
+                    <i class="fas fa-star"></i>
+                    <div>4</div>
+                </div>
+            </div>
         </div>
         
-        <div class="valoraciones">
-            <div class="valoraciones__estrellas">
-                <i data-valoracion="1" seleccionada="false" class="far fa-star"></i>
-                <i data-valoracion="2" seleccionada="false" class="far fa-star"></i>
-                <i data-valoracion="3" seleccionada="false" class="far fa-star"></i>
-                <i data-valoracion="4" seleccionada="false" class="far fa-star"></i>
-                <i data-valoracion="5" seleccionada="false" class="far fa-star"></i>
-            </div>
-            <div class="valoraciones__opinar">
-                <div class="valoraciones__opinar-titulo">Compartí tu opinión</div>
-                <textarea id="opinionTextArea"></textarea>
-                <button id="btnEnviarOpinion">Enviar</button>
-            </div>
-        </div>
-
-        <div class="opiniones">
-            <div class="opiniones__titulo">Últimas opiniones</div>
-            <div class="opiniones__contenido">
-                <div class="opiniones__contenido-item">
-                    <div class="opiniones__contenido-item-titulo">manugnr dice:</div>
-                    <div class="opiniones__contenido-item-mensaje">
-                        De lo mejor que he escuchado en
-                        mucho tiempo.
-                    </div>
-                    <div class="opiniones__contenido-item-valoracion">
-                        <i class="fa fa-star"></i>
-                        <div>4</div>
+        <div class="card-container">
+            <div class="card">
+                <div class="valoraciones">
+                    <div class="valoraciones__opinar">
+                        <div class="valoraciones__opinar-titulo">Compartí tu opinión</div>
+                        <textarea id="opinionTextArea"></textarea>
+                        <div class="valoraciones__estrellas">
+                            <i data-valoracion="1" seleccionada="false" class="far fa-star"></i>
+                            <i data-valoracion="2" seleccionada="false" class="far fa-star"></i>
+                            <i data-valoracion="3" seleccionada="false" class="far fa-star"></i>
+                            <i data-valoracion="4" seleccionada="false" class="far fa-star"></i>
+                            <i data-valoracion="5" seleccionada="false" class="far fa-star"></i>
+                        </div>
+                        <button id="btnEnviarOpinion">Enviar</button>
                     </div>
                 </div>
-                <div class="opiniones__contenido-item">
-                    <div class="opiniones__contenido-item-titulo">tobias01 dice:</div>
-                    <div class="opiniones__contenido-item-mensaje">
-                        Me esperaba más pero no deja de
-                        ser muy buen tema. Espero que en el proximo álbum vuelvan a los viejos tiempos.
-                    </div>
-                    <div class="opiniones__contenido-item-valoracion">
-                        <i class="fa fa-star"></i>
-                        <div>3</div>
-                    </div>
-                </div>
-                <div class="opiniones__contenido-item">
-                    <div class="opiniones__contenido-item-titulo">damirock dice:</div>
-                    <div class="opiniones__contenido-item-mensaje">
-                        Simplemente los mejores...
-                    </div>
-                    <div class="opiniones__contenido-item-valoracion">
-                        <i class="fa fa-star"></i>
-                        <div>5</div>
+            </div>
+    
+            <div class="card">
+                <div class="opiniones">
+                    <div class="opiniones__titulo">Últimas opiniones</div>
+                    <div class="opiniones__contenido">
+                        <div class="opiniones__contenido-item">
+                            <div class="opiniones__contenido-item-titulo">manugnr dice:</div>
+                            <div class="opiniones__contenido-item-mensaje">
+                                De lo mejor que he escuchado en
+                                mucho tiempo.
+                            </div>
+                            <div class="opiniones__contenido-item-valoracion">
+                                <i class="fa fa-star"></i>
+                                <div>4</div>
+                            </div>
+                        </div>
+                        <div class="opiniones__contenido-item">
+                            <div class="opiniones__contenido-item-titulo">tobias01 dice:</div>
+                            <div class="opiniones__contenido-item-mensaje">
+                                Me esperaba más pero no deja de
+                                ser muy buen tema. Espero que en el proximo álbum vuelvan a los viejos tiempos.
+                            </div>
+                            <div class="opiniones__contenido-item-valoracion">
+                                <i class="fa fa-star"></i>
+                                <div>3</div>
+                            </div>
+                        </div>
+                        <div class="opiniones__contenido-item">
+                            <div class="opiniones__contenido-item-titulo">damirock dice:</div>
+                            <div class="opiniones__contenido-item-mensaje">
+                                Simplemente los mejores...
+                            </div>
+                            <div class="opiniones__contenido-item-valoracion">
+                                <i class="fa fa-star"></i>
+                                <div>5</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
