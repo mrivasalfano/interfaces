@@ -1,9 +1,28 @@
 "use strict"
 
 document.addEventListener('DOMContentLoaded', e => {
-    crearNavBar().then(e => {
-        crearReproductor().then(e => {
-            crearCards().then(e => {
+    crearReproductor().then(e => {
+        crearCards().then(e => {
+            let contenidoHeader = `
+                    <div class="header__contenido">
+                        <div class="header__contenido-saludo">
+                            <div class="header__contenido-saludo-bienvenido">Bienvenido,</div>
+                            <div class="header__contenido-saludo-nombre">Jorge</div>
+                        </div>
+                        <div class="header__contenido-publicidad">
+                            <div class="header__contenido-publicidad-texto">
+                                Adquirí un plan premium y disfrutá de todos los beneficios
+                            </div>
+                            <button>Ver planes</button>
+                        </div>
+                    </div>
+                    `;
+
+            crearNavBar(contenidoHeader).then(() => {
+                let linkInicio = document.querySelector('#links').children[0];
+                linkInicio.classList.remove('underline');
+                linkInicio.classList.add('active');
+
                 let flechasIzq = document.querySelectorAll('.contenedor-card__flecha-izquierda');
                 let flechasDer = document.querySelectorAll('.contenedor-card__flecha-derecha');
                 let pixeles = 120;
@@ -37,7 +56,6 @@ document.addEventListener('DOMContentLoaded', e => {
                 let tituloCancion = contenedorCancion.children[0];
                 let nombreCancion = contenedorCancion.children[1];
                 let iconoReproductor = reproductor.children[2].children[1];
-                console.log(iconoReproductor);
                 
                 //cuando termina la animación que cambia el titulo
                 //saco la clase de la animación
@@ -73,26 +91,27 @@ document.addEventListener('DOMContentLoaded', e => {
 });
 
 async function crearCards() {
-    let titles = ['AÚN SIN VALORAR', 'ESCUCHADO RECIENTEMENTE'];
+    let mainContainer = document.querySelector('.main-container');
     let cardMusica = await fetch('templates/homepage/card-musica.html');
     cardMusica = await cardMusica.text();
 
-    titles.forEach(title => {
-        document.querySelector('.main-container').innerHTML += cardMusica;
-        let titulos = document.querySelectorAll('.contenedor-card__card-title');
-        titulos[titulos.length-1].innerHTML = title;
-    });
+    mainContainer.innerHTML += cardMusica;
 
-    titles = ['RECOMENDADO PARA VOS', 'LO MÁS ESCUCHADO'];
+    let titles = ['RECOMENDADO PARA VOS', 'LO MÁS ESCUCHADO'];
 
     let cardArtistas = await fetch('templates/homepage/card-artistas.html');
     cardArtistas = await cardArtistas.text();
 
     titles.forEach(title => {
-        document.querySelector('.main-container').innerHTML += cardArtistas;
+        mainContainer.innerHTML += cardArtistas;
         let titulos = document.querySelectorAll('.contenedor-card__card-title');
         titulos[titulos.length-1].innerHTML = title;
     });
+
+    let cardValorar = await fetch('templates/homepage/card-valorar.html');
+    cardValorar = await cardValorar.text();
+
+    mainContainer.innerHTML += cardValorar;
 
     return true;
 }

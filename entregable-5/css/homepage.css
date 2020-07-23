@@ -1,3 +1,36 @@
+/* CONTENIDO HEADER */
+.header__contenido-saludo {
+    width: 250px;
+}
+
+.header__contenido-saludo-nombre {
+    color: #1c3f7f;
+    font-weight: bold;
+    text-align: end;
+}
+
+.header__contenido-publicidad {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.header__contenido-publicidad-texto {
+    color: #FFFFFF;
+    font-size: 30px;
+}
+
+.header__contenido-publicidad button {
+    margin-top: 10px;
+    flex-shrink: 0;
+    background: #16C153;
+    padding: 7px 15px;
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
 .contenedor-card__card {
     width: 100%;
     overflow: hidden;
@@ -7,7 +40,7 @@
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
-    color: #1D3557;
+    color: #132A55;
     padding: 10px;
 }
 
@@ -30,9 +63,9 @@
     margin: 0px 10px;
     flex-shrink: 0;
     flex-basis: 150px;
-    background: #a8dadc48;
     border-radius: 5px;
-    box-shadow: 1px solid black;
+    background: #F6F6F6;
+    box-shadow: 7px 8px 6px -6px #000f1f5c;
     padding: 10px;
 }
 
@@ -40,13 +73,13 @@
     display: none;
     font-size: 35px;
     position: absolute;
-    color: #457B9D;
+    color: #1c3f7f;
     bottom: 10px;
     right: 10px;
 }
 
 .contenedor-card__card-content-item i:hover{
-    color: #457b9dc2;
+    color: #1c3f7fd5;
 }
 
 .contenedor-card__card-content-item img {
@@ -59,7 +92,6 @@
 .contenedor-card__card-content-item-cancion div {
     text-align: center;
     line-height: 1;
-    color: #1D3557;
     padding: 2px 0px;
     transition: all .3s ease;
 }
@@ -73,10 +105,12 @@
 
 .contenedor-card__card-content-item-title {
     font-weight: bold;
+    color: #1c3f7f;
     font-size: 17px;
 }
 
 .contenedor-card__card-content-item-name {
+    color: #1c3f7f;
     font-size: 14px;
 }
 
@@ -120,7 +154,7 @@
         background: none;
         border: none;
         font-size: 40px;
-        color: #1D3557;
+        color: #3A7FFF;
     }
 
     .contenedor-card__card-content {
@@ -139,7 +173,7 @@
     }
 
     .contenedor-card__card-content-item:hover div {
-        color: #457B9D;
+        color: #1c3f7fc9;
     }
     
     .contenedor-card__card-content-item img {

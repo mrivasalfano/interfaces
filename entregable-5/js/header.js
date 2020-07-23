@@ -1,12 +1,14 @@
 "use strict"
 
-async function crearNavBar() {
+async function crearNavBar(contenidoHeader) {
     //pido el html del navbar
     let navBar = await fetch('templates/navbar.html');
     navBar = await navBar.text();
 
     //se lo meto al header
-    document.querySelector('header').innerHTML = navBar;
+    let header = document.querySelector('header');
+    header.innerHTML = navBar;
+    header.innerHTML += contenidoHeader;
 
     document.querySelector('#btnBuscar').addEventListener('click', e => {
         location.replace('busqueda.html')
@@ -16,19 +18,19 @@ async function crearNavBar() {
     //a los links para que aparezcan o desaparezcan
     let iconoHamburguesa = document.querySelector('#hamburguesa');
     let linksNavBar = document.querySelector('#links');
-    let divInvisible = document.querySelector('#divInvisible')
-    let body = document.querySelector('body');
-
+    let divInvisible = document.querySelector('#divInvisible');
+    
     iconoHamburguesa.addEventListener('click', () => {
+        console.log('abrir');
         linksNavBar.classList.add('abrir');
         divInvisible.classList.add('clickeable');
     });
 
     divInvisible.addEventListener('click', () => {
+        console.log('cerrar');
         linksNavBar.classList.remove('abrir');
         divInvisible.classList.remove('clickeable');
     });
 
     return true;
 }
-

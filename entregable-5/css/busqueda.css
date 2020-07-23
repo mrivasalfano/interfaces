@@ -2,6 +2,25 @@
     padding-top: 40px;
 }
 
+.header__contenido {
+    text-align: center;
+}
+
+.header__contenido-texto {
+    text-align: center;
+}
+
+.header__contenido button {
+    text-align: center;
+    margin: 10px auto;
+    background: #16C153;
+    padding: 7px 15px;
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
 .seccionBusqueda {
     padding: 10px;
     margin-bottom: 50px;
@@ -12,16 +31,15 @@
 }
 
 .seccionBusqueda__titulo {
-    color: #1D3557;
+    color: #132A55;
     font-weight: bold;
     font-size: 24px;
     margin-bottom: 8px;
 }
 
 .seccionBusqueda__contenido-item {
-    background: #a8dadc25;
-    border: 1px solid #457B9D;
-    box-shadow: 1px 2px 0px #457B9D;
+    border: 1px solid #3A7FFF;
+    box-shadow: 1px 2px 0px #3A7FFF;
     border-radius: 9px;
     display: flex;
     justify-content: space-between;
@@ -32,14 +50,14 @@
 }
 
 .seccionBusqueda__contenido-item i {
-    color: #457B9D;
+    color: #3A7FFF;
     text-align: center;
 }
 
 .seccionBusqueda__contenido-item-corazon {
     color: white !important;
     font-size: 30px;
-    text-shadow: -1px 0 #E63946, 0 1px #E63946, 1px 0 #E63946, 0 -1px #E63946;
+    text-shadow: -1px 0 #16C153, 0 1px #16C153, 1px 0 #16C153, 0 -1px #16C153;
 }
 
 .seccionBusqueda__contenido-item i:last-child {
@@ -62,7 +80,7 @@
 }
 
 .seccionBusqueda__contenido-item-nombre {
-    color: #1d3557;
+    color: #3A7FFF;
     flex: 1;
     text-align: center;
     padding: 0px 10px;
@@ -85,12 +103,12 @@
 }
 
 .seccionBusqueda__verMas button {
-    background: #457B9D;
-    border-radius: 5px;
     border: none;
-    color: #FFFFFF;
+    background: none;
+    color: #132A55;
     text-decoration-line: underline;
-    font-size: 14px;
+    font-size: 25px;
+    font-weight: bold;
     padding: 10px;
 }
 
@@ -126,9 +144,16 @@
     }
 }
 
-@media only screen and (min-width: 850px) {
+@media only screen and (min-width: 800px) {
     .seccionBusqueda__contenido {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .seccionBusqueda__contenido {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }

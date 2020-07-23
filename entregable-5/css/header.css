@@ -1,16 +1,36 @@
+header {
+    background: #3A7FFF;
+}
+
 nav {
-    background: #1D3557 ;
-    width: 100%;
     padding: 9px;
+    background: #3A7FFF;
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 40px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.header__contenido {
+    padding: 10px;
+    font-size: 35px;
+    color: #FFFFFF;
+    padding-top: 30px;
 }
 
 nav #usuario {
     display: none;
-    color: #FFFFFF;
-    font-size: 40px;
+}
+
+nav #usuario img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 
 /* logo */
@@ -46,6 +66,7 @@ nav #busqueda button {
     height: 40px;
     font-size: 25px;
     text-align: center;
+    color: #1c3f7f;
 }
 
 /* notificacion */
@@ -54,7 +75,7 @@ nav #notificaciones {
     height: 25px;
     font-size: 25px;
     margin-right: 10px;
-    color: #A8DADC;
+    color: #FFFFFF ;
 }
 
 /* hamburguesa */
@@ -63,19 +84,19 @@ nav #hamburguesa {
     height: 30px;
     font-size: 30px;
     text-align: center;
-    color: #A8DADC;
+    color: #FFFFFF ;
 }
 
 /* links */
 nav #links {
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     right: 0;
     bottom: 0;
     width: 100%;
     max-width: 280px;
-    background: #1D3557;
+    background: #3A7FFF;
     visibility: hidden;
     transform: translate3d(280px, 0, 0);
     transition: opacity .2s,visibility 0ms linear .2s,transform .5s ease;
@@ -91,7 +112,8 @@ nav #links a {
 
 /* efectos links */
 .active {
-    color: #A8DADC !important;
+    font-weight: bold;
+    border-bottom: 2px solid #16C153;
 }
 
 .underline::after {
@@ -99,7 +121,7 @@ nav #links a {
     display: block;
     width: 0;
     height: 2px;
-    background: #A8DADC;
+    background: #16C153;
     transition: width .3s;
 }
 
@@ -116,17 +138,18 @@ nav #links a {
 }
 
 #divInvisible {
+    display: none;
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    z-index: -1;
 }
 
 .clickeable {
-    z-index: 1 !important;
+    display: unset !important;
+    z-index: 1;
     background-color: rgba(0, 0, 0, 0.32);
     transition: background-color .2s ease;
 }

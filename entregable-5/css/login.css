@@ -1,5 +1,5 @@
 body {
-    background: #1D3557;
+    background: #3A7FFF;
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -17,7 +17,7 @@ body {
 }
 
 #btnLogin {
-    background: #83C727;
+    background: #16C153 ;
     padding: 7px 15px;
     border-radius: 5px;
     border: none;
@@ -25,11 +25,11 @@ body {
     
     font-size: 24px;
     line-height: 28px;
-    color: #122642;
+    color: #FFFFFF;
 }
 
 #recuperarContraseña {
-    color: #1D3557;
+    color: #3A7FFF;
     font-size: 16px;
     line-height: 24px;
     text-decoration-line: underline;
@@ -38,7 +38,7 @@ body {
 #crearCuenta {
     width: 169px;
     height: 44px;
-    border: 1px solid #A8DADC;
+    border: 1px solid #FFFFFF ;
     border-radius: 5px;
     background: none;
 

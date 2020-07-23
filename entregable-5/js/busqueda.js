@@ -1,9 +1,17 @@
 "use strict"
 
 document.addEventListener('DOMContentLoaded', e => {
-    crearNavBar();
     crearReproductor();
     crearSecciones();
+
+    let contenidoHeader = `
+                    <div class="header__contenido">
+                        <div class="header__contenido-texto">Filtrá tu búsqueda</div>
+                        <button>Filtrar</button>
+                    </div>
+                    `;
+
+    crearNavBar(contenidoHeader);
 });
 
 async function crearSecciones() {

@@ -6,7 +6,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: #1D3557;
+    background: #3A7FFF;
     display: grid;
     grid-template-columns: 50px auto 100px;
     grid-template-rows: auto auto;
@@ -23,7 +23,7 @@
     justify-content: center;
     align-items: center;
     grid-area: corazon;
-    color: #E63946;
+    color: #16C153;
 }
 
 .reproductor__corazon i {
@@ -41,7 +41,7 @@
 
 .reproductor__controles i {
     font-size: 40px;
-    color: #A8DADC;
+    color: #FFFFFF ;
     margin: 0px 5px;
 }
 
@@ -132,7 +132,7 @@
 
     .reproductor__volumen-estrellas {
         font-size: 16px;
-        color: #A8DADC;
+        color: #FFFFFF ;
         margin-bottom: 5px;
     }
 
@@ -143,14 +143,14 @@
     
     .reproductor__volumen-sliderContainer i {
         font-size: 22px;
-        color: #A8DADC;
+        color: #FFFFFF ;
         width: 22px;
     }
     
     .reproductor__volumen-sliderContainer-sliderVolumen {
         flex: 1;
         height: 4px;
-        background: #83C727;
+        background: #16C153 ;
         border-radius: 10px;
         margin: 0px 5px;
     }
