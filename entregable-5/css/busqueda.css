@@ -19,7 +19,7 @@
 }
 
 .seccionBusqueda__contenido-item {
-    background: #A8DADC;
+    background: #a8dadc25;
     border: 1px solid #457B9D;
     box-shadow: 1px 2px 0px #457B9D;
     border-radius: 9px;
@@ -32,7 +32,7 @@
 }
 
 .seccionBusqueda__contenido-item i {
-    color: #1D3557;
+    color: #457B9D;
     text-align: center;
 }
 
