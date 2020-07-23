@@ -3,12 +3,11 @@
 .alert{
   padding: 20px 40px;
   min-width: 420px;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 10px;
   border-radius: 4px;
   overflow: hidden;
-  opacity: 0;
   pointer-events: none;
   z-index: 1;
 }
@@ -27,40 +26,39 @@
   opacity: 1;
   pointer-events: auto;
 }
-.alert.show{
-  animation: show_slide 1s ease forwards;
+
+.show {
+  display: block;
+
 }
-@keyframes show_slide {
+.alert.animation{
+  animation: animation 4s ease forwards;
+}
+@keyframes animation {
   0%{
     transform: translateX(100%);
   }
-  40%{
+  10%{
     transform: translateX(-10%);
   }
-  80%{
+  20%{
     transform: translateX(0%);
-  }
-  100%{
-    transform: translateX(-10px);
-  }
-}
-.alert.hide{
-  animation: hide_slide 1s ease forwards;
-}
-@keyframes hide_slide {
-  0%{
-    transform: translateX(-10px);
   }
   40%{
-    transform: translateX(0%);
+    transform: translateX(-10px);
   }
-  80%{
-    transform: translateX(-10%);
+  60%{
+    transform: translateX(0%);
   }
   100%{
     transform: translateX(100%);
   }
 }
+
+.hide {
+    display: none;
+}
+
 .alert .fa-exclamation-circle{
   position: absolute;
   left: 20px;

@@ -33,12 +33,12 @@
    */
   
   body {
-    background: #FFFFFF;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
+    padding-bottom: 100px;
   }
-  
+
   /**
    * Render the `main` element consistently in IE.
    */

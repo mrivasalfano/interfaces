@@ -47,10 +47,10 @@ document.addEventListener('DOMContentLoaded', e => {
 
                 //cambio el nombre de la canción y aplico una animación
                 //también cambio el ícono de play por pausa
-                document.querySelectorAll('.contenedor-card__card-content-item').forEach(itm => {
+                document.querySelectorAll('.contenedor-card__card-content-item-play').forEach(itm => {
                     itm.addEventListener('click', e => {
-                        let artista = itm.children[1].innerHTML;
-                        let cancion = itm.children[2].innerHTML;
+                        let artista = itm.previousElementSibling.children[0].innerHTML;
+                        let cancion = itm.previousElementSibling.children[1].innerHTML;
 
                         tituloCancion.innerHTML = artista;
                         nombreCancion.innerHTML = cancion;
@@ -58,11 +58,13 @@ document.addEventListener('DOMContentLoaded', e => {
                         iconoReproductor.classList.remove('fa-play-circle');
                         iconoReproductor.classList.add('fa-pause-circle');
 
-                        itm.classList.remove('animarSeleccion');
-                        void itm.offsetWidth;
                         itm.classList.add('animarSeleccion');
                         
                         contenedorCancion.classList.add('cambiarTitulo');
+                    });
+
+                    itm.addEventListener('animationend', () => {
+                        itm.classList.remove('animarSeleccion');
                     });
                 }); 
             });

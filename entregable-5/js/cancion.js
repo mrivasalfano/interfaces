@@ -10,12 +10,15 @@ document.addEventListener('DOMContentLoaded', e => {
     let opinion = document.querySelector('#opinionTextArea');
     let warningAlert = document.querySelector('#warningAlert');
     let successAlert = document.querySelector('#successAlert');
+    let opinionContainer = document.querySelector('.opiniones__contenido');
 
     document.querySelector('#btnEnviarOpinion').addEventListener('click', e => {
         e.preventDefault();
 
         if(valoraciones.getValoracion() > 0 && opinion.value != '') {
-            document.querySelector('.opiniones__contenido').innerHTML += `
+            let original = opinionContainer.innerHTML;
+            
+            opinionContainer.innerHTML = `
                 <div class="opiniones__contenido-item">
                     <div class="opiniones__contenido-item-titulo">Usuario logeado dice:</div>
                     <div class="opiniones__contenido-item-mensaje">${opinion.value}</div>
@@ -25,6 +28,8 @@ document.addEventListener('DOMContentLoaded', e => {
                     </div>
                 </div>`;
                 
+            opinionContainer.innerHTML += original;
+            
             opinion.value = '';
             showAlert(successAlert);
         }
@@ -34,11 +39,16 @@ document.addEventListener('DOMContentLoaded', e => {
 
     function showAlert(elem) {
         elem.classList.remove('hide');
-        elem.classList.add('show', 'showAlert');
-
-        setTimeout(function(){
-            elem.classList.remove("show");
-            elem.classList.add("hide");
-        },3000);
+        elem.classList.add('show', 'animation');
     }
+
+    warningAlert.addEventListener('animationend', () => {
+        warningAlert.classList.remove("show", "animation");
+        warningAlert.classList.add('hide');
+    });
+
+    successAlert.addEventListener('animationend', () => {
+        successAlert.classList.remove("show", "animation");
+        successAlert.classList.add('hide');
+    });
 });

@@ -1,7 +1,3 @@
-.main-container {
-    margin-bottom: 100px;
-}
-
 /* PORTADA */
 .portada {
     background: url('../img/artistas/portada-queen.jpeg') top center;
@@ -96,9 +92,9 @@
 }
 
 .card {
-    background: #f3f3f3;
+    background: #00000007;
     margin: 100px 20px 0px 20px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 9px 10px 6px -6px #000f1f5c;
     padding: 10px;
 }
 
