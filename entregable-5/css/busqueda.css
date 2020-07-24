@@ -31,27 +31,39 @@
 }
 
 .seccionBusqueda__titulo {
-    color: #132A55;
+    color: #1c3f7f;
     font-weight: bold;
     font-size: 24px;
     margin-bottom: 8px;
 }
 
 .seccionBusqueda__contenido-item {
-    border: 1px solid #3A7FFF;
+    /* border: 1px solid #3A7FFF;
     box-shadow: 1px 2px 0px #3A7FFF;
-    border-radius: 9px;
+    border-radius: 9px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    /* padding: 10px; */
     margin: 20px 0px;
     position: relative;
+    border-radius: 5px;
+    background: #F6F6F6;
+    box-shadow: 7px 8px 6px -6px #000f1f5c;
+    padding: 10px;
+}
+
+.seccionBusqueda__contenido-item-valoracion {
+    display: flex;
+}
+
+.seccionBusqueda__contenido-item-valoracion i {
+    margin-right: 5px;
+    color: #FFD700 !important;
 }
 
 .seccionBusqueda__contenido-item i {
-    color: #3A7FFF;
-    text-align: center;
+    color: #1c3f7f;
 }
 
 .seccionBusqueda__contenido-item-corazon {
@@ -80,7 +92,7 @@
 }
 
 .seccionBusqueda__contenido-item-nombre {
-    color: #3A7FFF;
+    color: #1c3f7f;
     flex: 1;
     text-align: center;
     padding: 0px 10px;
@@ -97,9 +109,9 @@
 }
 
 .seccionBusqueda__verMas {
-    display: flex;
-    justify-content: end;
     margin-top: 10px;
+    width: 100%;
+    text-align: end;
 }
 
 .seccionBusqueda__verMas button {
@@ -109,7 +121,6 @@
     text-decoration-line: underline;
     font-size: 25px;
     font-weight: bold;
-    padding: 10px;
 }
 
 @media only screen and (min-width: 500px) {

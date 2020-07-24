@@ -10,9 +10,7 @@
 }
 
 .header__contenido-publicidad {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+    margin-top: 20px;
 }
 
 .header__contenido-publicidad-texto {
@@ -22,13 +20,13 @@
 
 .header__contenido-publicidad button {
     margin-top: 10px;
-    flex-shrink: 0;
     background: #16C153;
     padding: 7px 15px;
     border-radius: 5px;
     border: none;
     font-size: 24px;
     color: #FFFFFF;
+    width: 100%;
 }
 
 .contenedor-card__card {
@@ -73,7 +71,6 @@
     display: none;
     font-size: 35px;
     position: absolute;
-    color: #1c3f7f;
     bottom: 10px;
     right: 10px;
 }
@@ -134,6 +131,24 @@
     25% { transform: scale(0.9, 1.1); }
     50% { transform: scale(1.1, 0.9); }
     75% { transform: scale(0.95, 1.05); }
+}
+
+@media only screen and (min-width: 600px) {
+    .header__contenido {
+        display: flex;
+        justify-content: center;
+    }
+
+    .header__contenido-publicidad {
+        margin: 0;
+        text-align: end;
+        max-width: 400px;
+    }
+
+    .header__contenido-publicidad button {
+        width: auto;
+        /* float: right; */
+    }
 }
 
 @media only screen and (min-width: 1000px) {

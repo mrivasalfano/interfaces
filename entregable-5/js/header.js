@@ -8,7 +8,9 @@ async function crearNavBar(contenidoHeader) {
     //se lo meto al header
     let header = document.querySelector('header');
     header.innerHTML = navBar;
-    header.innerHTML += contenidoHeader;
+
+    if(contenidoHeader)
+        header.innerHTML += contenidoHeader;
 
     document.querySelector('#btnBuscar').addEventListener('click', e => {
         location.replace('busqueda.html')
