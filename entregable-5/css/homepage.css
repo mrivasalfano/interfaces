@@ -65,7 +65,6 @@
     background: #F6F6F6;
     box-shadow: 7px 8px 6px -6px #000f1f5c;
     padding: 10px;
-    color: #3c3c3c;
 }
 
 .contenedor-card__card-content-item-play{
@@ -74,6 +73,7 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
+    color: #1c3f7f;
 }
 
 .contenedor-card__card-content-item-cancion div {
@@ -93,10 +93,12 @@
 .contenedor-card__card-content-item-title {
     font-weight: bold;
     font-size: 17px;
+    color: #1c3f7f;
 }
 
 .contenedor-card__card-content-item-name {
     font-size: 14px;
+    color: #3c3c3c;
 }
 
 .contenedor-card {
@@ -184,8 +186,8 @@
     }
 
     .contenedor-card__card-content-item:hover 
-    .contenedor-card__card-content-item-cancion,
-    .contenedor-card__card-content-item-title {
+    .contenedor-card__card-content-item-title,
+    .contenedor-card__card-content-item-nombre {
         color: #1c3f7fc9;
     }
     
