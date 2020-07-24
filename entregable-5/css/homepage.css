@@ -38,7 +38,7 @@
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
-    color: #132A55;
+    color: #1c3f7f;
     padding: 10px;
 }
 
@@ -65,25 +65,15 @@
     background: #F6F6F6;
     box-shadow: 7px 8px 6px -6px #000f1f5c;
     padding: 10px;
+    color: #1c3f7f;
 }
 
-.contenedor-card__card-content-item i{
+.contenedor-card__card-content-item-play{
     display: none;
     font-size: 35px;
     position: absolute;
     bottom: 10px;
     right: 10px;
-}
-
-.contenedor-card__card-content-item i:hover{
-    color: #1c3f7fd5;
-}
-
-.contenedor-card__card-content-item img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
-    transition: all .3s ease;
 }
 
 .contenedor-card__card-content-item-cancion div {
@@ -102,12 +92,10 @@
 
 .contenedor-card__card-content-item-title {
     font-weight: bold;
-    color: #1c3f7f;
     font-size: 17px;
 }
 
 .contenedor-card__card-content-item-name {
-    color: #1c3f7f;
     font-size: 14px;
 }
 
@@ -124,6 +112,10 @@
 
 .animarSeleccion {
     animation: animarSeleccion .5s;
+}
+
+.contededor-card__card-content-item-estrellas {
+    margin-top: 10px;
 }
 
 @keyframes animarSeleccion {
@@ -177,8 +169,16 @@
         width: auto;
     }
 
-    .contenedor-card__card-content-item:hover i {
+    .contenedor-card__card-content-item:hover .contenedor-card__card-content-item-play {
         display: block;
+    }
+
+    .contenedor-card__card-content-item-play:hover {
+        color: #1c3f7fc9;
+    }
+
+    .contenedor-card__card-content-item-title:hover {
+        color: #1c3f7fc9;
     }
 
     .contenedor-card__card-content-item:hover img{
@@ -187,7 +187,7 @@
         margin-bottom: 5px;
     }
 
-    .contenedor-card__card-content-item:hover div {
+    .contenedor-card__card-content-item:hover .contenedor-card__card-content-item-cancion{
         color: #1c3f7fc9;
     }
     
@@ -200,6 +200,14 @@
 
     .contenedor-card__card-content-item-cancion {
         align-items: start;
+    }
+
+    .contenedor-card__card-content-item-cancion {
+        align-items: start;
+    }
+
+    .valorar {
+        align-items: center !important;
     }
 
     .contenedor-card__card-content-item-cancion div {

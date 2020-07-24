@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
                 let flechasIzq = document.querySelectorAll('.contenedor-card__flecha-izquierda');
                 let flechasDer = document.querySelectorAll('.contenedor-card__flecha-derecha');
-                let pixeles = 120;
+                let pixeles = 220;
 
                 flechasIzq.forEach(flecha => {
                     flecha.addEventListener('click', e => {
@@ -85,6 +85,19 @@ document.addEventListener('DOMContentLoaded', e => {
                         itm.classList.remove('animarSeleccion');
                     });
                 }); 
+
+                document.querySelectorAll('.contenedor-card__card-content-item').forEach(itm => {
+                    itm.children[0].addEventListener('click', () => {
+                        location.replace('cancion.html');
+                    });
+                    itm.children[1].addEventListener('click', () => {
+                        location.replace('cancion.html');
+                    });
+                }); 
+
+                document.querySelectorAll('.contededor-card__card-content-item-estrellas').forEach(container => {
+                    new Valoracion(container);
+                });
             });
         })
     });

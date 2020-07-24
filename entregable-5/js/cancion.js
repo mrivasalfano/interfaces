@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', e => {
                     <div class="opiniones__contenido-item-titulo">Usuario logeado dice:</div>
                     <div class="opiniones__contenido-item-mensaje">${opinion.value}</div>
                     <div class="opiniones__contenido-item-valoracion">
-                        <i class="fa fas"></i>
+                        <i class="fa fa-star"></i>
                         <div>${valoraciones.getValoracion()}</div>
                     </div>
                 </div>`;

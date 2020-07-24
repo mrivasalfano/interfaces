@@ -32,11 +32,17 @@ async function crearSecciones() {
 
     mainContainer.innerHTML += playlists;
 
-    document.querySelectorAll('.seccionBusqueda__contenido-item').forEach(itm => {
+    document.querySelectorAll('.seccionBusqueda__contenido-item-nombre').forEach(itm => {
         itm.addEventListener('click', () => {
             location.replace('cancion.html');
         });
     });
 
+    document.querySelectorAll('.seccionBusqueda__contenido-item-imagen').forEach(itm => {
+        itm.addEventListener('click', () => {
+            location.replace('cancion.html');
+        });
+    });
+    
     return true;
 }
