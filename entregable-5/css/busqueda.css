@@ -50,6 +50,10 @@
     padding: 10px;
 }
 
+.seccionBusqueda__contenido-item :first-child {
+    color: #1c3f7f;
+}
+
 .seccionBusqueda__contenido-item-valoracion {
     display: flex;
 }

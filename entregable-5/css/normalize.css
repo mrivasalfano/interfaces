@@ -40,6 +40,10 @@
     padding-top: 68px;
   }
 
+  .imageLogo {
+      border-radius: 50%;
+  }
+
   /**
    * Render the `main` element consistently in IE.
    */
