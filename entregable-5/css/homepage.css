@@ -65,7 +65,7 @@
     background: #F6F6F6;
     box-shadow: 7px 8px 6px -6px #000f1f5c;
     padding: 10px;
-    color: #1c3f7f;
+    color: #3c3c3c;
 }
 
 .contenedor-card__card-content-item-play{
@@ -177,17 +177,15 @@
         color: #1c3f7fc9;
     }
 
-    .contenedor-card__card-content-item-title:hover {
-        color: #1c3f7fc9;
-    }
-
     .contenedor-card__card-content-item:hover img{
         width: 125px;
         height: 125px;
         margin-bottom: 5px;
     }
 
-    .contenedor-card__card-content-item:hover .contenedor-card__card-content-item-cancion{
+    .contenedor-card__card-content-item:hover 
+    .contenedor-card__card-content-item-cancion,
+    .contenedor-card__card-content-item-title {
         color: #1c3f7fc9;
     }
     
