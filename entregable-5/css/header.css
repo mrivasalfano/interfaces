@@ -18,7 +18,7 @@ nav {
 
 .header__contenido {
     padding: 10px;
-    font-size: 35px;
+    font-size: 32px;
     color: #FFFFFF;
     padding-top: 30px;
 }
@@ -56,6 +56,7 @@ nav #busqueda input {
     margin-right: 5px;
     flex: 1;
     height: 40px;
+    color: #3c3c3c;
 }
 
 nav #busqueda button {
@@ -103,7 +104,6 @@ nav #links {
 nav #links a {
     text-decoration: none;
     color: #FFFFFF;
-    font-size: 16px;
     padding: 20px;
     display: block;
 }

@@ -110,7 +110,7 @@ async function crearCards() {
 
     mainContainer.innerHTML += cardMusica;
 
-    let titles = ['RECOMENDADO PARA VOS', 'LO MÁS ESCUCHADO'];
+    let titles = ['Recomendado para vos', 'Lo más escuchado', 'Playlists', 'Podcasts'];
 
     let cardArtistas = await fetch('templates/homepage/card-artistas.html');
     cardArtistas = await cardArtistas.text();

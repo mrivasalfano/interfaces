@@ -24,7 +24,7 @@
 }
 
 .portada__datos-cancion-artista {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: bold;
 }
 
@@ -88,10 +88,6 @@
 .portada__datos-valoracion div {
     margin: 0px 5px;
 }
-
-
-
-
 
 @media only screen and (min-width: 500px) {
     .portada__datos-playlists {

@@ -32,13 +32,25 @@
    * Remove the margin in all browsers.
    */
   
+  hr {
+    color: #00000031;
+  }
+
   body {
-    font-family: Roboto;
+    font-family: sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-size: 14px;
     padding-bottom: 100px;
     padding-top: 68px;
   }
+
+
+    .card {
+        background: #00000007;
+        box-shadow: 9px 10px 6px -6px #000f1f5c;
+        padding: 10px;
+        margin: 10px;
+    }
 
   .imageLogo {
       border-radius: 50%;

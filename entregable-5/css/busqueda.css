@@ -8,6 +8,7 @@
 
 .header__contenido-texto {
     text-align: center;
+    font-size: 26px;
 }
 
 .header__contenido button {
@@ -15,18 +16,15 @@
     margin: 10px auto;
     background: #16C153;
     padding: 7px 15px;
-    font-size: 24px;
     color: #FFFFFF;
+    font-size: 14px;
+    width: 150px;
 }
 
 .seccionBusqueda {
     padding: 10px;
     margin-bottom: 50px;
 }
-
-/* .seccionBusqueda__contenido-item img{
-    display: none;
-} */
 
 .seccionBusqueda__contenido-item img {
     width: 50px;
@@ -36,7 +34,7 @@
 .seccionBusqueda__titulo {
     color: #1c3f7f;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 26px;
     margin-bottom: 8px;
 }
 
@@ -82,32 +80,31 @@
 } 
 
 .seccionBusqueda__contenido-item-play {
+    display: none;
     font-size: 40px !important;
     width: 40px;
-    color: #16C153;
+    color: #1c3f7f;
 }
 
 .seccionBusqueda__contenido-item-opciones {
-    font-size: 30px !important;
+    font-size: 25px !important;
     width: 30px;
     color: #3c3c3c;
 }
 
 .seccionBusqueda__contenido-item-nombre {
     flex: 1;
-    text-align: center;
     padding: 0px 10px;
 }
 
 .seccionBusqueda__contenido-item-nombre-artista {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
     color: #3c3c3c;
 }
 
 .seccionBusqueda__contenido-item-nombre-cancion {
-    font-size: 16px;
     color: #3c3c3c;
 }
 
@@ -118,17 +115,29 @@
 }
 
 .seccionBusqueda__verMas button {
-    background: none;
-    color: #132A55;
-    text-decoration-line: underline;
-    font-size: 25px;
+    background: #16C153;
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 5px;
     font-weight: bold;
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 550px) {
     .seccionBusqueda__contenido {
         display: grid;
         grid-template-columns: 1fr 1fr;
+    }
+
+    .seccionBusqueda__contenido-item-play {
+        display: block;
+    }
+
+    .seccionBusqueda__contenido-item-nombre {
+        text-align: center;
+    }
+
+    .seccionBusqueda__verMas {
+        grid-column: 2;
     }
 
     .seccionBusqueda__contenido-item-nombre {
@@ -159,16 +168,30 @@
     }
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 750px) {
     .seccionBusqueda__contenido {
-        display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .seccionBusqueda__verMas {
+        grid-column: 3;
     }
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 950px) {
     .seccionBusqueda__contenido {
-        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .seccionBusqueda__verMas {
+        grid-row: 3;
+        grid-column: 4;
+    }
+}
+
+@media only screen and (min-width: 1050px) {
+    .seccionBusqueda__contenido {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
@@ -186,5 +209,17 @@
 
     .seccionBusqueda__contenido-item:hover .seccionBusqueda__contenido-item-nombre{
         color: #1c3f7fc9;
+    }
+}
+
+@media only screen and (min-width: 1350px) {
+    .seccionBusqueda__contenido {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: none;
+        grid-template-areas: "verMas verMas verMas verMas verMas verMas";
+    }
+
+    .seccionBusqueda__verMas {
+        grid-area: verMas;
     }
 }
