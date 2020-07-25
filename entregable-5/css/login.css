@@ -23,8 +23,6 @@ label {
 #btnLogin {
     background: #16C153 ;
     padding: 7px 15px;
-    border-radius: 5px;
-    border: none;
 
     
     font-size: 24px;
@@ -43,7 +41,6 @@ label {
     width: 169px;
     height: 44px;
     border: 1px solid #FFFFFF ;
-    border-radius: 5px;
     background: none;
     font-size: 20px;
     line-height: 28px;

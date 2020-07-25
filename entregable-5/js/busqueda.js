@@ -34,13 +34,13 @@ async function crearSecciones() {
 
     document.querySelectorAll('.seccionBusqueda__contenido-item-nombre').forEach(itm => {
         itm.addEventListener('click', () => {
-            location.replace('cancion.html');
+            location.replace(itm.getAttribute('href'));
         });
     });
 
     document.querySelectorAll('.seccionBusqueda__contenido-item-imagen').forEach(itm => {
         itm.addEventListener('click', () => {
-            location.replace('cancion.html');
+            location.replace(itm.getAttribute('href'));
         });
     });
     

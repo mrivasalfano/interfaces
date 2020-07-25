@@ -15,7 +15,6 @@
 
 
 .portada__datos button{
-    border: none;
     background:none;
 }
 
@@ -42,7 +41,6 @@
 
 .portada__datos-play {
     display: inline-block;
-    border: none;
     background: none;
     margin: auto;
 }
@@ -91,105 +89,9 @@
     margin: 0px 5px;
 }
 
-.card {
-    background: #00000007;
-    margin: 100px 20px 0px 20px;
-    box-shadow: 9px 10px 6px -6px #000f1f5c;
-    padding: 10px;
-    max-width: 400px;
-    margin: 100px auto;
-}
 
-/* VALORACIONES */
-.valoraciones {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.valoraciones__opinar {
-    width: 100%;
-}
 
-.valoraciones__estrellas {
-    font-size: 35px;
-    margin-bottom: 10px;
-    color: #1c3f7f;
-    transform-style: preserve-3d;
-    text-align: center;
-}
-
-.valoraciones__opinar-titulo {
-    color: #1c3f7f;
-    font-weight: bold;
-    text-align: center;
-    font-size: 25px;
-}
-
-.valoraciones__opinar textarea {
-    width: 100%;
-    height: 150px;
-    margin: 10px 0px;
-    border: 1px solid #1c3f7f;
-    resize: none;
-}
-
-.valoraciones__opinar button {
-    border: none;
-    background: #16C153 ;
-    border-radius: 5px;
-    height: 50px;
-    width: 100%;
-    color: #FFFFFF;
-    font-size: 24px;
-}
-
-/* OPINIONES */
-.opiniones__titulo {
-    color: #1c3f7f;
-    font-weight: bold;
-    font-size: 25px;
-    text-align: center;
-}
-
-.opiniones__contenido-item {
-    background: #FFFFFF;
-    border-radius: 5px;
-    padding: 10px;
-    border: 1px solid #1c3f7f;
-    margin: 10px 0px;
-}
-
-.opiniones__contenido-item-titulo {
-    color: #1c3f7f;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.opiniones__contenido-item-mensaje {
-    font-size: 16px;
-    color: #3c3c3c;
-    margin-bottom: 10px;
-}
-
-.opiniones__contenido-item-valoracion {
-    font-size: 25px;
-    display: flex;
-    align-items: end;
-    width: 50px;
-    margin-left: auto;
-}
-
-.opiniones__contenido-item-valoracion i {
-    color: #FFD700;
-    margin-right: 5px;
-}
-
-.opiniones__contenido-item-valoracion div {
-    color: #2b546e;
-    font-size: 20px;
-}
 
 @media only screen and (min-width: 500px) {
     .portada__datos-playlists {
@@ -197,19 +99,3 @@
     }
 }
 
-@media only screen and (min-width: 700px) {
-    .card-container {
-        display: flex;
-        flex-direction: row-reverse;
-    }
-
-    .card-container .card:first-child {
-        min-width: 260px;
-        align-self: start;
-    }
-
-    .card {
-        max-width: 700px;
-        margin: 100px auto;
-    }
-}

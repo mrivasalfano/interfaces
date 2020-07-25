@@ -10,46 +10,36 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/alerts.css">
     <link rel="stylesheet" href="css/valoraciones.css">
-    <link rel="stylesheet" href="css/cancion.css">
+    <link rel="stylesheet" href="css/playlist.css">
     <title>Vista de audio</title>
 </head>
 <body>
     <header></header>
     
     <section class="main-container">
-        <div class="portada">
-            <div class="portada__datos">
-                <div class="portada__datos-cancion">
-                    <div class="portada__datos-cancion-artista">Queen</div>
-                    <div class="portada__datos-cancion-nombre">Love of my life</div>
-                </div>
+        <div class="playlist">
+            <div class="playlist__titulo">Playlist</div>
 
-                <div class="portada__datos-acciones">
-                    <div class="portada__datos-favoritos">
-                        <button>
-                            <i class="fas fa-heart"></i> 
-                        </button>
-                    </div>
-    
-                    <div class="portada__datos-play">
-                        <button>
-                            <i class="fa fa-play-circle"></i> 
-                        </button>
-                    </div>
-    
-                    <div class="portada__datos-playlists">
-                        <button>
-                            <i class="fas fa-plus"></i> 
-                            <div>PlayList</div>
-                        </button>
-                    </div>
-                </div>
+            <div class="playlist__nombre">Lo más escuchado 2020</div>
 
-                <div class="portada__datos-valoracion">
-                    <div>Valoraciones promedio</div>
+
+            <div class="playlist__autor">AUTOR ManuGNR</div>
+
+            <div class="playlist__valoraciones">
+                <div class="playlist__valoraciones-texto">Valoraciones promedio</div>
+                <div class="playlist__valoraciones-estrella">
                     <i class="fas fa-star"></i>
-                    <div>4</div>
                 </div>
+                <div class="playlist__valoraciones-numero">4</div>
+            </div>
+
+            <button class="playlist__reproducir">Reproducir</button>
+        </div>
+
+        <div class="playlist__lista">
+            <div class="playlist__lista-cancion">
+                <div class="playlist__lista-cancion-artista"></div>
+                <div class="playlist__lista-cancion-nombre"></div>
             </div>
         </div>
         
@@ -129,8 +119,7 @@
     <script src="js/header.js"></script>
     <script src="js/valoracion.js"></script>
     <script src="js/footer.js"></script>
-    <script src="js/playlist.js"></script>
     <script src="js/alerts.js"></script>
-    <script src="js/cancion.js"></script>
+    <script src="js/playlist.js"></script>
 </body>
 </html>
