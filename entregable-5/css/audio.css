@@ -10,6 +10,13 @@
     text-transform: uppercase;
 }
 
+.audio__album {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
 .audio__nombre {
     text-align: center;
     font-size: 30px;
@@ -49,6 +56,10 @@
     color: #FFD700;
 }
 
+.audio__portada {
+    width: 200px;
+    margin-top: 10px;
+}
 
 
 @media only screen and (min-width: 1000px) {

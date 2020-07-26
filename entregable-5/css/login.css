@@ -1,30 +1,39 @@
 body {
     background: #3A7FFF;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-#imgLogin {
-    height: 220px;
-    width: 200px;
+.logo {
+    text-align: center;
+    padding: 10px;
 }
 
-.jumbotron {
-    height: 290px;
+.logo img {
+    height: 13em;
+}
+
+.card {
+    background: #FFFFFF;
+    max-width: 400px;
+    margin: 20px 10px;
 }
 
 label {
     color: #1c3f7f;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input{
+    height: 40px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 #btnLogin {
     background: #16C153 ;
     padding: 7px 15px;
-
-    
+    width: 100%;
     font-size: 24px;
     line-height: 28px;
     color: #FFFFFF;
@@ -34,9 +43,15 @@ label {
     color: #1c3f7f;
     line-height: 24px;
     text-decoration-line: underline;
+    margin-top: 20px;
 }
 
-#crearCuenta {
+.crear-cuenta {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.crear-cuenta button {
     width: 169px;
     height: 44px;
     border: 1px solid #FFFFFF ;
@@ -44,4 +59,11 @@ label {
     font-size: 20px;
     line-height: 28px;
     color: #FFFFFF;
+    margin: auto;
+}
+
+@media only screen and (min-width: 420px) {
+    .card {
+        margin: 20px auto;
+    }
 }

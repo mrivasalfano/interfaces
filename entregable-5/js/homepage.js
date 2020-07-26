@@ -132,5 +132,7 @@ async function crearCards() {
 
     document.querySelectorAll('.contenedor-card__card-content')[3].setAttribute('href', 'playlist.html');
 
+    document.querySelectorAll('.contenedor-card__card-content')[4].setAttribute('href', 'podcast.html');
+
     return true;
 }

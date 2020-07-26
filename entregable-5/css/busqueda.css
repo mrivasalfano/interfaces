@@ -29,6 +29,7 @@
 .seccionBusqueda__contenido-item img {
     width: 50px;
     border-radius: 0;
+    transition: transform .3s;
 }
 
 .seccionBusqueda__titulo {
@@ -106,6 +107,7 @@
 
 .seccionBusqueda__contenido-item-nombre-cancion {
     color: #3c3c3c;
+    transition: color .3s;
 }
 
 .seccionBusqueda__verMas {
@@ -207,8 +209,12 @@
         color: #16C153 !important;
     }
 
-    .seccionBusqueda__contenido-item:hover .seccionBusqueda__contenido-item-nombre{
+    .seccionBusqueda__contenido-item:hover .seccionBusqueda__contenido-item-nombre-cancion{
         color: #1c3f7fc9;
+    }
+
+    .seccionBusqueda__contenido-item:hover .seccionBusqueda__contenido-item-imagen {
+        transform: scale(1.1);
     }
 }
 

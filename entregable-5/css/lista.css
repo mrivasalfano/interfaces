@@ -1,8 +1,5 @@
 .audio__lista {
-    overflow-y: scroll;
-    max-height: 400px;
-    width: 90%;
-    margin: auto;
+    width: 100%;
 }
 
 .audio__lista-item {

@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/alerts.css">
     <link rel="stylesheet" href="css/valoraciones.css">
     <link rel="stylesheet" href="css/lista.css">
-    <link rel="stylesheet" href="css/artista.css">
     <link rel="stylesheet" href="css/audio.css">
     <title>Vista de audio</title>
 </head>
@@ -19,25 +18,27 @@
     <header></header>
     
     <section class="main-container">
-        <div class="portada">
-            <div class="portada__datos">
-                <div class="portada__datos-artista">Iron maiden</div>
+        <div class="audio">
+            <div class="audio__titulo">Álbum</div>
 
-                <div class="portada__datos-visualizacion">
-                    <i class="fas fa-eye"></i>
-                    <div>1.255.203</div>
-                    <div>Visualizaciones semanales</div>
-                </div>
+            <div class="audio__album">
+                <div class="audio__artista">Iron maiden</div>
+                <div class="audio__nombre">The number of the beast</div>
+    
+                <img src="img/albums/2.jpg" class="audio__portada">
+            </div>
+
+            <div class="audio__reproducir">
+                <button>Reproducir</button>
             </div>
         </div>
 
         <div class="card">
-            <div class="audio__titulo">Más escuchadas</div>
             <div class="audio__lista">
                 <div class="audio__lista-item">
                     <div class="audio__lista-item-cancion">
                         <div class="audio__lista-item-cancion-artista">Iron maiden</div>
-                        <div class="audio__lista-item-cancion-nombre">Fear of the dark</div>
+                        <div class="audio__lista-item-cancion-nombre">Invaders</div>
                     </div>
                     <i class="fas fa-play-circle audio__lista-item-play"></i>
                     <i class="fas fa-ellipsis-v audio__lista-item-opciones"></i>
@@ -46,7 +47,7 @@
                 <div class="audio__lista-item">
                     <div class="audio__lista-item-cancion">
                         <div class="audio__lista-item-cancion-artista">Iron maiden</div>
-                        <div class="audio__lista-item-cancion-nombre">Dance of death</div>
+                        <div class="audio__lista-item-cancion-nombre">Children of the damned</div>
                     </div>
                     <i class="fas fa-play-circle audio__lista-item-play"></i>
                     <i class="fas fa-ellipsis-v audio__lista-item-opciones"></i>
@@ -55,7 +56,25 @@
                 <div class="audio__lista-item">
                     <div class="audio__lista-item-cancion">
                         <div class="audio__lista-item-cancion-artista">Iron maiden</div>
-                        <div class="audio__lista-item-cancion-nombre">Hallowed be the name</div>
+                        <div class="audio__lista-item-cancion-nombre">The prisoner</div>
+                    </div>
+                    <i class="fas fa-play-circle audio__lista-item-play"></i>
+                    <i class="fas fa-ellipsis-v audio__lista-item-opciones"></i>
+                </div>
+                <hr>
+                <div class="audio__lista-item">
+                    <div class="audio__lista-item-cancion">
+                        <div class="audio__lista-item-cancion-artista">Iron maiden</div>
+                        <div class="audio__lista-item-cancion-nombre">22 acacia avenue</div>
+                    </div>
+                    <i class="fas fa-play-circle audio__lista-item-play"></i>
+                    <i class="fas fa-ellipsis-v audio__lista-item-opciones"></i>
+                </div>
+                <hr>
+                <div class="audio__lista-item">
+                    <div class="audio__lista-item-cancion">
+                        <div class="audio__lista-item-cancion-artista">Iron maiden</div>
+                        <div class="audio__lista-item-cancion-nombre">The number of the beast</div>
                     </div>
                     <i class="fas fa-play-circle audio__lista-item-play"></i>
                     <i class="fas fa-ellipsis-v audio__lista-item-opciones"></i>
@@ -73,59 +92,19 @@
                 <div class="audio__lista-item">
                     <div class="audio__lista-item-cancion">
                         <div class="audio__lista-item-cancion-artista">Iron maiden</div>
-                        <div class="audio__lista-item-cancion-nombre">The number of the beast</div>
+                        <div class="audio__lista-item-cancion-nombre">Gangland</div>
                     </div>
                     <i class="fas fa-play-circle audio__lista-item-play"></i>
                     <i class="fas fa-ellipsis-v audio__lista-item-opciones"></i>
                 </div>
-            </div>
-        </div>
-
-        <div class="audio__albums">
-            <div class="audio__albums-titulo">Álbums</div>
-            <div class="audio__albums-items">
-                <div class="audio__albums-items-item">
-                    <a href="album.html">
-                    <a href="album.html">
-                        <img src="img/albums/1.JPG" class="audio__lista-items-item-imagen">
-                        <div class="audio__albums-items-item-titulo">Iron maiden</div>
-                        <div class="audio__albums-items-item-fecha">14 abril 1980</div>
-                    </a>
-                </div>
-                <div class="audio__albums-items-item">
-                    <a href="album.html">
-                        <img src="img/albums/2.jpg" class="audio__lista-items-item-imagen">
-                        <div class="audio__albums-items-item-titulo">The number of the beast</div>
-                        <div class="audio__albums-items-item-fecha">22 marzo 1982</div>
-                    </a>
-                </div>
-                <div class="audio__albums-items-item">
-                    <a href="album.html">
-                        <img src="img/albums/3.jpg" class="audio__lista-items-item-imagen">
-                        <div class="audio__albums-items-item-titulo">Fear of the dark</div>
-                        <div class="audio__albums-items-item-fecha">11 mayo 1992</div>
-                    </a>
-                </div>
-                <div class="audio__albums-items-item">
-                    <a href="album.html">
-                        <img src="img/albums/4.jpg" class="audio__lista-items-item-imagen">
-                        <div class="audio__albums-items-item-titulo">Brave new world</div>
-                        <div class="audio__albums-items-item-fecha">29 mayo 2000</div>
-                    </a>
-                </div>
-                <div class="audio__albums-items-item">
-                    <a href="album.html">
-                        <img src="img/albums/5.jpg" class="audio__lista-items-item-imagen">
-                        <div class="audio__albums-items-item-titulo">Dance of death</div>
-                        <div class="audio__albums-items-item-fecha">8 septiembre 2003</div>
-                    </a>
-                </div>
-                <div class="audio__albums-items-item">
-                    <a href="album.html">
-                        <img src="img/albums/6.jpg" class="audio__lista-items-item-imagen">
-                        <div class="audio__albums-items-item-titulo">The final frontier</div>
-                        <div class="audio__albums-items-item-fecha">16 agosto 2010</div>
-                    </a>
+                <hr>
+                <div class="audio__lista-item">
+                    <div class="audio__lista-item-cancion">
+                        <div class="audio__lista-item-cancion-artista">Iron maiden</div>
+                        <div class="audio__lista-item-cancion-nombre">Hallowed be thy name</div>
+                    </div>
+                    <i class="fas fa-play-circle audio__lista-item-play"></i>
+                    <i class="fas fa-ellipsis-v audio__lista-item-opciones"></i>
                 </div>
             </div>
         </div>
