@@ -30,24 +30,26 @@ document.addEventListener('DOMContentLoaded', e => {
                 flechasIzq.forEach(flecha => {
                     flecha.addEventListener('click', e => {
                         let contenedorMusica = flecha.parentNode.nextElementSibling.children[1];
+                        let items = contenedorMusica.children;
 
-                        let leftActual = parseInt(window.getComputedStyle(contenedorMusica,null).getPropertyValue('left'));
-
-                        if (leftActual < 0)
-                            contenedorMusica.style.left = (leftActual + pixeles) + 'px';                         
+                        for (let itm of items) {
+                            let leftActual = parseInt(window.getComputedStyle(itm,null).getPropertyValue('left'));
+    
+                            itm.style.left = (leftActual + pixeles) + 'px';                         
+                        };
                     });
                 });
 
                 flechasDer.forEach(flecha => {
                     flecha.addEventListener('click', e => {
                         let contenedorMusica = flecha.parentNode.previousElementSibling.children[1];
+                        let items = contenedorMusica.children;
 
-                        let leftActual = parseInt(window.getComputedStyle(contenedorMusica,null).getPropertyValue('left'));
-
-                        //funciona pero es un parche nada más, los 800
-                        //no deberían ser fijos
-                        if (leftActual > (-800))
-                            contenedorMusica.style.left = (leftActual - pixeles) + 'px';  
+                        for (let itm of items) {
+                            let leftActual = parseInt(window.getComputedStyle(itm,null).getPropertyValue('left'));
+    
+                            itm.style.left = (leftActual - pixeles) + 'px';                         
+                        };
                     });
                 });
 
@@ -73,12 +75,17 @@ document.addEventListener('DOMContentLoaded', e => {
                         tituloCancion.innerHTML = artista;
                         nombreCancion.innerHTML = cancion;
 
+                        itm.classList.remove('fa-play');
+                        itm.classList.add('fa-pause');
+
                         iconoReproductor.classList.remove('fa-play-circle');
                         iconoReproductor.classList.add('fa-pause-circle');
 
                         itm.classList.add('animarSeleccion');
                         
                         contenedorCancion.classList.add('cambiarTitulo');
+
+                        // itm.parentNode.firstElementChild.classList.add('bordeReproduccion');
                     });
 
                     itm.addEventListener('animationend', () => {
@@ -87,11 +94,8 @@ document.addEventListener('DOMContentLoaded', e => {
                 }); 
 
                 document.querySelectorAll('.contenedor-card__card-content-item').forEach(itm => {
-                    itm.children[0].addEventListener('click', () => {
-                        location.replace('cancion.html');
-                    });
-                    itm.children[1].addEventListener('click', () => {
-                        location.replace('cancion.html');
+                    itm.addEventListener('click', () => {
+                        location.replace(itm.parentNode.getAttribute('href'));
                     });
                 }); 
 
@@ -125,6 +129,8 @@ async function crearCards() {
     cardValorar = await cardValorar.text();
 
     mainContainer.innerHTML += cardValorar;
+
+    document.querySelectorAll('.contenedor-card__card-content')[3].setAttribute('href', 'playlist.html');
 
     return true;
 }

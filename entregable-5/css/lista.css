@@ -1,0 +1,39 @@
+.audio__lista {
+    overflow-y: scroll;
+    max-height: 400px;
+    width: 90%;
+    margin: auto;
+}
+
+.audio__lista-item {
+    display: flex;
+    margin: 10px 0;
+    align-items: center;
+}
+
+.audio__lista-item img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.audio__lista-item-cancion {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.audio__lista-item-cancion-artista {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #3c3c3c;
+}
+
+.audio__lista-item-play {
+    display: none;
+}
+
+.audio__lista-item-opciones {
+    font-size: 25px;
+    color: #3c3c3c;
+}
