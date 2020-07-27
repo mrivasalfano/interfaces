@@ -209,7 +209,7 @@
         color: #16C153 !important;
     }
 
-    .seccionBusqueda__contenido-item:hover .seccionBusqueda__contenido-item-nombre-cancion{
+    .seccionBusqueda__contenido-item:hover .seccionBusqueda__contenido-item-nombre-artista{
         color: #1c3f7fc9;
     }
 

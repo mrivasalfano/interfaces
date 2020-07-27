@@ -65,8 +65,8 @@
     min-width: 250px;
 }
 
-.audio__albums-items-item-imagen {
-
+.audio__albums-items-item a {
+    text-decoration: none;
 }
 
 .audio__albums-items-item div {

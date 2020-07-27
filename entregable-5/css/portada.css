@@ -10,7 +10,6 @@
 .portada__datos {
     background: #00000073;
     width: 100%;
-    color: #FFFFFF;
 }
 
 
@@ -21,6 +20,11 @@
 .portada__datos-cancion {
     flex: 1;
     text-align: center;
+}
+
+.portada__datos-cancion a {
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 .portada__datos-cancion-artista {

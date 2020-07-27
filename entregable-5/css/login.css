@@ -16,6 +16,7 @@ body {
     background: #FFFFFF;
     max-width: 400px;
     margin: 20px 10px;
+    padding: 15px;
 }
 
 label {

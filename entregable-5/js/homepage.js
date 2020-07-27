@@ -31,12 +31,14 @@ document.addEventListener('DOMContentLoaded', e => {
                     flecha.addEventListener('click', e => {
                         let contenedorMusica = flecha.parentNode.nextElementSibling.children[1];
                         let items = contenedorMusica.children;
-
-                        for (let itm of items) {
-                            let leftActual = parseInt(window.getComputedStyle(itm,null).getPropertyValue('left'));
-    
-                            itm.style.left = (leftActual + pixeles) + 'px';                         
-                        };
+                        
+                        if((parseInt(window.getComputedStyle(items[0],null).getPropertyValue('left')) + pixeles) <= 0) {
+                            for (let itm of items) {
+                                let leftActual = parseInt(window.getComputedStyle(itm,null).getPropertyValue('left'));
+                                
+                                itm.style.left = (leftActual + pixeles) + 'px';                         
+                            };
+                        }
                     });
                 });
 
@@ -54,7 +56,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 });
 
                 let reproductor = document.querySelector('.reproductor');
-                let contenedorCancion = reproductor.children[4];
+                let contenedorCancion = reproductor.children[4].children[0];
                 let tituloCancion = contenedorCancion.children[0];
                 let nombreCancion = contenedorCancion.children[1];
                 let iconoReproductor = reproductor.children[2].children[1];
@@ -69,9 +71,11 @@ document.addEventListener('DOMContentLoaded', e => {
                 //también cambio el ícono de play por pausa
                 document.querySelectorAll('.contenedor-card__card-content-item-play').forEach(itm => {
                     itm.addEventListener('click', e => {
-                        let artista = itm.previousElementSibling.children[0].innerHTML;
-                        let cancion = itm.previousElementSibling.children[1].innerHTML;
-
+                        let container = itm.previousElementSibling;
+                        let artista = container.children[0].innerHTML;
+                        let cancion = container.children[1].innerHTML;
+                        
+                    
                         tituloCancion.innerHTML = artista;
                         nombreCancion.innerHTML = cancion;
 
@@ -85,7 +89,7 @@ document.addEventListener('DOMContentLoaded', e => {
                         
                         contenedorCancion.classList.add('cambiarTitulo');
 
-                        // itm.parentNode.firstElementChild.classList.add('bordeReproduccion');
+                        itm.parentNode.firstElementChild.classList.add('bordeReproduccion');
                     });
 
                     itm.addEventListener('animationend', () => {
@@ -93,9 +97,12 @@ document.addEventListener('DOMContentLoaded', e => {
                     });
                 }); 
 
-                document.querySelectorAll('.contenedor-card__card-content-item').forEach(itm => {
-                    itm.addEventListener('click', () => {
-                        location.replace(itm.parentNode.getAttribute('href'));
+                document.querySelectorAll('.item-cancion').forEach(itm => {
+                    itm.children[0].addEventListener('click', () => {
+                        irCancion(itm);
+                    });
+                    itm.children[1].addEventListener('click', () => {
+                        irCancion(itm);
                     });
                 }); 
 
@@ -107,6 +114,13 @@ document.addEventListener('DOMContentLoaded', e => {
     });
 });
 
+function irCancion(itm) {
+    if(window.innerWidth >= 1000)
+        location.replace('cancion.html');
+    else
+        itm.children[2].click();
+}
+
 async function crearCards() {
     let mainContainer = document.querySelector('.main-container');
     let cardMusica = await fetch('templates/homepage/card-musica.html');
@@ -114,7 +128,7 @@ async function crearCards() {
 
     mainContainer.innerHTML += cardMusica;
 
-    let titles = ['Recomendado para vos', 'Lo más escuchado', 'Playlists', 'Podcasts'];
+    let titles = ['Recomendado para vos', 'Lo más escuchado'];
 
     let cardArtistas = await fetch('templates/homepage/card-artistas.html');
     cardArtistas = await cardArtistas.text();
@@ -125,14 +139,20 @@ async function crearCards() {
         titulos[titulos.length-1].innerHTML = title;
     });
 
+    let cardPlaylist = await fetch('templates/homepage/card-playlist.html');
+    cardPlaylist = await cardPlaylist.text();
+
+    mainContainer.innerHTML += cardPlaylist;
+
+    let cardPodcast = await fetch('templates/homepage/card-podcast.html');
+    cardPodcast = await cardPodcast.text();
+
+    mainContainer.innerHTML += cardPodcast;
+
     let cardValorar = await fetch('templates/homepage/card-valorar.html');
     cardValorar = await cardValorar.text();
 
     mainContainer.innerHTML += cardValorar;
-
-    document.querySelectorAll('.contenedor-card__card-content')[3].setAttribute('href', 'playlist.html');
-
-    document.querySelectorAll('.contenedor-card__card-content')[4].setAttribute('href', 'podcast.html');
 
     return true;
 }

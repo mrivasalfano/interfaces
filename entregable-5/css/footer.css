@@ -72,7 +72,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #FFFFFF;
     padding: 8px 0px;
 }
 
@@ -105,6 +104,11 @@
 
 .animacionSeleccion {
     animation: animacionSeleccion .8s;
+}
+
+.reproductor__cancion a {
+    text-decoration: none;
+    color: #FFFFFF;
 }
 
 @keyframes animacionSeleccion {

@@ -26,6 +26,11 @@
     color: #3c3c3c;
 }
 
+.audio__lista-item-duracion {
+    color: #3c3c3c;
+    margin: 0 20px;
+}
+
 .audio__lista-item-play {
     display: none;
 }

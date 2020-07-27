@@ -64,6 +64,15 @@
     /* perspective: 700px; */
 }
 
+.contenedor-card__card-content-item img {
+    transition: all .3s ease;
+}
+
+.contenedor-card__card-content-item a {
+    width: 100%;
+    text-decoration: none;
+}
+
 .contenedor-card__card-content-item-play{
     display: none;
     font-size: 35px;
@@ -90,7 +99,7 @@
 .contenedor-card__card-content-item-title {
     font-weight: bold;
     font-size: 17px;
-    color: #1c3f7f;
+    color: #3c3c3c;
 }
 
 .contenedor-card__card-content-item-name {
@@ -184,7 +193,6 @@
         width: 120px;
         height: 120px;
         margin-bottom: 10px;
-        transition: all .3s ease;
     }
 
     .contenedor-card__card-content-item-cancion {
@@ -204,8 +212,6 @@
     }
 }
 
-/* .bordeReproduccion {
+.bordeReproduccion {
     border-radius: 15%;
-    transform: rotateY(35deg);
-    box-shadow: inset 0px 0px 40px rgba(255,255,255,0);
-} */
+}
