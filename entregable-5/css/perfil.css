@@ -1,0 +1,51 @@
+.perfil__foto {
+    position: relative;
+}
+
+.perfil__foto-editar {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    padding: 10px;
+    color: #FFFFFF;
+    background: rgba(0,0,0,0.6)
+}
+
+.datos-seccion__titulo {
+    color: #000315;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 50px 20px 0px 20px;
+}
+
+.datos-seccion__seccion {
+    margin: 20px 0;
+}
+
+.datos-seccion__seccion-label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #000315;
+}
+
+.datos-seccion__seccion-dato {
+    color: #3c3c3c;
+    margin-top: 5px;
+}
+
+.datos-seccion__seccion-dato ul{
+    list-style: none;
+    padding-left: 10px;
+}
+
+.boton-plan {
+    width: 100%;
+    background: #ff6d13;
+    color: #000315;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+}

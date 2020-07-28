@@ -11,7 +11,13 @@ document.addEventListener('DOMContentLoaded', e => {
                         </div>
                         <div class="header__contenido-publicidad">
                             <div class="header__contenido-publicidad-texto">
-                                Adquirí un plan premium y disfrutá de todos los beneficios
+                                <div class="header__contenido-publicidad-texto1">
+                                    Adquirí un plan premium
+                                </div>
+                                <div class="header__contenido-publicidad-texto2">
+                                        y disfrutá de todos los beneficios
+                                </div>
+                                 
                             </div>
                             <button>Ver planes</button>
                         </div>
@@ -19,7 +25,7 @@ document.addEventListener('DOMContentLoaded', e => {
                     `;
 
             crearNavBar(contenidoHeader).then(() => {
-                let linkInicio = document.querySelector('#links').children[0];
+                let linkInicio = document.querySelector('#links').children[1];
                 linkInicio.classList.remove('underline');
                 linkInicio.classList.add('active');
 

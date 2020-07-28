@@ -1,6 +1,6 @@
 /* SECCION */
 .audio {
-    background: linear-gradient(to bottom, #3A7FFF, #1c3f7f);
+    background: linear-gradient(to bottom, #000315, #000315);
     width: 100%;
     color: #FFFFFF;
     padding: 10px;
@@ -33,9 +33,9 @@
 .audio__reproducir button {
     width: 300px;
     padding: 9px;
-    color: #FFFFFF;
+    color: #000315;
     font-size: 20px;
-    background: #16C153;
+    background: #ff6d13;
 }
 
 .audio__autor {
@@ -53,7 +53,7 @@
 
 .audio__valoraciones-estrella {
     margin-right: 5px;
-    color: #FFD700;
+    color: #ff6d13;
 }
 
 .audio__portada {
@@ -66,7 +66,7 @@
     .audio__lista-item-play {
         display: block;
         font-size: 40px;
-        color: #1c3f7f;
+        color: #000315;
         margin: 0px 30px;
     }
 }

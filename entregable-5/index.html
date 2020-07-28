@@ -3,32 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entregable final interfaces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/valoraciones.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/inicio.css">
+    <title>Spofiy</title>
 </head>
 <body>
-    <div class="logo">
-        <img src="img/logo_login.png" alt="">
-    </div>
+    <header>
+        <nav>
+            <div id="logo">
+                <a href="homepage.html"><img src="img/logo.png" alt=""></a>
+            </div>
 
-    <div class="card">
-        <div class="usuario">
-            <label>Usuario</label>
-            <input type="text" placeholder="Ingrese su usuario">
+            <a href="login.html">
+                <div id="login">Ingresar</div>
+            </a>
+        </nav>
+    </header>
+    
+    <section class="main-container">
+        <div class="texto">
+            <div class="bienvenido">Bienvenido a Spofiy</div>
+            <div class="explicacion">Nuestro servicio de streaming de audio ofrece una calidad inigualable, como a su vez comodidad para almacenar tus favoritos, armar tus playlist y mucho más!</div>
+            <div class="registrarse">
+                <div class="registrarse__mensaje">Probá gratis por 30 días y cancelá en cualquier momento</div>
+                <div class="registrarse__boton">Regístrate, es gratis!</div>
+            </div>
         </div>
-        <div class="contraseña">
-            <label>Contraseña</label>
-            <input type="password" placeholder="Ingrese su contraseña">
-        </div>
-        <a href="homepage.html">
-            <button id="btnLogin">Iniciar sesión</button>
-        </a>
-        <p id="recuperarContraseña">Olvidé mi contraseña</p>
-    </div>
 
-    <div class="crear-cuenta">
-        <button>Crear cuenta</button>
-    </div>
+        <div class="imagen">
+            <img src="img/inicio.png" alt="">
+        </div>
+    </section>
+
+    <script src="js/inicio.js"></script>
+</body>
 </html>

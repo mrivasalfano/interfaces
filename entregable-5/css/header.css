@@ -1,10 +1,10 @@
 header {
-    background: #3A7FFF;
+    background: #000315;
 }
 
 nav {
     padding: 9px;
-    background: #3A7FFF;
+    background: #000315;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -18,7 +18,7 @@ nav {
 
 .header__contenido {
     padding: 10px;
-    font-size: 32px;
+    font-size: 28px;
     color: #FFFFFF;
     padding-top: 30px;
 }
@@ -60,12 +60,12 @@ nav #busqueda input {
 }
 
 nav #busqueda button {
-    background: #FFFFFF;
+    background: none;
     width: 40px;
     height: 40px;
     font-size: 25px;
     text-align: center;
-    color: #3c3c3c;
+    color: #FFFFFF;
 }
 
 /* notificacion */
@@ -87,6 +87,19 @@ nav #hamburguesa {
 }
 
 /* links */
+nav #usuarioMobile {
+    width: 40%;
+    margin: 0 auto;
+}
+
+nav #usuarioMobile button{
+    width: 100%;
+    background: none;
+    border: 1px solid #FFFFFF;
+    padding: 3px;
+    color: #FFFFFF;
+}
+
 nav #links {
     position: fixed;
     z-index: 2;
@@ -95,7 +108,7 @@ nav #links {
     bottom: 0;
     width: 100%;
     max-width: 280px;
-    background: #3A7FFF;
+    background: #000315;
     visibility: hidden;
     transform: translate3d(280px, 0, 0);
     transition: opacity .2s,visibility 0ms linear .2s,transform .5s ease;
@@ -111,7 +124,7 @@ nav #links a {
 /* efectos links */
 .active {
     font-weight: bold;
-    border-bottom: 2px solid #16C153;
+    border-bottom: 2px solid #ff6d13;
 }
 
 .underline::after {
@@ -119,7 +132,7 @@ nav #links a {
     display: block;
     width: 0;
     height: 2px;
-    background: #16C153;
+    background: #ff6d13;
     transition: width .3s;
 }
 
@@ -153,12 +166,12 @@ nav #links a {
 }
 
 @media only screen and (min-width: 900px) {
-    nav #hamburguesa {
+    nav #usuarioMobile {
         display: none;
     }
 
-    .links-perfil {
-        display: none; 
+    nav #hamburguesa {
+        display: none;
     }
 
     nav #usuario {

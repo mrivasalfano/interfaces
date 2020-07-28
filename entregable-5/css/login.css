@@ -1,5 +1,5 @@
 body {
-    background: #3A7FFF;
+    background: #000315;
     padding: 0;
 }
 
@@ -20,7 +20,7 @@ body {
 }
 
 label {
-    color: #1c3f7f;
+    color: #000315;
     display: block;
     margin-bottom: 5px;
 }
@@ -32,16 +32,16 @@ input{
 }
 
 #btnLogin {
-    background: #16C153 ;
+    background: #ff6d13 ;
     padding: 7px 15px;
     width: 100%;
     font-size: 24px;
     line-height: 28px;
-    color: #FFFFFF;
+    color: #000315;
 }
 
 #recuperarContraseña {
-    color: #1c3f7f;
+    color: #000315;
     line-height: 24px;
     text-decoration-line: underline;
     margin-top: 20px;

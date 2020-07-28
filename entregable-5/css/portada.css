@@ -19,6 +19,7 @@
 
 .portada__datos-cancion {
     flex: 1;
+    color: #FFFFFF;
     text-align: center;
 }
 
@@ -60,7 +61,7 @@
     left: 5px;
 }
 .portada__datos-favoritos button {
-    color: #16C153;
+    color: #ff6d13;
     font-size: 30px;
 }
 
@@ -86,11 +87,12 @@
 }
 
 .portada__datos-valoracion i {
-    color: #FFD700;
+    color: #ff6d13;
 }
 
 .portada__datos-valoracion div {
     margin: 0px 5px;
+    color: #FFFFFF;
 }
 
 @media only screen and (min-width: 500px) {

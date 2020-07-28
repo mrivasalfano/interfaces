@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', e => {
     let contenidoHeader = `
                     <div class="header__contenido">
                         <div class="header__contenido-texto">Filtrá tu búsqueda</div>
-                        <button>Filtrar</button>
+                        <button>Filtrar <i class="fas fa-angle-down"></i></button>
                     </div>
                     `;
 
@@ -34,19 +34,13 @@ async function crearSecciones() {
 
     document.querySelectorAll('.seccionBusqueda__contenido-item-nombre').forEach(itm => {
         itm.addEventListener('click', () => {
-            if(itm.getAttribute('href') != 'cancion.html' || (window.innerWidth > 550))
-                location.replace(itm.getAttribute('href'));
-            else
-                itm.parentNode.children[2].click();
+            location.replace(itm.getAttribute('href'));
         });
     });
 
     document.querySelectorAll('.seccionBusqueda__contenido-item-imagen').forEach(itm => {
         itm.addEventListener('click', () => {
-            if(itm.getAttribute('href') != 'cancion.html' || (window.innerWidth > 550))
-                location.replace(itm.getAttribute('href'));
-            else
-                itm.parentNode.children[2].click();
+            location.replace(itm.getAttribute('href'));
         });
     });
 

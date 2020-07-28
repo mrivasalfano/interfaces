@@ -12,13 +12,18 @@
 }
 
 .header__contenido button {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 10px auto;
-    background: #16C153;
+    background: #ff6d13;
     padding: 7px 15px;
-    color: #FFFFFF;
+    color: #000315;
     font-size: 14px;
-    width: 150px;
+}
+
+.header__contenido button i {
+    margin-left: 10px;
 }
 
 .seccionBusqueda {
@@ -33,7 +38,7 @@
 }
 
 .seccionBusqueda__titulo {
-    color: #1c3f7f;
+    color: #000315;
     font-weight: bold;
     font-size: 26px;
     margin-bottom: 8px;
@@ -58,7 +63,7 @@
 
 .seccionBusqueda__contenido-item-valoracion i {
     margin-right: 5px;
-    color: #FFD700;
+    color: #ff6d13;
 }
 
 .seccionBusqueda__contenido-item-valoracion div {
@@ -66,9 +71,7 @@
 }
 
 .seccionBusqueda__contenido-item-corazon {
-    color: #F6F6F6;
-    font-size: 30px;
-    text-shadow: -1px 0 #16C153, 0 1px #16C153, 1px 0 #16C153, 0 -1px #16C153;
+    text-shadow: -1px  #ff6d13,  1px #ff6d13, 1px  #ff6d13,  -1px #ff6d13;
 }
 
 .seccionBusqueda__contenido-item i:last-child {
@@ -81,16 +84,14 @@
 } 
 
 .seccionBusqueda__contenido-item-play {
-    display: none;
-    font-size: 40px !important;
-    width: 40px;
-    color: #1c3f7f;
+    margin-right: 20px;
+    font-size: 25px !important;
+    color: #000315;
 }
 
-.seccionBusqueda__contenido-item-opciones {
+.seccionBusqueda__contenido-item-corazon {
     font-size: 25px !important;
-    width: 30px;
-    color: #3c3c3c;
+    color: #000315;
 }
 
 .seccionBusqueda__contenido-item-nombre {
@@ -102,7 +103,7 @@
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #3c3c3c;
+    color: #000315;
 }
 
 .seccionBusqueda__contenido-item-nombre-cancion {
@@ -117,8 +118,8 @@
 }
 
 .seccionBusqueda__verMas button {
-    background: #16C153;
-    color: #FFFFFF;
+    background: #ff6d13;
+    color: #000315;
     font-size: 16px;
     padding: 5px;
     font-weight: bold;
@@ -130,9 +131,6 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    .seccionBusqueda__contenido-item-play {
-        display: block;
-    }
 
     .seccionBusqueda__contenido-item-nombre {
         text-align: center;
@@ -153,7 +151,11 @@
         max-width: 200px;
     }
 
-    .seccionBusqueda__contenido-item-opciones {
+    .seccionBusqueda__contenido-item-play {
+        margin: 0;
+    }
+
+    .seccionBusqueda__contenido-item-corazon {
         position: absolute;
         right: 10px;
         top: 10px;
@@ -198,19 +200,19 @@
     }
 
     .seccionBusqueda__contenido-item-play:hover {
-        color: #1c3f7fc9;
+        color: #000315c9;
     }
 
     .seccionBusqueda__contenido-item-opciones:hover {
-        color: #1c3f7fc9;
+        color: #000315c9;
     }
 
     .seccionBusqueda__contenido-item-corazon:hover {
-        color: #16C153 !important;
+        color: #FFFFFF !important;
     }
 
     .seccionBusqueda__contenido-item:hover .seccionBusqueda__contenido-item-nombre-artista{
-        color: #1c3f7fc9;
+        color: #000315c9;
     }
 
     .seccionBusqueda__contenido-item:hover .seccionBusqueda__contenido-item-imagen {

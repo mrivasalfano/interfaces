@@ -6,7 +6,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: #3A7FFF;
+    background: #000315;
     display: grid;
     grid-template-columns: 50px auto 100px;
     grid-template-rows: auto auto;
@@ -23,7 +23,7 @@
     justify-content: center;
     align-items: center;
     grid-area: corazon;
-    color: #16C153;
+    color: #FFFFFF
 }
 
 .reproductor__corazon i {
@@ -99,7 +99,7 @@
 }
 
 .bordeAmarillo {
-    color: #FFD700;
+    color: #ff6d13;
 }
 
 .animacionSeleccion {
@@ -114,7 +114,7 @@
 @keyframes animacionSeleccion {
     0% {transform: scale(0.8);}
     50% {color: #e9c707; transform: scale(1.2)}
-    100% {color: #FFD700; transform: scale(1) rotateY(360deg);}
+    100% {color: #ff6d13; transform: scale(1) rotateY(360deg);}
 }
 
 @media only screen and (min-width: 400px) {
@@ -153,7 +153,7 @@
     .reproductor__volumen-sliderContainer-sliderVolumen {
         flex: 1;
         height: 4px;
-        background: #16C153 ;
+        background: #ff6d13 ;
         border-radius: 10px;
         margin: 0px 5px;
     }

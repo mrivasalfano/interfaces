@@ -1,12 +1,17 @@
 /* CONTENIDO HEADER */
+.header__contenido {
+    display: flex;
+    flex-direction: column;
+}
+
 .header__contenido-saludo {
-    width: 250px;
+    display: flex;
 }
 
 .header__contenido-saludo-nombre {
-    color: #1c3f7f;
+    color: #000315;
     font-weight: bold;
-    text-align: end;
+    margin-left: 20px;
 }
 
 .header__contenido-publicidad {
@@ -15,17 +20,17 @@
 
 .header__contenido-publicidad-texto {
     color: #FFFFFF;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .header__contenido-publicidad button {
     margin-top: 10px;
-    background: #16C153;
+    background: #ff6d13;
     padding: 7px 15px;
     border: none;
-    font-size: 24px;
-    color: #FFFFFF;
-    width: 100%;
+    font-size: 14px;
+    color: #000315;
+    width: 200px;
 }
 
 .contenedor-card__card {
@@ -35,9 +40,8 @@
 
 .contenedor-card__card-title {
     font-style: normal;
-    font-weight: bold;
-    font-size: 26px;
-    color: #1c3f7f;
+    font-size: 20px;
+    color: #000315;
     padding: 10px;
 }
 
@@ -79,7 +83,7 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
-    color: #1c3f7f;
+    color: #000315;
 }
 
 .contenedor-card__card-content-item-cancion div {
@@ -98,8 +102,8 @@
 
 .contenedor-card__card-content-item-title {
     font-weight: bold;
-    font-size: 17px;
-    color: #3c3c3c;
+    font-size: 16px;
+    color: #000315;
 }
 
 .contenedor-card__card-content-item-name {
@@ -133,10 +137,22 @@
     75% { transform: scale(0.95, 1.05); }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 550px) {
     .header__contenido-publicidad {
         max-width: 550px;
         margin: auto;
+    }
+
+    .header__contenido {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .header__contenido-publicidad {
+        max-width: 550px;
+        
     }
 }
 
@@ -160,7 +176,7 @@
         background: none;
         border: none;
         font-size: 40px;
-        color: #3A7FFF;
+        color: #000315;
     }
 
     .contenedor-card__card-content {
@@ -174,7 +190,7 @@
     }
 
     .contenedor-card__card-content-item-play:hover {
-        color: #1c3f7fc9;
+        color: #000315c9;
     }
 
     .contenedor-card__card-content-item:hover img{
@@ -186,7 +202,7 @@
     .contenedor-card__card-content-item:hover 
     .contenedor-card__card-content-item-title,
     .contenedor-card__card-content-item-nombre {
-        color: #1c3f7fc9;
+        color: #000315c9;
     }
     
     .contenedor-card__card-content-item img {

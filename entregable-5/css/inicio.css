@@ -1,0 +1,81 @@
+body {
+    background: #000315;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+nav {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+#logo {
+    width: 50px;
+}
+
+.main-container {
+    margin-top: 30px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bienvenido {
+    font-size: 40px;
+}
+
+.explicacion {
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.registrarse {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.registrarse__mensaje {
+    font-size: 20px;
+}
+
+.registrarse__boton {
+    margin-top: 20px;
+    background: #ff6d13;
+    border-radius: 5px;
+    padding: 7px 15px;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000315;
+    width: 100%;
+}
+
+.texto {
+    max-width: 400px;
+    margin-bottom: 50px;
+}
+
+.imagen {
+    text-align: center;
+}
+
+.imagen img {
+    max-width: 300px;
+}
+
+@media only screen and (min-width: 800px) {
+    .main-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}

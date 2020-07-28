@@ -38,7 +38,7 @@
 
 .audio__titulo {
     font-size: 20px;
-    color: #1c3f7f;
+    color: #000315;
     margin-bottom: 10px;
 }
 
@@ -48,7 +48,7 @@
 
 .audio__albums-titulo {
     font-size: 20px;
-    color: #1c3f7f;
+    color: #000315;
     margin-bottom: 10px;
 }
 
@@ -69,11 +69,12 @@
     text-decoration: none;
 }
 
-.audio__albums-items-item div {
-    color: #3c3c3c;
-}
-
 .audio__albums-items-item-titulo {
     font-size: 16px;
     font-weight: bold;
+    color: #000315;
+}
+
+.audio__albums-items-item-fecha {
+    color: #3c3c3c;
 }
