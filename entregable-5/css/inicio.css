@@ -16,10 +16,15 @@ nav {
 a {
     text-decoration: none;
     color: #FFFFFF;
+    display: flex;
+}
+
+a :first-child{
+    margin-right: 20px;
 }
 
 #logo {
-    width: 50px;
+    width: 70px;
 }
 
 .main-container {
