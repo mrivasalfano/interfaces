@@ -1,3 +1,32 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background: #000315;
+    padding: 20px;
+    margin-bottom: 85px;
+}
+
+.footer img {
+    width: 100px;
+    margin: auto;
+}
+
+.footer__redes {
+    color: #FFFFFF;
+    margin: 20px 0;
+}
+
+.footer__redes-titulo {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer__redes-derechos {
+    margin-top: 30px;
+}
+
 .reproductor__volumen {
     display: none;
 }
