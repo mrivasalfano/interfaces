@@ -68,22 +68,29 @@
     /* perspective: 700px; */
 }
 
-.contenedor-card__card-content-item img {
+/* .contenedor-card__card-content-item img {
     transition: all .3s ease;
-}
+} */
 
 .contenedor-card__card-content-item a {
     width: 100%;
     text-decoration: none;
 }
 
-.contenedor-card__card-content-item-play{
-    display: none;
+.contenedor-card__card-content-item-play {
     font-size: 35px;
     position: absolute;
     bottom: 10px;
     right: 10px;
     color: #000315;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
 
 .contenedor-card__card-content-item-cancion div {
@@ -193,22 +200,16 @@
         color: #000315c9;
     }
 
-    .contenedor-card__card-content-item:hover img{
+    /* .contenedor-card__card-content-item:hover img{
         width: 125px;
         height: 125px;
         margin-bottom: 5px;
-    }
+    } */
 
     .contenedor-card__card-content-item:hover 
     .contenedor-card__card-content-item-title,
     .contenedor-card__card-content-item-nombre {
         color: #000315c9;
-    }
-    
-    .contenedor-card__card-content-item img {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 10px;
     }
 
     .contenedor-card__card-content-item-cancion {

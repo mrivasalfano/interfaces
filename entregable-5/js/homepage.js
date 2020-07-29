@@ -75,8 +75,17 @@ document.addEventListener('DOMContentLoaded', e => {
 
                 //cambio el nombre de la canción y aplico una animación
                 //también cambio el ícono de play por pausa
-                document.querySelectorAll('.contenedor-card__card-content-item-play').forEach(itm => {
+                let botonesPlay = document.querySelectorAll('.contenedor-card__card-content-item-play');
+
+                botonesPlay.forEach(itm => {
                     itm.addEventListener('click', e => {
+                        botonesPlay.forEach(btn => {
+                            btn.classList.remove('fa-pause');
+                            btn.classList.add('fa-play');
+                            btn.classList.remove('show');
+                            btn.classList.add('hide');
+                        });
+
                         let container = itm.previousElementSibling;
                         let artista = container.children[0].innerHTML;
                         let cancion = container.children[1].innerHTML;
@@ -87,6 +96,8 @@ document.addEventListener('DOMContentLoaded', e => {
 
                         itm.classList.remove('fa-play');
                         itm.classList.add('fa-pause');
+                        itm.classList.remove('hide');
+                        itm.classList.add('show');
 
                         iconoReproductor.classList.remove('fa-play-circle');
                         iconoReproductor.classList.add('fa-pause-circle');
@@ -95,7 +106,21 @@ document.addEventListener('DOMContentLoaded', e => {
                         
                         contenedorCancion.classList.add('cambiarTitulo');
 
-                        itm.parentNode.firstElementChild.classList.add('bordeReproduccion');
+                        let imagenFrente = itm.parentNode.firstElementChild.querySelector('.cubo-container__cubo-lado-imagen.frontal');
+                        
+                        let imagenLados = imagenFrente.parentNode.parentNode.querySelectorAll('.cubo-container__cubo-lado-imagen.lado');
+                        let cubo = itm.parentNode.firstElementChild.firstElementChild;
+                        
+                        imagenFrente.classList.add('sinBorde');
+                            
+                        imagenFrente.addEventListener('transitionend', () => {
+                            for(let img of imagenLados) {
+                                img.classList.remove('hide');
+                                img.classList.add('show');
+                            }
+                            
+                            cubo.classList.add('rotarCubo');
+                        });
                     });
 
                     itm.addEventListener('animationend', () => {
@@ -115,6 +140,8 @@ document.addEventListener('DOMContentLoaded', e => {
                 document.querySelectorAll('.contededor-card__card-content-item-estrellas').forEach(container => {
                     new Valoracion(container);
                 });
+
+                
             });
         })
     });
