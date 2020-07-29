@@ -51,7 +51,7 @@
 }
 
 .rotarCubo {
-    transform: rotateX(180deg) rotateY(360deg);
+    transform: rotateX(180deg) rotateY(350deg);
 }
 
 @media only screen and (max-width: 1000px) {
