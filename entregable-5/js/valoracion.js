@@ -55,6 +55,12 @@ class Valoracion {
                     this.estrellas[i].classList.add('fas', 'bordeAmarillo', 'animacionSeleccion');      
                     this.estrellas[i].setAttribute('seleccionada', 'true');          
                 }
+
+                for (let i = nroEstrella; i <= 4; i++) {
+                    this.estrellas[i].classList.remove('animacionSeleccion', 'bordeAmarillo'); 
+                    void this.estrellas[i].offsetWidth; //para poder volver a aplicar la animación             
+                    this.estrellas[i].classList.add('animacionSeleccion');      
+                }
             });
         };
     }
