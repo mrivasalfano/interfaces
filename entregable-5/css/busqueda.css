@@ -57,17 +57,25 @@
     position: relative;
     border-radius: 5px;
     background: #F6F6F6;
-    box-shadow: 7px 8px 6px -6px #000f1f5c;
     padding: 10px;
     opacity: 0;
     transform: translateZ(-1000px) rotateY(90deg);
-    transition: all 2s;
-}
+    /* transition: all 2s; */
+    box-shadow: -1px 1px 0px hsl(0, 0%, 70%),
+                -2px 2px 0px hsl(0, 0%, 70%),
+                -3px 3px 0px hsl(0, 0%, 70%),
+                -4px 4px 0px hsl(0, 0%, 70%);
+    }
 
 .is-visible {
-    transform:rotateY(5deg);
-    box-shadow: -20px 20px 3px -10px #000f1f5c;
-    opacity: 1;
+    /* transform:rotateY(5deg);
+    opacity: 1; */
+    animation: is-visible 2s forwards;
+}
+
+@keyframes is-visible {
+    40%{transform: translateZ(100px);}
+    100%{transform: translateX(10px) rotateY(10deg); opacity: 1;}
 }
 
 .seccionBusqueda__contenido-item-valoracion {

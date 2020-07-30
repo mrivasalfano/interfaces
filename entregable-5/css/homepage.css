@@ -135,6 +135,16 @@
 
 .contededor-card__card-content-item-estrellas {
     margin-top: 10px;
+    text-align: end;
+    perspective: 1000px;
+    width: 100%;
+}
+
+.contededor-card__card-content-item-estrellas i {
+    transform-style: preserve-3d;
+    transform: translateZ(-100px) translateX(-10px) translateY(5px) rotateZ(-20deg) rotateY(-20deg);
+    text-shadow: -1px 1px 0px #303133, -2px 2px 0px #303133;
+    transition: all .7s ease;
 }
 
 @keyframes animarSeleccion {
