@@ -1,5 +1,6 @@
 .main-container {
     padding-top: 40px;
+    overflow-x: hidden;
 }
 
 .header__contenido {
@@ -95,7 +96,7 @@
 }
 
 .seccionBusqueda__contenido-item i:last-child {
-    text-align: flex-end;
+    text-align: end;
 }
 
 .seccionBusqueda__contenido-item-logo {
@@ -134,7 +135,7 @@
 .seccionBusqueda__verMas {
     margin-top: 10px;
     width: 100%;
-    text-align: flex-end;
+    text-align: end;
 }
 
 .seccionBusqueda__verMas button {

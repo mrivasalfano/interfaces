@@ -94,10 +94,12 @@ document.addEventListener('DOMContentLoaded', e => {
                         tituloCancion.innerHTML = artista;
                         nombreCancion.innerHTML = cancion;
 
-                        itm.classList.remove('fa-play');
-                        itm.classList.add('fa-pause');
-                        itm.classList.remove('hide');
-                        itm.classList.add('show');
+                        if(window.innerWidth >= 1000) {
+                            itm.classList.remove('fa-play');
+                            itm.classList.add('fa-pause');
+                            itm.classList.remove('hide');
+                            itm.classList.add('show');
+                        }
 
                         iconoReproductor.classList.remove('fa-play-circle');
                         iconoReproductor.classList.add('fa-pause-circle');

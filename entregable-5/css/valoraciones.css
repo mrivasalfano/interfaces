@@ -13,15 +13,16 @@
     margin-bottom: 10px;
     color: #000315;
     text-align: center;
+    padding-left: 18px;
     perspective: 1000px;
-    
 }
 
 .valoraciones__estrellas i {
     transform-style: preserve-3d;
-    transform: translateZ(-100px) translateX(-10px) translateY(5px) rotateZ(-20deg) rotateY(-25deg);
-    text-shadow:-1px 1px 0px #303133,
-                -2px 2px 0px #303133;
+    transform: translateZ(-100px) translateX(-10px) translateY(5px) rotateZ(-25deg) rotateY(-25deg);
+    text-shadow:-1px 1px 0px #000315,
+                -2px 2px 0px #000315,
+                -3px 3px 0px #000315;
     transition: all .7s ease;
 }
 

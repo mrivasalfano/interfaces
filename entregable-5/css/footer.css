@@ -129,11 +129,10 @@
 
 .bordeAmarillo {
     color: #ff6d13;
-    
 }
 
 .animacionSeleccion {
-    animation: animacionSeleccion 1300ms forwards;
+    animation: animacionSeleccion 1s forwards;
 }
 
 .reproductor__cancion a {
@@ -148,7 +147,7 @@
                     text-shadow:-1px 1px 0px #303133,
                     -2px 2px 0px #303133;}
 }
-
+  
 @media only screen and (min-width: 400px) {
     .reproductor {
         grid-template-columns: 100px auto 100px;
