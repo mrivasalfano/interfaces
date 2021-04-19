@@ -10,7 +10,7 @@ const context = canvas.getContext('2d');
 const btnReset = document.querySelector('#btnReset');
 let userImg = document.querySelector('#userImg');
 const filtros = document.querySelectorAll('.filtro');
-const filtrosplayer-container = document.querySelector('.filtros');
+const filtrosPlayerContainer = document.querySelector('.filtros');
 const colorPicker = document.querySelector('.jscolor');
 let color = '#000000';
 let tamañoLapiz = 2;
@@ -358,12 +358,12 @@ userImg.addEventListener('change', (e) => {
 //para filtros
 function habilitarFiltros(habilitar) {
     if (habilitar) {
-        filtrosplayer-container.classList.remove('hide');
-        filtrosplayer-container.classList.add('show');
+        filtrosPlayerContainer.classList.remove('hide');
+        filtrosPlayerContainer.classList.add('show');
     }
     else {
-        filtrosplayer-container.classList.remove('show');
-        filtrosplayer-container.classList.add('hide');
+        filtrosPlayerContainer.classList.remove('show');
+        filtrosPlayerContainer.classList.add('hide');
     }
 }
 
